@@ -194,7 +194,7 @@ body {
 .section {
     width: min(1120px, 92vw);
     margin: 0 auto;
-    padding: 72px 0;
+    padding: 25px 0;
 }
 
 .section-title {
