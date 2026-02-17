@@ -265,6 +265,10 @@
             gap: 12px;
         }
 
+        .mobile-event-list {
+            display: none;
+        }
+
         .map-frame {
             width: 100%;
             height: 270px;
@@ -426,12 +430,22 @@
                 font-size: 30px;
             }
 
-            .event-grid {
-                grid-template-columns: 1fr;
+            .countdown-label {
+                font-size: 10px;
+                letter-spacing: 0.08em;
             }
 
             .map-grid {
-                grid-template-columns: 1fr;
+                display: none;
+            }
+
+            .event-grid {
+                display: none;
+            }
+
+            .mobile-event-list {
+                display: grid;
+                gap: 12px;
             }
 
             .gift-grid {
@@ -514,6 +528,36 @@
                     title="Mapa da cerimônia - Paróquia São Pedro Apóstolo">
                 </iframe>
             </div>
+            <div class="card map-card">
+                <iframe
+                    class="map-frame"
+                    src="https://www.google.com/maps?q=-22.8301822,-47.2898183&z=17&output=embed"
+                    loading="lazy"
+                    allowfullscreen=""
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Mapa da recepção - Espaço Recanto Januário">
+                </iframe>
+            </div>
+        </div>
+        <div class="mobile-event-list">
+            <article class="card event-item">
+                <h3>Cerimônia</h3>
+                <p>Paróquia São Pedro Apóstolo<br />12 de dezembro de 2026, às 16h00<br />R. das Crianças, 235 - Sumaré - SP</p>
+            </article>
+            <div class="card map-card">
+                <iframe
+                    class="map-frame"
+                    src="https://www.google.com/maps?q=-22.7973224,-47.2771854&z=17&output=embed"
+                    loading="lazy"
+                    allowfullscreen=""
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Mapa da cerimônia - Paróquia São Pedro Apóstolo">
+                </iframe>
+            </div>
+            <article class="card event-item">
+                <h3>Recepção</h3>
+                <p>Espaço Recanto Januário<br />Após a cerimônia<br />Parque São Bento, Sumaré - SP</p>
+            </article>
             <div class="card map-card">
                 <iframe
                     class="map-frame"
