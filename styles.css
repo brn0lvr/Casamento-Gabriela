@@ -203,7 +203,12 @@ body {
 }
 
 #evento .section-title {
-    margin-top: 0;
+    margin: 0 0 10px;
+}
+
+#evento .section-subtitle {
+    max-width: 860px;
+    margin: 0 auto 34px;
 }
 
 #convite.section,
