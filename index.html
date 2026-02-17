@@ -270,66 +270,12 @@
             text-align: center;
         }
 
-        .rsvp-form {
-            display: grid;
-            gap: 14px;
-            max-width: 720px;
-            margin: 16px auto 0;
-            text-align: left;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .field {
-            display: grid;
-            gap: 7px;
-        }
-
-        .field label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #5b5144;
-        }
-
-        .field input,
-        .field select,
-        .field textarea {
+        .google-form-frame {
             width: 100%;
-            border: 1px solid #d7d0c6;
+            height: 920px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
             background: #fff;
-            color: #3f352a;
-            border-radius: 10px;
-            padding: 11px 12px;
-            font: inherit;
-        }
-
-        .field textarea {
-            resize: vertical;
-            min-height: 94px;
-        }
-
-        .form-note {
-            margin: 4px 0 0;
-            font-size: 12px;
-            color: #7b7368;
-        }
-
-        .form-status {
-            min-height: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #3f3429;
-            text-align: center;
-        }
-
-        .btn[disabled] {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
         }
 
         .btn {
@@ -439,8 +385,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .form-row {
-                grid-template-columns: 1fr;
+            .google-form-frame {
+                height: 980px;
             }
         }
     </style>
@@ -518,39 +464,18 @@
 
     <section id="convite" class="section">
         <h2 class="section-title">Confirmação de Presença</h2>
-        <p class="section-subtitle">Envie sua resposta por aqui. Assim conseguimos organizar tudo com carinho para receber vocês.</p>
+        <p class="section-subtitle">Preencha o formulário do Google para confirmar sua presença.</p>
         <div class="card invite-wrap">
-            <p>Preencha o formulário abaixo para confirmar sua presença.</p>
-            <form id="rsvp-form" class="rsvp-form" action="https://formspree.io/f/xojnwonp" method="POST">
-                <div class="form-row">
-                    <div class="field">
-                        <label for="nome">Nome completo</label>
-                        <input id="nome" name="nome" type="text" required />
-                    </div>
-                    <div class="field">
-                        <label for="telefone">Telefone (WhatsApp)</label>
-                        <input id="telefone" name="telefone" type="tel" placeholder="(00) 00000-0000" />
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label for="presenca">Você vai ao casamento?</label>
-                    <select id="presenca" name="presenca" required>
-                        <option value="" selected disabled>Selecione</option>
-                        <option value="Sim">Sim, estarei presente</option>
-                        <option value="Nao">Não poderei comparecer</option>
-                    </select>
-                </div>
-
-                <div class="field">
-                    <label for="restricoes">Restrições alimentares (opcional)</label>
-                    <textarea id="restricoes" name="restricoes" placeholder="Ex.: vegetariano, sem lactose, alergia a amendoim"></textarea>
-                </div>
-
-                <input type="hidden" name="_subject" value="Nova confirmação de presença - Casamento Gabriela & Mateus" />
-                <button type="submit" class="btn btn-primary" id="rsvp-submit">Enviar confirmação</button>
-                <p id="form-status" class="form-status" aria-live="polite"></p>
-            </form>
+            <p>Se preferir, você pode abrir em uma nova aba pelo botão abaixo.</p>
+            <a class="btn btn-primary" href="https://forms.gle/SEU_FORMULARIO" target="_blank" rel="noopener noreferrer">Abrir formulário no Google</a>
+            <div class="map-card" style="margin-top:22px;">
+                <iframe
+                    class="google-form-frame"
+                    src="https://docs.google.com/forms/d/e/SEU_FORM_ID/viewform?embedded=true"
+                    loading="lazy"
+                    title="Formulário de confirmação de presença">
+                </iframe>
+            </div>
         </div>
     </section>
 
@@ -607,46 +532,6 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
-
-        const rsvpForm = document.getElementById("rsvp-form");
-        const rsvpSubmit = document.getElementById("rsvp-submit");
-        const formStatus = document.getElementById("form-status");
-
-        rsvpForm.addEventListener("submit", async (event) => {
-            event.preventDefault();
-            formStatus.textContent = "";
-
-            const endpoint = rsvpForm.getAttribute("action") || "";
-            if (endpoint.includes("SEU_ENDPOINT")) {
-                formStatus.textContent = "Configure seu endpoint do Formspree para ativar o envio.";
-                return;
-            }
-
-            rsvpSubmit.disabled = true;
-            rsvpSubmit.textContent = "Enviando...";
-
-            try {
-                const response = await fetch(endpoint, {
-                    method: "POST",
-                    body: new FormData(rsvpForm),
-                    headers: {
-                        Accept: "application/json"
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error("Falha no envio.");
-                }
-
-                rsvpForm.reset();
-                formStatus.textContent = "Confirmação enviada com sucesso. Obrigado!";
-            } catch (error) {
-                formStatus.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
-            } finally {
-                rsvpSubmit.disabled = false;
-                rsvpSubmit.textContent = "Enviar confirmação";
-            }
-        });
     </script>
 </body>
 </html>
