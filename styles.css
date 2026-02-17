@@ -197,6 +197,14 @@ body {
     padding: 25px 0;
 }
 
+#evento.section {
+    padding-top: 0;
+}
+
+#evento .section-title {
+    margin-top: -14px;
+}
+
 .section-title {
     margin: 0 0 10px;
     font-family: "Cormorant Garamond", serif;
