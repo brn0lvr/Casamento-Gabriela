@@ -80,7 +80,7 @@ body {
 }
 
 .brand-logo {
-    height: 120px;
+    height: 140px;
     width: auto;
     display: block;
 }
@@ -223,7 +223,7 @@ body {
 }
 
 #evento.section {
-    padding-top: 18px;
+    padding-top: 50px;
 }
 
 #evento .section-title {
@@ -476,11 +476,6 @@ body {
     font-size: 14px;
 }
 
-.footer-text {
-    margin: 0;
-    padding: 0;
-}
-
 .bottombar {
     height: 68px;
     display: flex;
@@ -496,11 +491,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
 }
 
 .bottombar-logo {
-    height: 100px;
+    height: 140px;
     width: auto;
     display: block;
 }
