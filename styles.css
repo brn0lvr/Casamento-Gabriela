@@ -194,11 +194,11 @@ body {
 .section {
     width: min(1120px, 92vw);
     margin: 0 auto;
-    padding: 25px 0;
+    padding: 40px 0;
 }
 
 #evento.section {
-    padding-top: 2px;
+    padding-top: 25px;
 }
 
 #evento .section-title {
@@ -364,15 +364,48 @@ body {
 }
 
 .gift-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
+    column-count: 3;
+    column-gap: 18px;
+}
+
+.gift-category {
+    margin-top: 24px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: linear-gradient(180deg, #fdfbf8 0%, #f6f2eb 100%);
+    box-shadow: 0 10px 24px rgba(45, 35, 24, 0.05);
+}
+
+.gift-category:first-of-type {
+    margin-top: 0;
+}
+
+.gift-category-title {
+    margin: 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(28px, 4vw, 36px);
+    color: #4a3f32;
+    font-weight: 600;
+}
+
+.gift-category-subtitle {
+    margin: 6px 0 16px;
+    color: #7a6f60;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .gift-item {
+    break-inside: avoid;
+    margin-bottom: 18px;
     display: flex;
     flex-direction: column;
     gap: 14px;
+}
+
+.gift-grid .gift-item:last-child {
+    margin-bottom: 0;
 }
 
 .gift-item h3 {
@@ -457,7 +490,11 @@ body {
     }
 
     .gift-grid {
-        grid-template-columns: 1fr;
+        column-count: 1;
+    }
+
+    .gift-category {
+        padding: 14px;
     }
 
     .form-row {
