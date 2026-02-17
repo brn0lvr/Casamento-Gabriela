@@ -24,6 +24,7 @@ body {
     font-family: "Montserrat", sans-serif;
     background: var(--bg);
     color: var(--ink);
+    overflow-x: hidden;
 }
 
 .topbar {
@@ -198,11 +199,11 @@ body {
 }
 
 #evento.section {
-    padding-top: 25px;
+    padding-top: 18px;
 }
 
 #evento .section-title {
-    margin-top: -12px;
+    margin-top: 0;
 }
 
 #convite.section,
@@ -474,6 +475,10 @@ body {
     .countdown-label {
         font-size: 10px;
         letter-spacing: 0.08em;
+    }
+
+    .section-subtitle {
+        padding: 0 12px;
     }
 
     .map-grid {
