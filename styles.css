@@ -199,16 +199,18 @@ body {
 }
 
 #evento.section {
-    padding-top: 18px;
+    padding-top: 2px;
+    padding-bottom: 14px;
 }
 
 #evento .section-title {
-    margin: 0 0 10px;
+    margin: 0 0 6px;
 }
 
 #evento .section-subtitle {
     max-width: 860px;
-    margin: 0 auto 34px;
+    margin: 0 auto 12px;
+    padding: 0 14px;
 }
 
 #convite.section,
