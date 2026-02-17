@@ -270,12 +270,54 @@
             text-align: center;
         }
 
-        .google-form-frame {
+        .rsvp-form {
+            display: grid;
+            gap: 14px;
+            max-width: 720px;
+            margin: 16px auto 0;
+            text-align: left;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .field {
+            display: grid;
+            gap: 7px;
+        }
+
+        .field label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #5b5144;
+        }
+
+        .field input {
             width: 100%;
-            height: 920px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            border: 1px solid #d7d0c6;
             background: #fff;
+            color: #3f352a;
+            border-radius: 10px;
+            padding: 11px 12px;
+            font: inherit;
+        }
+
+        .form-note {
+            margin: 4px 0 0;
+            font-size: 12px;
+            color: #7b7368;
+            text-align: center;
+        }
+
+        .form-status {
+            min-height: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #3f3429;
+            text-align: center;
         }
 
         .btn {
@@ -385,8 +427,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .google-form-frame {
-                height: 980px;
+            .form-row {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -464,18 +506,36 @@
 
     <section id="convite" class="section">
         <h2 class="section-title">Confirmação de Presença</h2>
-        <p class="section-subtitle">Preencha o formulário do Google para confirmar sua presença.</p>
+        <p class="section-subtitle">Preencha aqui no site e nós receberemos sua resposta no Google Forms.</p>
         <div class="card invite-wrap">
-            <p>Se preferir, você pode abrir em uma nova aba pelo botão abaixo.</p>
-            <a class="btn btn-primary" href="https://forms.gle/SEU_FORMULARIO" target="_blank" rel="noopener noreferrer">Abrir formulário no Google</a>
-            <div class="map-card" style="margin-top:22px;">
-                <iframe
-                    class="google-form-frame"
-                    src="https://docs.google.com/forms/d/e/SEU_FORM_ID/viewform?embedded=true"
-                    loading="lazy"
-                    title="Formulário de confirmação de presença">
-                </iframe>
-            </div>
+            <p>Confirme preenchendo o formulário abaixo.</p>
+            <form
+                id="rsvp-form"
+                class="rsvp-form"
+                action="https://docs.google.com/forms/d/e/1FAIpQLSfyRyEstdLtVdeBmgf-AUtwPORO-3n7BieyVlFvnXK3ZGZr6Q/formResponse"
+                method="POST"
+                target="hidden_iframe">
+                <div class="form-row">
+                    <div class="field">
+                        <label for="nome">Nome completo</label>
+                        <input id="nome" name="entry.1819394826" type="text" required />
+                    </div>
+                    <div class="field">
+                        <label for="telefone">Telefone (WhatsApp)</label>
+                        <input id="telefone" name="entry.1237621766" type="tel" placeholder="(00) 00000-0000" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="cpf">Documento CPF</label>
+                    <input id="cpf" name="entry.926206890" type="text" placeholder="000.000.000-00" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enviar confirmação</button>
+                <p class="form-note">As respostas são registradas automaticamente no Google Forms.</p>
+                <p id="form-status" class="form-status" aria-live="polite"></p>
+            </form>
+            <iframe name="hidden_iframe" style="display:none;" title="Envio oculto"></iframe>
         </div>
     </section>
 
@@ -532,6 +592,17 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        const rsvpForm = document.getElementById("rsvp-form");
+        const formStatus = document.getElementById("form-status");
+
+        rsvpForm.addEventListener("submit", () => {
+            formStatus.textContent = "Enviando...";
+            setTimeout(() => {
+                rsvpForm.reset();
+                formStatus.textContent = "Confirmação enviada. Obrigado!";
+            }, 1200);
+        });
     </script>
 </body>
 </html>
