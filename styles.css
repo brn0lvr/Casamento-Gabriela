@@ -198,11 +198,21 @@ body {
 }
 
 #evento.section {
-    padding-top: 0;
+    padding-top: 10px;
 }
 
 #evento .section-title {
-    margin-top: -14px;
+    margin-top: -6px;
+}
+
+#convite.section,
+#presentes.section {
+    padding-top: 0;
+}
+
+#convite .section-title,
+#presentes .section-title {
+    margin-top: -22px;
 }
 
 .section-title {
