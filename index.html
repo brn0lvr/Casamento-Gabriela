@@ -172,7 +172,7 @@
                     <h3>Geladeira Frost Free</h3>
                     <p>Contribuição para um dos principais itens da nossa casa.</p>
                     <div class="gift-price">R$ 4.200,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <a class="btn btn-mp" href="https://mpago.la/2ZDmDVm" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
 
                 <article class="card gift-item">
@@ -572,6 +572,30 @@
         </div>
     </section>
 
+    <div id="gift-modal" class="gift-modal" aria-hidden="true">
+        <div class="gift-modal-overlay" data-close-gift-modal></div>
+        <div class="gift-modal-card" role="dialog" aria-modal="true" aria-labelledby="gift-modal-title">
+            <button type="button" class="gift-modal-close" data-close-gift-modal aria-label="Fechar">×</button>
+            <h3 id="gift-modal-title">Antes de presentear</h3>
+            <p class="gift-modal-subtitle">Nos ajude a identificar seu presente para nosso controle.</p>
+            <p id="gift-modal-selected" class="gift-modal-selected"></p>
+
+            <form id="gift-ident-form" class="gift-ident-form">
+                <div class="field">
+                    <label for="gift-guest-name">Seu nome</label>
+                    <input id="gift-guest-name" name="guest_name" type="text" required />
+                </div>
+                <div class="field">
+                    <label for="gift-guest-phone">WhatsApp (opcional)</label>
+                    <input id="gift-guest-phone" name="guest_phone" type="tel" placeholder="(00) 00000-0000" />
+                </div>
+
+                <p id="gift-form-status" class="form-status" aria-live="polite"></p>
+                <button type="submit" class="btn btn-primary">Continuar para pagamento</button>
+            </form>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="bottombar">
             <div class="bottombar-inner">
@@ -615,6 +639,125 @@
                 rsvpForm.reset();
                 formStatus.textContent = "Confirmação enviada. Obrigado!";
             }, 1200);
+        });
+
+        const giftTrackingConfig = {
+            formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeVrJsdraLtlfbMP60BTUkof_ah2AhlQmoe9E1q6mmZF_HZNQ/formResponse",
+            fields: {
+                guestName: "entry.2099917135",
+                guestPhone: "entry.1037352888",
+                giftName: "entry.364810753",
+                giftPrice: "entry.419125281",
+                giftLink: "entry.1989796404"
+            }
+        };
+
+        const giftModal = document.getElementById("gift-modal");
+        const giftModalSelected = document.getElementById("gift-modal-selected");
+        const giftIdentForm = document.getElementById("gift-ident-form");
+        const giftFormStatus = document.getElementById("gift-form-status");
+        const closeGiftModalButtons = document.querySelectorAll("[data-close-gift-modal]");
+        const giftButtons = document.querySelectorAll(".btn-mp");
+
+        let pendingGift = null;
+
+        function openGiftModal(giftData) {
+            pendingGift = giftData;
+            giftModalSelected.textContent = `${giftData.name} • ${giftData.price}`;
+            giftFormStatus.textContent = "";
+            giftModal.classList.add("open");
+            giftModal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            document.getElementById("gift-guest-name").focus();
+        }
+
+        function closeGiftModal() {
+            giftModal.classList.remove("open");
+            giftModal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+            giftIdentForm.reset();
+            giftFormStatus.textContent = "";
+            pendingGift = null;
+        }
+
+        function isGiftTrackingConfigured() {
+            return giftTrackingConfig.formUrl.startsWith("https://") &&
+                !giftTrackingConfig.formUrl.includes("SEU_LINK_DO_FORMS");
+        }
+
+        async function sendGiftTracking(data) {
+            if (!isGiftTrackingConfigured()) {
+                return;
+            }
+
+            const payload = new URLSearchParams();
+            payload.append(giftTrackingConfig.fields.guestName, data.guestName);
+            payload.append(giftTrackingConfig.fields.guestPhone, data.guestPhone);
+            payload.append(giftTrackingConfig.fields.giftName, data.giftName);
+            payload.append(giftTrackingConfig.fields.giftPrice, data.giftPrice);
+            payload.append(giftTrackingConfig.fields.giftLink, data.giftLink);
+
+            await fetch(giftTrackingConfig.formUrl, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+                body: payload.toString()
+            });
+        }
+
+        giftButtons.forEach((button) => {
+            button.addEventListener("click", (event) => {
+                event.preventDefault();
+
+                const card = button.closest(".gift-item");
+                const name = card?.querySelector("h3")?.textContent?.trim() || "Presente";
+                const price = card?.querySelector(".gift-price")?.textContent?.trim() || "";
+                const link = button.getAttribute("href") || "";
+
+                openGiftModal({ name, price, link });
+            });
+        });
+
+        closeGiftModalButtons.forEach((button) => {
+            button.addEventListener("click", closeGiftModal);
+        });
+
+        giftIdentForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            if (!pendingGift) {
+                return;
+            }
+
+            const guestName = document.getElementById("gift-guest-name").value.trim();
+            const guestPhone = document.getElementById("gift-guest-phone").value.trim();
+
+            if (!guestName) {
+                giftFormStatus.textContent = "Informe seu nome para continuar.";
+                return;
+            }
+
+            giftFormStatus.textContent = "Registrando...";
+
+            try {
+                await sendGiftTracking({
+                    guestName,
+                    guestPhone,
+                    giftName: pendingGift.name,
+                    giftPrice: pendingGift.price,
+                    giftLink: pendingGift.link
+                });
+            } catch {
+                // Se falhar o envio de controle, ainda permitimos seguir para pagamento.
+            }
+
+            if (!pendingGift.link || pendingGift.link.includes("SEU_LINK_DE_PAGAMENTO")) {
+                giftFormStatus.textContent = "Link de pagamento ainda não configurado para este presente.";
+                return;
+            }
+
+            window.open(pendingGift.link, "_blank", "noopener,noreferrer");
+            closeGiftModal();
         });
     </script>
 </body>

@@ -612,6 +612,70 @@ body {
     display: block;
 }
 
+.gift-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    display: none;
+}
+
+.gift-modal.open {
+    display: block;
+}
+
+.gift-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(27, 9, 18, 0.52);
+}
+
+.gift-modal-card {
+    position: relative;
+    width: min(560px, calc(100vw - 28px));
+    margin: 8vh auto 0;
+    background: #fff7fa;
+    border: 1px solid rgba(217, 56, 134, 0.24);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 22px 40px rgba(45, 15, 30, 0.3);
+}
+
+.gift-modal-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border: 0;
+    background: transparent;
+    color: #a96f82;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.gift-modal-card h3 {
+    margin: 0;
+    font-family: var(--display-font);
+    font-size: 34px;
+    color: var(--ink);
+}
+
+.gift-modal-subtitle {
+    margin: 8px 0 10px;
+    color: var(--ink-soft);
+    font-size: 16px;
+}
+
+.gift-modal-selected {
+    margin: 0 0 14px;
+    font-weight: 600;
+    color: #d93886;
+}
+
+.gift-ident-form {
+    display: grid;
+    gap: 12px;
+}
+
 @media (max-width: 900px) {
     .menu {
         display: none;
@@ -671,5 +735,14 @@ body {
 
     .form-row {
         grid-template-columns: 1fr;
+    }
+
+    .gift-modal-card {
+        margin-top: 6vh;
+        padding: 18px;
+    }
+
+    .gift-modal-card h3 {
+        font-size: 28px;
     }
 }
