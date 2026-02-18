@@ -21,7 +21,16 @@
                 <a href="#inicio">Início</a>
                 <a href="#evento">Local e Horário</a>
                 <a href="#convite">Confirmação</a>
-                <a href="#presentes">Presentes</a>
+                <div class="menu-item-dropdown">
+                    <a href="#presentes">Presentes</a>
+                    <div class="menu-dropdown">
+                        <a href="#presentes-premium">Premium</a>
+                        <a href="#presentes-cozinha">Cozinha</a>
+                        <a href="#presentes-sala">Sala</a>
+                        <a href="#presentes-quarto-banheiro">Quarto / Banheiro</a>
+                        <a href="#presentes-viagem">Viagem / Experiências</a>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -65,11 +74,11 @@
         <div class="card event-grid">
             <article class="event-item">
                 <h3>Cerimônia</h3>
-                <p>Paróquia São Pedro Apóstolo<br />12 de dezembro de 2026, às 16h00<br />R. das Crianças, 235 - Sumaré - SP</p>
+                <p>Paróquia São Pedro Apóstolo<br />R. das Crianças, 235 - Sumaré - SP<br />12 de dezembro de 2026, às 16h00</p>
             </article>
             <article class="event-item">
                 <h3>Recepção</h3>
-                <p>Espaço Recanto Januário<br />Após a cerimônia<br />Parque São Bento, Sumaré - SP</p>
+                <p>Espaço Recanto Januário<br />Parque São Bento - Sumaré - SP<br />Após a cerimônia</p>
             </article>
         </div>
         <div class="map-grid">
@@ -164,7 +173,7 @@
     <section id="presentes" class="section">
         <h2 class="section-title">Lista de Presentes</h2>
         <p class="section-subtitle">Se quiser nos presentear, escolhemos algumas opções para contribuir com nosso novo lar. Pagamento via link da nossa conta.</p>
-        <div class="gift-category gift-category-premium">
+        <div id="presentes-premium" class="gift-category gift-category-premium">
             <h3 class="gift-category-title">Presentes Premium</h3>
             <p class="gift-category-subtitle">Sugestões especiais para padrinhos e familiares que desejarem contribuir com itens maiores.</p>
             <div class="gift-grid">
@@ -211,7 +220,7 @@
                 </article>
             </div>
         </div>
-        <div class="gift-category">
+        <div id="presentes-cozinha" class="gift-category">
             <h3 class="gift-category-title">Cozinha</h3>
             <p class="gift-category-subtitle">Itens para montarmos uma cozinha completa no dia a dia.</p>
             <div class="gift-grid">
@@ -301,7 +310,7 @@
             </div>
         </div>
 
-        <div class="gift-category">
+        <div id="presentes-sala" class="gift-category">
             <h3 class="gift-category-title">Sala</h3>
             <p class="gift-category-subtitle">Detalhes para deixarmos a sala confortável e acolhedora.</p>
             <div class="gift-grid">
@@ -391,7 +400,7 @@
             </div>
         </div>
 
-        <div class="gift-category">
+        <div id="presentes-quarto-banheiro" class="gift-category">
             <h3 class="gift-category-title">Quarto / Banheiro</h3>
             <p class="gift-category-subtitle">Itens para tornar nosso descanso e rotina ainda melhores.</p>
             <div class="gift-grid">
@@ -481,7 +490,7 @@
             </div>
         </div>
 
-        <div class="gift-category">
+        <div id="presentes-viagem" class="gift-category">
             <h3 class="gift-category-title">Viagem / Lua de Mel / Experiências</h3>
             <p class="gift-category-subtitle">Contribuições para vivermos momentos inesquecíveis juntos.</p>
             <div class="gift-grid">
