@@ -998,9 +998,7 @@ body::after {
     #evento.section::after,
     #convite.section::after,
     #presentes.section::after {
-        width: 110px;
-        height: 110px;
-        opacity: 0.1;
+        display: none;
     }
 
     .gift-modal-card {
