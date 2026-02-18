@@ -447,21 +447,22 @@ body {
     position: absolute;
     top: -30%;
     left: -45%;
-    width: 28%;
+    width: 34%;
     height: 160%;
     background: linear-gradient(
         110deg,
         rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0.62) 50%,
         rgba(255, 255, 255, 0) 100%
     );
+    opacity: 0.95;
     transform: translateX(0) rotate(8deg);
-    transition: transform 0.9s ease;
+    transition: transform 1.05s ease;
     pointer-events: none;
 }
 
 .gift-category-premium:hover::after {
-    transform: translateX(520%) rotate(8deg);
+    transform: translateX(470%) rotate(8deg);
 }
 
 .gift-category-premium .gift-category-title::after {
@@ -485,21 +486,22 @@ body {
     position: absolute;
     top: -40%;
     left: -55%;
-    width: 24%;
+    width: 30%;
     height: 180%;
     background: linear-gradient(
         110deg,
         rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0.55) 50%,
         rgba(255, 255, 255, 0) 100%
     );
+    opacity: 0.92;
     transform: translateX(0) rotate(10deg);
-    transition: transform 0.8s ease;
+    transition: transform 0.95s ease;
     pointer-events: none;
 }
 
 .gift-category-premium .gift-item:hover::after {
-    transform: translateX(620%) rotate(10deg);
+    transform: translateX(530%) rotate(10deg);
 }
 
 .gift-category-premium .gift-item h3 {
