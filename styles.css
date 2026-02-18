@@ -676,6 +676,18 @@ body {
     gap: 12px;
 }
 
+.btn-gift-alt {
+    width: 100%;
+    margin-top: 2px;
+    background: #c98a93;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(169, 111, 130, 0.28);
+}
+
+.btn-gift-alt:hover {
+    background: #a96f82;
+}
+
 @media (max-width: 900px) {
     .menu {
         display: none;

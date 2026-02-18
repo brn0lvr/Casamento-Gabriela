@@ -591,7 +591,8 @@
                 </div>
 
                 <p id="gift-form-status" class="form-status" aria-live="polite"></p>
-                <button type="submit" class="btn btn-primary">Continuar para pagamento</button>
+                <button type="submit" class="btn btn-primary">Continuar para pagamento no site</button>
+                <button type="button" id="gift-buy-elsewhere" class="btn btn-gift-alt">Comprar em loja de preferência</button>
             </form>
         </div>
     </div>
@@ -656,6 +657,7 @@
         const giftModalSelected = document.getElementById("gift-modal-selected");
         const giftIdentForm = document.getElementById("gift-ident-form");
         const giftFormStatus = document.getElementById("gift-form-status");
+        const giftBuyElsewhereButton = document.getElementById("gift-buy-elsewhere");
         const closeGiftModalButtons = document.querySelectorAll("[data-close-gift-modal]");
         const giftButtons = document.querySelectorAll(".btn-mp");
 
@@ -683,6 +685,11 @@
         function isGiftTrackingConfigured() {
             return giftTrackingConfig.formUrl.startsWith("https://") &&
                 !giftTrackingConfig.formUrl.includes("SEU_LINK_DO_FORMS");
+        }
+
+        function buildPreferredStoreSearchUrl(giftName) {
+            const query = encodeURIComponent(`${giftName} comprar`);
+            return `https://www.google.com/search?q=${query}`;
         }
 
         async function sendGiftTracking(data) {
@@ -722,9 +729,7 @@
             button.addEventListener("click", closeGiftModal);
         });
 
-        giftIdentForm.addEventListener("submit", async (event) => {
-            event.preventDefault();
-
+        async function processGiftFlow(mode) {
             if (!pendingGift) {
                 return;
             }
@@ -745,19 +750,33 @@
                     guestPhone,
                     giftName: pendingGift.name,
                     giftPrice: pendingGift.price,
-                    giftLink: pendingGift.link
+                    giftLink: mode === "site" ? pendingGift.link : buildPreferredStoreSearchUrl(pendingGift.name)
                 });
             } catch {
                 // Se falhar o envio de controle, ainda permitimos seguir para pagamento.
             }
 
-            if (!pendingGift.link || pendingGift.link.includes("SEU_LINK_DE_PAGAMENTO")) {
-                giftFormStatus.textContent = "Link de pagamento ainda não configurado para este presente.";
-                return;
+            if (mode === "site") {
+                if (!pendingGift.link || pendingGift.link.includes("SEU_LINK_DE_PAGAMENTO")) {
+                    giftFormStatus.textContent = "Link de pagamento ainda não configurado para este presente.";
+                    return;
+                }
+
+                window.open(pendingGift.link, "_blank", "noopener,noreferrer");
+            } else {
+                window.open(buildPreferredStoreSearchUrl(pendingGift.name), "_blank", "noopener,noreferrer");
             }
 
-            window.open(pendingGift.link, "_blank", "noopener,noreferrer");
             closeGiftModal();
+        }
+
+        giftIdentForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            await processGiftFlow("site");
+        });
+
+        giftBuyElsewhereButton.addEventListener("click", async () => {
+            await processGiftFlow("preferred_store");
         });
     </script>
 </body>
