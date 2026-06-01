@@ -505,14 +505,19 @@ body::after {
 }
 
 .invite-wrap {
-    text-align: center;
+    width: min(760px, 100%);
+    margin: 0 auto;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.86);
+    border-color: rgba(113, 128, 150, 0.22);
+    box-shadow: 0 12px 28px rgba(138, 46, 91, 0.06);
 }
 
 .rsvp-form {
     display: grid;
-    gap: 14px;
-    max-width: 720px;
-    margin: 16px auto 0;
+    gap: 28px;
+    max-width: none;
+    margin: 0;
     text-align: left;
 }
 
@@ -524,23 +529,103 @@ body::after {
 
 .field {
     display: grid;
-    gap: 7px;
+    gap: 8px;
 }
 
 .field label {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
-    color: var(--ink);
+    color: #5f6b7a;
 }
 
-.field input {
+.field input,
+.field textarea,
+.select-panel select {
     width: 100%;
-    border: 1px solid #c98a93;
+    border: 1px solid #d4d8de;
     background: #fff;
-    color: var(--ink);
-    border-radius: 10px;
-    padding: 11px 12px;
+    color: #4a5568;
+    border-radius: 6px;
+    padding: 12px 14px;
     font: inherit;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input::placeholder {
+    color: #9aa3ad;
+}
+
+.field textarea {
+    min-height: 48px;
+    resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.select-panel select:focus {
+    border-color: #75aeb8;
+    box-shadow: 0 0 0 3px rgba(117, 174, 184, 0.16);
+}
+
+.field-hint {
+    margin: -5px 0 0;
+    color: #8a95a1;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.choice-panel,
+.select-panel {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin: 4px 0;
+    padding: 14px;
+    border: 1px solid #d4d8de;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.panel-label,
+.select-panel label {
+    color: #5f6b7a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.panel-label {
+    margin-right: 2px;
+}
+
+.radio-option {
+    min-width: 78px;
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 16px;
+    border: 1px solid #d8dce1;
+    border-radius: 6px;
+    color: #4a5568;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.radio-option input {
+    width: 13px;
+    height: 13px;
+    accent-color: #2f909c;
+}
+
+.select-panel select {
+    width: 66px;
+    min-width: 66px;
+    height: 42px;
+    padding: 0 12px;
+    cursor: pointer;
 }
 
 .form-note {
@@ -556,6 +641,128 @@ body::after {
     font-weight: 500;
     color: var(--ink);
     text-align: center;
+}
+
+.guest-search-results {
+    display: grid;
+    gap: 8px;
+}
+
+.guest-result-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border: 1px solid #d4d8de;
+    border-radius: 8px;
+    background: #fff;
+    color: #4a5568;
+    padding: 12px 14px;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.guest-result-button:hover,
+.guest-result-button:focus {
+    border-color: #ec407a;
+    box-shadow: 0 8px 18px rgba(217, 56, 134, 0.12);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.guest-result-name {
+    display: block;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.guest-result-members {
+    display: block;
+    margin-top: 4px;
+    color: #6f7b88;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.guest-result-count {
+    flex: 0 0 auto;
+    color: var(--ink-soft);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.family-confirmation {
+    display: grid;
+    gap: 18px;
+}
+
+.family-confirmation[hidden] {
+    display: none;
+}
+
+.family-header {
+    display: grid;
+    gap: 4px;
+}
+
+.family-header h3 {
+    margin: 0;
+    color: var(--ink);
+    font-size: 20px;
+}
+
+.family-header p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 14px;
+}
+
+.family-members {
+    display: grid;
+    gap: 10px;
+}
+
+.family-member-option {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid #d4d8de;
+    border-radius: 8px;
+    background: #fff;
+    color: #4a5568;
+    cursor: pointer;
+}
+
+.family-member-option input {
+    width: 16px;
+    height: 16px;
+    accent-color: #ec407a;
+}
+
+.family-member-name {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.rsvp-admin-panel {
+    margin-top: 18px;
+    text-align: center;
+}
+
+.btn-secondary {
+    border: 1px solid rgba(217, 56, 134, 0.25);
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: #fff0f5;
 }
 
 .btn {
@@ -576,6 +783,8 @@ body::after {
     background: var(--gold);
     color: #fff;
     box-shadow: 0 10px 24px rgba(217, 56, 134, 0.3);
+    border: 0;
+    cursor: pointer;
 }
 
 .btn-primary:hover {
@@ -583,8 +792,11 @@ body::after {
 }
 
 .gift-grid {
-    column-count: 3;
-    column-gap: 18px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 300px));
+    gap: 18px;
+    justify-content: center;
+    align-items: stretch;
 }
 
 .gift-mobile-nav {
@@ -725,15 +937,26 @@ body::after {
 }
 
 .gift-item {
-    break-inside: avoid;
-    margin-bottom: 18px;
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
 
-.gift-grid .gift-item:last-child {
-    margin-bottom: 0;
+.gift-image {
+    width: 100%;
+    aspect-ratio: 1;
+    margin: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(217, 56, 134, 0.12);
+}
+
+.gift-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
 }
 
 .gift-item h3 {
@@ -892,18 +1115,6 @@ body::after {
     gap: 12px;
 }
 
-.btn-gift-alt {
-    width: 100%;
-    margin-top: 2px;
-    background: #c98a93;
-    color: #fff;
-    box-shadow: 0 8px 20px rgba(169, 111, 130, 0.28);
-}
-
-.btn-gift-alt:hover {
-    background: #a96f82;
-}
-
 @media (max-width: 900px) {
     body::before,
     body::after {
@@ -1036,7 +1247,7 @@ body::after {
     }
 
     .gift-grid {
-        column-count: 1;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .gift-category {
@@ -1045,6 +1256,31 @@ body::after {
 
     .form-row {
         grid-template-columns: 1fr;
+    }
+
+    .invite-wrap {
+        padding: 18px;
+    }
+
+    .rsvp-form {
+        gap: 22px;
+    }
+
+    .choice-panel,
+    .select-panel {
+        min-height: auto;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .radio-option {
+        flex: 1 1 96px;
+    }
+
+    .panel-label,
+    .select-panel label {
+        flex: 1 1 100%;
     }
 
     #presentes .section-title::before,

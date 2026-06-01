@@ -85,10 +85,18 @@
             <article class="event-item">
                 <h3>Cerimônia</h3>
                 <p>Paróquia São Pedro Apóstolo<br />R. das Crianças, 235 - Sumaré - SP<br />12 de dezembro de 2026, às 16h00</p>
+                <a class="btn-instagram" href="https://www.instagram.com/saopedroapostolosumare?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Paróquia São Pedro Apóstolo">
+                    <span class="instagram-icon" aria-hidden="true"></span>
+                    Instagram
+                </a>
             </article>
             <article class="event-item">
                 <h3>Recepção</h3>
                 <p>Espaço Recanto Januário<br />Parque São Bento - Sumaré - SP<br />Após a cerimônia</p>
+                <a class="btn-instagram" href="https://www.instagram.com/recantojanuarioeventos?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Espaço Recanto Januário">
+                    <span class="instagram-icon" aria-hidden="true"></span>
+                    Instagram
+                </a>
             </article>
         </div>
         <div class="map-grid">
@@ -117,6 +125,10 @@
             <article class="card event-item">
                 <h3>Cerimônia</h3>
                 <p>Paróquia São Pedro Apóstolo<br />12 de dezembro de 2026, às 16h00<br />R. das Crianças, 235 - Sumaré - SP</p>
+                <a class="btn-instagram" href="https://www.instagram.com/saopedroapostolosumare?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Paróquia São Pedro Apóstolo">
+                    <span class="instagram-icon" aria-hidden="true"></span>
+                    Instagram
+                </a>
             </article>
             <div class="card map-card">
                 <iframe
@@ -131,6 +143,10 @@
             <article class="card event-item">
                 <h3>Recepção</h3>
                 <p>Espaço Recanto Januário<br />Após a cerimônia<br />Parque São Bento, Sumaré - SP</p>
+                <a class="btn-instagram" href="https://www.instagram.com/recantojanuarioeventos?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Espaço Recanto Januário">
+                    <span class="instagram-icon" aria-hidden="true"></span>
+                    Instagram
+                </a>
             </article>
             <div class="card map-card">
                 <iframe
@@ -147,86 +163,195 @@
 
     <section id="convite" class="section">
         <h2 class="section-title">Confirmação de Presença</h2>
-        <p class="section-subtitle">Preencha aqui no site e nós receberemos sua resposta no Google Forms.</p>
+        <p class="section-subtitle">Pesquise seu nome e confirme quem da família irá ao casamento.</p>
         <div class="card invite-wrap">
-            <p>Confirme preenchendo o formulário abaixo.</p>
             <form
                 id="rsvp-form"
                 class="rsvp-form"
                 action="https://docs.google.com/forms/d/e/1FAIpQLSfyRyEstdLtVdeBmgf-AUtwPORO-3n7BieyVlFvnXK3ZGZr6Q/formResponse"
                 method="POST"
                 target="hidden_iframe">
-                <div class="form-row">
-                    <div class="field">
-                        <label for="nome">Nome completo</label>
-                        <input id="nome" name="entry.1819394826" type="text" required placeholder="Seu nome" />
-                    </div>
-                    <div class="field">
-                        <label for="telefone">Telefone (WhatsApp)</label>
-                        <input id="telefone" name="entry.1237621766" type="tel" placeholder="(00) 00000-0000" />
-                    </div>
-                </div>
-
                 <div class="field">
-                    <label for="cpf">Documento CPF</label>
-                    <input id="cpf" name="entry.926206890" type="text" placeholder="000.000.000-00" />
+                    <label for="guest-search">Pesquise qualquer nome da família</label>
+                    <input id="guest-search" type="search" autocomplete="off" placeholder="Digite seu nome ou de alguém da família" />
                 </div>
 
-                <button type="submit" class="btn btn-primary">Enviar confirmação</button>
-                <p class="form-note">As respostas são registradas automaticamente no Google Forms.</p>
+                <div id="guest-search-results" class="guest-search-results" aria-live="polite"></div>
+
+                <div id="family-confirmation" class="family-confirmation" hidden>
+                    <div class="family-header">
+                        <h3 id="family-title"></h3>
+                        <p id="family-count"></p>
+                    </div>
+
+                    <div id="family-members" class="family-members"></div>
+
+                    <div class="field">
+                        <label for="telefone">Telefone para contato</label>
+                        <input id="telefone" name="entry.1237621766" type="tel" placeholder="(11) 99999-9999" />
+                    </div>
+
+                    <div class="field">
+                        <label for="observacoes">Observações</label>
+                        <textarea id="observacoes" rows="3"></textarea>
+                    </div>
+
+                    <input id="nome" name="entry.1819394826" type="hidden" />
+                    <input id="rsvp-extra" name="entry.926206890" type="hidden" />
+                    <button type="submit" class="btn btn-primary">Enviar confirmação</button>
+                </div>
+
                 <p id="form-status" class="form-status" aria-live="polite"></p>
             </form>
+            <div id="rsvp-admin-panel" class="rsvp-admin-panel" hidden>
+                <button type="button" id="download-confirmations" class="btn btn-secondary">Baixar confirmados.json</button>
+                <p id="confirmations-count" class="form-note"></p>
+            </div>
             <iframe name="hidden_iframe" style="display:none;" title="Envio oculto"></iframe>
         </div>
     </section>
 
     <section id="presentes" class="section">
         <h2 class="section-title">Lista de Presentes</h2>
-        <p class="section-subtitle">Se quiser nos presentear, escolhemos algumas opções para contribuir com nosso novo lar. Pagamento via link da nossa conta.</p>
+        <p class="section-subtitle">Lista dos nossos presentes.</p>
         <div id="presentes-premium" class="gift-category gift-category-premium">
             <h3 class="gift-category-title">Presentes Premium</h3>
-            <p class="gift-category-subtitle">Sugestões especiais para padrinhos e familiares que desejarem contribuir com itens maiores.</p>
+            <p class="gift-category-subtitle">Presentes premium.</p>
             <div class="gift-grid">
                 <article class="card gift-item">
-                    <h3>Geladeira Frost Free</h3>
-                    <p>Contribuição para um dos principais itens da nossa casa.</p>
-                    <div class="gift-price">R$ 4.200,00</div>
-                    <a class="btn btn-mp" href="https://mpago.la/2ZDmDVm" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/casal_relaxando.jpg" alt="Ajuda para a aposentadoria dos noivos" loading="lazy" />
+                    </figure>
+                    <h3>Ajuda para a aposentadoria dos noivos</h3>
+                    <p>Contribua para nosso futuro financeiro e segurança.</p>
+                    <div class="gift-price">R$ 3.375,47</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Smart TV 55"</h3>
-                    <p>Ajuda para montarmos nossa sala com conforto e lazer.</p>
-                    <div class="gift-price">R$ 3.000,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/casa_mobiliada.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
+                    </figure>
+                    <h3>Ajuda para mobiliar a casa</h3>
+                    <p>Nos ajude a transformar nossa nova casa em um lar aconchegante.</p>
+                    <div class="gift-price">R$ 1.292,87</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Máquina Lava e Seca</h3>
-                    <p>Contribuição para facilitar nossa rotina no novo lar.</p>
-                    <div class="gift-price">R$ 3.800,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/pif5x_1779652776.jpg" alt="Arm&#225;rio de Cozinha" loading="lazy" />
+                    </figure>
+                    <h3>Arm&#225;rio de Cozinha</h3>
+                    <p>Essencial para organizar nossa cozinha com estilo e funcionalidade.</p>
+                    <div class="gift-price">R$ 2.049,29</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Sofá Retrátil</h3>
-                    <p>Presente especial para nossa sala ficar ainda mais aconchegante.</p>
-                    <div class="gift-price">R$ 2.800,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/G1kK0_1779840160.jpg" alt="Colch&#227;o Box Queen" loading="lazy" />
+                    </figure>
+                    <h3>Colch&#227;o Box Queen</h3>
+                    <p>Para noites de descanso perfeito em nosso novo quarto.</p>
+                    <div class="gift-price">R$ 2.432,09</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Cama Box Queen</h3>
-                    <p>Ajuda para montarmos nosso quarto com conforto.</p>
-                    <div class="gift-price">R$ 2.400,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/amigos_velhinhos.jpg" alt="Cota &quot;amigos para sempre&quot;" loading="lazy" />
+                    </figure>
+                    <h3>Cota &quot;amigos para sempre&quot;</h3>
+                    <p>Comemoração especial com nossos queridos amigos.</p>
+                    <div class="gift-price">R$ 2.086,97</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Ar-Condicionado Split</h3>
-                    <p>Contribuição para deixar a casa mais agradável em todas as estações.</p>
-                    <div class="gift-price">R$ 2.200,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/pC4dd_1779653010.jpg" alt="Fog&#227;o 5 Bocas inox" loading="lazy" />
+                    </figure>
+                    <h3>Fog&#227;o 5 Bocas inox</h3>
+                    <p>Para prepararmos deliciosas refeições na nossa nova cozinha.</p>
+                    <div class="gift-price">R$ 2.113,80</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/ECc0U_1779650628.jpg" alt="Geladeira Frost Free 480l" loading="lazy" />
+                    </figure>
+                    <h3>Geladeira Frost Free 480l</h3>
+                    <p>Indispensável para manter nossos alimentos frescos e conservados.</p>
+                    <div class="gift-price">R$ 3.390,05</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/zuQ3F_1779650481.jpg" alt="M&#225;quina de lavar 13 kg" loading="lazy" />
+                    </figure>
+                    <h3>M&#225;quina de lavar 13 kg</h3>
+                    <p>Simplificando as tarefas do dia a dia na nossa casa.</p>
+                    <div class="gift-price">R$ 2.010,79</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/G86D1_1779653302.jpg" alt="Mesa de Jantar Tampo de Vidro" loading="lazy" />
+                    </figure>
+                    <h3>Mesa de Jantar Tampo de Vidro</h3>
+                    <p>Palco para refeições em família e momentos de convivência.</p>
+                    <div class="gift-price">R$ 2.593,46</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/9nEKu_1779653569.jpg" alt="Painel de TV MDF" loading="lazy" />
+                    </figure>
+                    <h3>Painel de TV MDF</h3>
+                    <p>Trazendo elegância e organização para nossa sala de estar.</p>
+                    <div class="gift-price">R$ 959,91</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/segurando_vela.jpg" alt="Poder ir junto com os noivos para a lua de mel" loading="lazy" />
+                    </figure>
+                    <h3>Poder ir junto com os noivos para a lua de mel</h3>
+                    <p>Uma experiência inesquecível ao lado dos noivos.</p>
+                    <div class="gift-price">R$ 125.931,31</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/n5Sci_1779649971.jpg" alt="Smart TV 55&quot;" loading="lazy" />
+                    </figure>
+                    <h3>Smart TV 55&quot;</h3>
+                    <p>Entretenimento de qualidade para nossas noites em casa.</p>
+                    <div class="gift-price">R$ 2.685,07</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/m9QDm_1779650328.jpg" alt="Sof&#225; Retr&#225;til" loading="lazy" />
+                    </figure>
+                    <h3>Sof&#225; Retr&#225;til</h3>
+                    <p>Conforto e versatilidade para nossa sala de convivência.</p>
+                    <div class="gift-price">R$ 3.215,31</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=900&q=80" alt="Lava-lou&#231;as" loading="lazy" />
+                    </figure>
+                    <h3>Lava-lou&#231;as</h3>
+                    <p>Mais praticidade para a rotina da nossa cozinha.</p>
+                    <div class="gift-price">R$ 2.199,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/30002781/pexels-photo-30002781.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Guarda-roupa casal" loading="lazy" />
+                    </figure>
+                    <h3>Guarda-roupa casal</h3>
+                    <p>Organiza&#231;&#227;o e espa&#231;o para o nosso quarto.</p>
+                    <div class="gift-price">R$ 1.899,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
             </div>
         </div>
@@ -235,362 +360,593 @@
             <p class="gift-category-subtitle">Itens para montarmos uma cozinha completa no dia a dia.</p>
             <div class="gift-grid">
                 <article class="card gift-item">
-                    <h3>Jogo de Panelas</h3>
-                    <p>Contribuição para nosso kit de cozinha completo.</p>
-                    <div class="gift-price">R$ 300,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
-                </article>
-
-                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/P3hdP_1779651789.jpg" alt="Air Fryer" loading="lazy" />
+                    </figure>
                     <h3>Air Fryer</h3>
-                    <p>Ajuda para trazer mais praticidade para nossas refeições.</p>
-                    <div class="gift-price">R$ 500,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <p>Cozinha prática e saudável para o dia a dia.</p>
+                    <div class="gift-price">R$ 605,73</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Conjunto de Pratos e Bowls</h3>
-                    <p>Contribuição para completarmos nossa mesa de refeições.</p>
-                    <div class="gift-price">R$ 250,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/iqBt0_1779652548.jpg" alt="Aparelho de Jantar Tramontina em Porcelana" loading="lazy" />
+                    </figure>
+                    <h3>Aparelho de Jantar Tramontina em Porcelana</h3>
+                    <p>Para refeições elegantes em família.</p>
+                    <div class="gift-price">R$ 550,87</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Liquidificador</h3>
-                    <p>Ajuda para preparar receitas do nosso dia a dia.</p>
-                    <div class="gift-price">R$ 220,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
-                </article>
-
-                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/PrbA9_1779651373.jpg" alt="Batedeira" loading="lazy" />
+                    </figure>
                     <h3>Batedeira</h3>
-                    <p>Contribuição para nossas receitas especiais.</p>
-                    <div class="gift-price">R$ 260,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <p>Essencial para doces e confeitários caseiros.</p>
+                    <div class="gift-price">R$ 449,04</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Micro-ondas</h3>
-                    <p>Mais praticidade para aquecer e preparar refeições.</p>
-                    <div class="gift-price">R$ 580,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/tD8Kh_1779842243.jpg" alt="Jogo Assadeiras Formas Funda, Redonda E De Pizza" loading="lazy" />
+                    </figure>
+                    <h3>Jogo Assadeiras Formas Funda, Redonda E De Pizza</h3>
+                    <p>Para assar com estilo e versatilidade.</p>
+                    <div class="gift-price">R$ 209,61</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Faqueiro Inox</h3>
-                    <p>Contribuição para montar nossa mesa com carinho.</p>
-                    <div class="gift-price">R$ 190,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/RQw5c_1779651158.jpg" alt="Jogo de Panelas Brinox Revestimento Cer&#226;mico" loading="lazy" />
+                    </figure>
+                    <h3>Jogo de Panelas Brinox Revestimento Cer&#226;mico</h3>
+                    <p>Durabilidade e revestimento seguro para nossas refeições.</p>
+                    <div class="gift-price">R$ 631,22</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Jogo de Copos</h3>
-                    <p>Um item essencial para receber família e amigos.</p>
-                    <div class="gift-price">R$ 120,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/9dUPW_1779842490.jpg" alt="Liquidificador Copo de Vidro 2,2l" loading="lazy" />
+                    </figure>
+                    <h3>Liquidificador Copo de Vidro 2,2l</h3>
+                    <p>Para vitaminas, sucos e receitas deliciosas.</p>
+                    <div class="gift-price">R$ 302,72</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Panela de Pressão</h3>
-                    <p>Ajuda para completar nossos utensílios de cozinha.</p>
-                    <div class="gift-price">R$ 180,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/1TLfi_1779652008.jpg" alt="Micro-ondas 33L" loading="lazy" />
+                    </figure>
+                    <h3>Micro-ondas 33L</h3>
+                    <p>Eficiente para esquentar e preparar alimentos rápido.</p>
+                    <div class="gift-price">R$ 655,05</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Sanduicheira</h3>
-                    <p>Contribuição para cafés da manhã em casa.</p>
-                    <div class="gift-price">R$ 140,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/JOX2U_1779652195.jpg" alt="MINI GRILL" loading="lazy" />
+                    </figure>
+                    <h3>MINI GRILL</h3>
+                    <p>Para churrasco e grelha em casa com praticidade.</p>
+                    <div class="gift-price">R$ 177,96</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Escorredor de Louça</h3>
-                    <p>Ajuda para completar nossa bancada de cozinha.</p>
-                    <div class="gift-price">R$ 130,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/4alDX_1779842620.jpg" alt="Mixer Misturador Multiuso 3 em 1" loading="lazy" />
+                    </figure>
+                    <h3>Mixer Misturador Multiuso 3 em 1</h3>
+                    <p>Versátil para cozinha moderna e prática.</p>
+                    <div class="gift-price">R$ 219,49</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Kit de Potes Herméticos</h3>
-                    <p>Contribuição para organização dos alimentos.</p>
-                    <div class="gift-price">R$ 150,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/RiW1M_1779651677.jpg" alt="Panela de Press&#227;o 4,2 L" loading="lazy" />
+                    </figure>
+                    <h3>Panela de Press&#227;o 4,2 L</h3>
+                    <p>Cozíonha rápida e fácil no dia a dia.</p>
+                    <div class="gift-price">R$ 225,81</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/c0apd_1779843588.jpg" alt="Purificador de &#193;gua Gelada E Natural" loading="lazy" />
+                    </figure>
+                    <h3>Purificador de &#193;gua Gelada E Natural</h3>
+                    <p>Agua pura e refrescante para toda a família.</p>
+                    <div class="gift-price">R$ 758,87</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/Oi2rI_1779841981.jpg" alt="Travessa e Assadeira Refrat&#225;ria 3un Porcelana" loading="lazy" />
+                    </figure>
+                    <h3>Travessa e Assadeira Refrat&#225;ria 3un Porcelana</h3>
+                    <p>Perfeita para servir e decorar a mesa.</p>
+                    <div class="gift-price">R$ 213,34</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/19651261/pexels-photo-19651261.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Jogo de facas chef" loading="lazy" />
+                    </figure>
+                    <h3>Jogo de facas chef</h3>
+                    <p>Facas de qualidade para o preparo de alimentos.</p>
+                    <div class="gift-price">R$ 349,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://dirogkf3gm8b7.cloudfront.net/production/products/240274/images/enhanced-media/7_0_f21af9c2-589e-4291-b505-4666a4fad722" alt="Tabua de vidro temperado" loading="lazy" />
+                    </figure>
+                    <h3>Tabua de vidro temperado</h3>
+                    <p>Prática e higiênica para preparação de alimentos.</p>
+                    <div class="gift-price">R$ 129,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/5825346/pexels-photo-5825346.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Cafeteira el&#233;trica" loading="lazy" />
+                    </figure>
+                    <h3>Cafeteira el&#233;trica</h3>
+                    <p>Para come&#231;armos os dias com caf&#233; fresquinho.</p>
+                    <div class="gift-price">R$ 249,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
             </div>
         </div>
-
         <div id="presentes-sala" class="gift-category">
             <h3 class="gift-category-title">Sala</h3>
             <p class="gift-category-subtitle">Detalhes para deixarmos a sala confortável e acolhedora.</p>
             <div class="gift-grid">
                 <article class="card gift-item">
-                    <h3>Tapete para Sala</h3>
-                    <p>Um toque de conforto e estilo para nosso cantinho.</p>
-                    <div class="gift-price">R$ 320,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/PQ79E_1779843026.jpg" alt="Aspirador P&#243; Sem Fio" loading="lazy" />
+                    </figure>
+                    <h3>Aspirador P&#243; Sem Fio</h3>
+                    <p>Limpeza fácil e eficiente em toda a casa.</p>
+                    <div class="gift-price">R$ 416,69</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Luminária de Piso</h3>
-                    <p>Iluminação para deixar nossos momentos em casa mais especiais.</p>
-                    <div class="gift-price">R$ 280,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://images.unsplash.com/photo-1767559811416-86d963b4704f?auto=format&fit=crop&w=900&q=80" alt="Kit de almofadas decorativas" loading="lazy" />
+                    </figure>
+                    <h3>Kit de almofadas decorativas</h3>
+                    <p>Para deixar o sofá mais confortável e acolhedor.</p>
+                    <div class="gift-price">R$ 119,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Kit de Almofadas</h3>
-                    <p>Contribuição para decorar e trazer conforto para o sofá.</p>
-                    <div class="gift-price">R$ 180,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://images.unsplash.com/photo-1759722667762-6ca081ea1844?auto=format&fit=crop&w=900&q=80" alt="Manta para sofá" loading="lazy" />
+                    </figure>
+                    <h3>Manta para sofá</h3>
+                    <p>Um toque de conforto para os momentos de descanso.</p>
+                    <div class="gift-price">R$ 129,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Cortinas</h3>
-                    <p>Contribuição para deixar a sala mais aconchegante.</p>
-                    <div class="gift-price">R$ 240,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/8101470/pexels-photo-8101470.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Porta-retratos decorativo" loading="lazy" />
+                    </figure>
+                    <h3>Porta-retratos decorativo</h3>
+                    <p>Para guardar lembranças especiais no nosso novo lar.</p>
+                    <div class="gift-price">R$ 120,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Mesa de Centro</h3>
-                    <p>Ajuda para montar o espaço de convivência.</p>
-                    <div class="gift-price">R$ 390,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://images.unsplash.com/photo-1762755795472-420013c843c3?auto=format&fit=crop&w=900&q=80" alt="Vaso decorativo" loading="lazy" />
+                    </figure>
+                    <h3>Vaso decorativo</h3>
+                    <p>Um detalhe bonito para dar vida à sala.</p>
+                    <div class="gift-price">R$ 109,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/7795656/pexels-photo-7795656.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Aromatizador de ambiente" loading="lazy" />
+                    </figure>
+                    <h3>Aromatizador de ambiente</h3>
+                    <p>Para deixar a casa sempre cheirosa e aconchegante.</p>
+                    <div class="gift-price">R$ 120,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://images.unsplash.com/photo-1753932847231-7949af383b98?auto=format&fit=crop&w=900&q=80" alt="Luminária de mesa" loading="lazy" />
+                    </figure>
+                    <h3>Luminária de mesa</h3>
+                    <p>Iluminação delicada para deixar a sala mais charmosa.</p>
+                    <div class="gift-price">R$ 169,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/5834026/pexels-photo-5834026.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Cortina Blackout" loading="lazy" />
+                    </figure>
+                    <h3>Cortina Blackout</h3>
+                    <p>Privacidade e elegância para nossos momentos especiais.</p>
+                    <div class="gift-price">R$ 289,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/11255286/pexels-photo-11255286.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Tapete felpudo" loading="lazy" />
+                    </figure>
+                    <h3>Tapete felpudo</h3>
+                    <p>Conforto e aconchego para o ambiente da sala.</p>
+                    <div class="gift-price">R$ 249,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/4022430/pexels-photo-4022430.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Espelho decorativo grande" loading="lazy" />
+                    </figure>
+                    <h3>Espelho decorativo grande</h3>
+                    <p>Amplifica a luz e deixa a sala mais espaçosa.</p>
+                    <div class="gift-price">R$ 279,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/36834040/pexels-photo-36834040.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Rack para TV" loading="lazy" />
+                    </figure>
                     <h3>Rack para TV</h3>
-                    <p>Contribuição para organizar nossa sala.</p>
-                    <div class="gift-price">R$ 520,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <p>Organização elegante e funcional para a sala.</p>
+                    <div class="gift-price">R$ 350,00</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Abajur Decorativo</h3>
-                    <p>Um detalhe de luz para noites mais acolhedoras.</p>
-                    <div class="gift-price">R$ 160,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=900&q=80" alt="Home Theater completo" loading="lazy" />
+                    </figure>
+                    <h3>Home Theater completo</h3>
+                    <p>Som surround de qualidade para cinema em casa.</p>
+                    <div class="gift-price">R$ 2.890,00</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Plantas Decorativas</h3>
-                    <p>Contribuição para dar vida ao ambiente.</p>
-                    <div class="gift-price">R$ 130,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80" alt="Lumin&#225;ria de piso moderna" loading="lazy" />
+                    </figure>
+                    <h3>Lumin&#225;ria de piso moderna</h3>
+                    <p>Ambiente perfeito com design contemporâneo.</p>
+                    <div class="gift-price">R$ 399,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Quadros para Parede</h3>
-                    <p>Ajuda para personalizar nossa sala com estilo.</p>
-                    <div class="gift-price">R$ 210,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/1571467/pexels-photo-1571467.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Mesa de centro" loading="lazy" />
+                    </figure>
+                    <h3>Mesa de centro</h3>
+                    <p>Um apoio bonito para completar a sala.</p>
+                    <div class="gift-price">R$ 329,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Manta para Sofá</h3>
-                    <p>Conforto extra para nossos momentos de descanso.</p>
-                    <div class="gift-price">R$ 110,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
-                </article>
-
-                <article class="card gift-item">
-                    <h3>Aparador para Sala</h3>
-                    <p>Contribuição para decorar e organizar o ambiente.</p>
-                    <div class="gift-price">R$ 340,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
-                </article>
-
-                <article class="card gift-item">
-                    <h3>Centro de Mesa Decorativo</h3>
-                    <p>Um detalhe especial para nosso espaço de convivência.</p>
-                    <div class="gift-price">R$ 145,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/34755119/pexels-photo-34755119.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Poltrona decorativa" loading="lazy" />
+                    </figure>
+                    <h3>Poltrona decorativa</h3>
+                    <p>Mais conforto para receber visitas e relaxar.</p>
+                    <div class="gift-price">R$ 699,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
             </div>
         </div>
-
         <div id="presentes-quarto-banheiro" class="gift-category">
             <h3 class="gift-category-title">Quarto / Banheiro</h3>
             <p class="gift-category-subtitle">Itens para tornar nosso descanso e rotina ainda melhores.</p>
             <div class="gift-grid">
                 <article class="card gift-item">
-                    <h3>Jogo de Cama Queen</h3>
-                    <p>Ajuda para deixarmos nosso quarto ainda mais aconchegante.</p>
-                    <div class="gift-price">R$ 260,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/I9qOJ_1779840259.jpg" alt="Base Box Queen" loading="lazy" />
+                    </figure>
+                    <h3>Base Box Queen</h3>
+                    <p>Estrutura resistente e confortável para nosso colchão.</p>
+                    <div class="gift-price">R$ 689,39</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Conjunto de Toalhas</h3>
-                    <p>Ajuda para completar os detalhes do nosso novo lar.</p>
-                    <div class="gift-price">R$ 160,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/1V7KU_1779841162.jpg" alt="Cobertor Queen Manta Aveludada" loading="lazy" />
+                    </figure>
+                    <h3>Cobertor Queen Manta Aveludada</h3>
+                    <p>Manta macia para as noites frias aconchego.</p>
+                    <div class="gift-price">R$ 187,34</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Edredom</h3>
-                    <p>Contribuição para noites mais confortáveis no nosso novo lar.</p>
-                    <div class="gift-price">R$ 220,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/Tc9KA_1779840977.jpg" alt="Edredom Queen Dupla Face" loading="lazy" />
+                    </figure>
+                    <h3>Edredom Queen Dupla Face</h3>
+                    <p>Versatéil e confortável para todas as estações.</p>
+                    <div class="gift-price">R$ 387,56</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Travesseiros</h3>
-                    <p>Contribuição para mais conforto no descanso.</p>
-                    <div class="gift-price">R$ 140,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/ARcf7_1779843275.jpg" alt="Ferro a vapor" loading="lazy" />
+                    </figure>
+                    <h3>Ferro a vapor</h3>
+                    <p>Roupas impecáveis com facilidade e rapidez.</p>
+                    <div class="gift-price">R$ 209,16</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Cobre-leito</h3>
-                    <p>Ajuda para deixar o quarto elegante e acolhedor.</p>
-                    <div class="gift-price">R$ 190,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/uvU9s_1779840587.jpg" alt="Jogo de Cama 100% Algod&#227;o Queen" loading="lazy" />
+                    </figure>
+                    <h3>Jogo de Cama 100% Algod&#227;o Queen</h3>
+                    <p>Maciez e conforto em cada noite de descanso.</p>
+                    <div class="gift-price">R$ 219,49</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Tapete de Banheiro</h3>
-                    <p>Item essencial para nosso banheiro do dia a dia.</p>
-                    <div class="gift-price">R$ 90,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/ex1qN_1779840430.jpg" alt="Jogo de Cama Queen 200 fios" loading="lazy" />
+                    </figure>
+                    <h3>Jogo de Cama Queen 200 fios</h3>
+                    <p>Maior densidade para durabilidade e conforto premium.</p>
+                    <div class="gift-price">R$ 319,47</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Jogo de Lençóis</h3>
-                    <p>Contribuição para completar nosso enxoval.</p>
-                    <div class="gift-price">R$ 210,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/L0BMi_1779842800.jpg" alt="Kit 2 Travesseiros Penas De Ganso" loading="lazy" />
+                    </figure>
+                    <h3>Kit 2 Travesseiros Penas De Ganso</h3>
+                    <p>Moblagem natural para descanso perfeito.</p>
+                    <div class="gift-price">R$ 224,78</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Espelho para Quarto</h3>
-                    <p>Um detalhe funcional para o ambiente.</p>
-                    <div class="gift-price">R$ 230,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/6430745/pexels-photo-6430745.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Toalhas de banho premium" loading="lazy" />
+                    </figure>
+                    <h3>Toalhas de banho premium</h3>
+                    <p>Macio e absorvente para o conforto diário.</p>
+                    <div class="gift-price">R$ 189,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Organizador de Gavetas</h3>
-                    <p>Ajuda para manter tudo no lugar com praticidade.</p>
-                    <div class="gift-price">R$ 120,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn.leroymerlin.com.br/products/tapete_de_banheiro_remix_grafite_sensea_90605900_6448_600x600.jpeg" alt="Tapete de banheiro" loading="lazy" />
+                    </figure>
+                    <h3>Tapete de banheiro</h3>
+                    <p>Antiderrapante e confortável para os pés.</p>
+                    <div class="gift-price">R$ 79,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Roupão de Banho</h3>
-                    <p>Contribuição para nosso conforto na rotina.</p>
-                    <div class="gift-price">R$ 170,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=900&q=80" alt="Organizador de banheiro" loading="lazy" />
+                    </figure>
+                    <h3>Organizador de banheiro</h3>
+                    <p>Mantém tudo organizado e ao alcance das mãos.</p>
+                    <div class="gift-price">R$ 139,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Cesto de Roupas</h3>
-                    <p>Ajuda para organização do quarto e banheiro.</p>
-                    <div class="gift-price">R$ 135,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://copafer.vtexassets.com/arquivos/ids/165574-800-auto?aspect=true&amp;height=auto&amp;v=638748885885570000&amp;width=800" alt="Cortina para box" loading="lazy" />
+                    </figure>
+                    <h3>Cortina para box</h3>
+                    <p>Vedação perfeita e design moderno para o banheiro.</p>
+                    <div class="gift-price">R$ 159,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Kit Porta-Sabonete e Escova</h3>
-                    <p>Contribuição para os detalhes do banheiro.</p>
-                    <div class="gift-price">R$ 95,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://images.pexels.com/photos/707581/pexels-photo-707581.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Mesa de cabeceira" loading="lazy" />
+                    </figure>
+                    <h3>Mesa de cabeceira</h3>
+                    <p>Praticidade e charme ao lado da cama.</p>
+                    <div class="gift-price">R$ 279,90</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
             </div>
         </div>
-
         <div id="presentes-viagem" class="gift-category">
-            <h3 class="gift-category-title">Viagem / Lua de Mel / Experiências</h3>
-            <p class="gift-category-subtitle">Contribuições para vivermos momentos inesquecíveis juntos.</p>
+            <h3 class="gift-category-title">Viagem / Experiências</h3>
+            <p class="gift-category-subtitle">Cotas divertidas e contribuições para vivermos momentos inesquecíveis.</p>
             <div class="gift-grid">
                 <article class="card gift-item">
-                    <h3>Jantar Romântico</h3>
-                    <p>Um jantar especial para celebrarmos nossa nova fase.</p>
-                    <div class="gift-price">R$ 220,00</div>
-                    <a class="btn btn-mp" href="https://mpago.la/2ZDmDVm" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/dolar.png" alt="Ajuda para os noivos comprarem d&#243;lares pra viagem" loading="lazy" />
+                    </figure>
+                    <h3>Ajuda para os noivos comprarem d&#243;lares pra viagem</h3>
+                    <p>Contribua para nossa lua de mel inesquecível!</p>
+                    <div class="gift-price">R$ 600,44</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Passeio Especial</h3>
-                    <p>Ajuda para curtirmos um passeio marcante na lua de mel.</p>
-                    <div class="gift-price">R$ 300,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/taxi.jpg" alt="Ajudinha para o taxi um pouquinho mais longe" loading="lazy" />
+                    </figure>
+                    <h3>Ajudinha para o taxi um pouquinho mais longe</h3>
+                    <p>Para nossos passeios romnticos durante o casamento.</p>
+                    <div class="gift-price">R$ 172,98</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Cota Livre</h3>
-                    <p>Você escolhe o valor que desejar para nos presentear.</p>
-                    <div class="gift-price">Valor livre</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/bebe.jpg" alt="Aluguel de um beb&#234; para treinamento" loading="lazy" />
+                    </figure>
+                    <h3>Aluguel de um beb&#234; para treinamento</h3>
+                    <p>Uma experiência divertida e útil!</p>
+                    <div class="gift-price">R$ 348,64</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Diária de Hotel</h3>
-                    <p>Contribuição para nosso descanso durante a viagem.</p>
-                    <div class="gift-price">R$ 450,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/frigobar_cheio.jpg" alt="Assaltando o frigobar" loading="lazy" />
+                    </figure>
+                    <h3>Assaltando o frigobar</h3>
+                    <p>Para brindes e celebrações especiais!</p>
+                    <div class="gift-price">R$ 273,69</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Café da Manhã Especial</h3>
-                    <p>Um mimo para começar o dia na lua de mel.</p>
-                    <div class="gift-price">R$ 130,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/brinde_dos_noivos.jpg" alt="Brinde da noite de n&#250;pcia" loading="lazy" />
+                    </figure>
+                    <h3>Brinde da noite de n&#250;pcia</h3>
+                    <p>Um momento especial para celebrar!</p>
+                    <div class="gift-price">R$ 537,49</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Passeio de Barco</h3>
-                    <p>Contribuição para uma experiência inesquecível.</p>
-                    <div class="gift-price">R$ 350,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/capacete.jpg" alt="Capacete contra rolo de macarr&#227;o para o noivo" loading="lazy" />
+                    </figure>
+                    <h3>Capacete contra rolo de macarr&#227;o para o noivo</h3>
+                    <p>Proteção com humor e carinho!</p>
+                    <div class="gift-price">R$ 223,34</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Massagem para Casal</h3>
-                    <p>Ajuda para um momento relaxante na viagem.</p>
-                    <div class="gift-price">R$ 280,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/controles_remotos.jpg" alt="Conjunto de controle remotos para n&#227;o ter briga" loading="lazy" />
+                    </figure>
+                    <h3>Conjunto de controle remotos para n&#227;o ter briga</h3>
+                    <p>Harmonia no conforto da sala!</p>
+                    <div class="gift-price">R$ 210,75</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Almoço em Restaurante</h3>
-                    <p>Contribuição para degustarmos a gastronomia local.</p>
-                    <div class="gift-price">R$ 200,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/coral_de_casamento.jpg" alt="Coral pra cantar &quot;Aleluia&quot; na entrada do noivo" loading="lazy" />
+                    </figure>
+                    <h3>Coral pra cantar &quot;Aleluia&quot; na entrada do noivo</h3>
+                    <p>Uma entrada marcante com música!</p>
+                    <div class="gift-price">R$ 726,34</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Transporte na Viagem</h3>
-                    <p>Ajuda com deslocamentos durante a lua de mel.</p>
-                    <div class="gift-price">R$ 240,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/cueca_superman.jpg" alt="Cueca sexy para a noite de n&#250;pcia" loading="lazy" />
+                    </figure>
+                    <h3>Cueca sexy para a noite de n&#250;pcia</h3>
+                    <p>Um presente leve e divertido!</p>
+                    <div class="gift-price">R$ 191,39</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Sobremesa Especial</h3>
-                    <p>Um doce para completar nosso roteiro romântico.</p>
-                    <div class="gift-price">R$ 110,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/woman_sneezing.jpg" alt="Espirro em paris" loading="lazy" />
+                    </figure>
+                    <h3>Espirro em paris</h3>
+                    <p>Um momento roântico e inesquecível!</p>
+                    <div class="gift-price">R$ 248,52</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Ingressos para Atração</h3>
-                    <p>Ajuda para vivermos uma experiência diferente juntos.</p>
-                    <div class="gift-price">R$ 260,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/lanche.jpg" alt="Garanta o jantar do noivo durante o 1&#186; m&#234;s de casado" loading="lazy" />
+                    </figure>
+                    <h3>Garanta o jantar do noivo durante o 1&#186; m&#234;s de casado</h3>
+                    <p>Um gesto carinhoso para os primeiros dias!</p>
+                    <div class="gift-price">R$ 663,39</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-
                 <article class="card gift-item">
-                    <h3>Upgrade de Quarto</h3>
-                    <p>Contribuição para um momento ainda mais especial na viagem.</p>
-                    <div class="gift-price">R$ 380,00</div>
-                    <a class="btn btn-mp" href="SEU_LINK_DE_PAGAMENTO" target="_blank" rel="noopener noreferrer">Presentear</a>
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/ai_que_saudade_de_voce.jpg" alt="Kit &quot;Aguenta essa saudade&quot; (da fam&#237;lia, amigos...)" loading="lazy" />
+                    </figure>
+                    <h3>Kit &quot;Aguenta essa saudade&quot; (da fam&#237;lia, amigos...)</h3>
+                    <p>Lembrancinha para matador a saudade!</p>
+                    <div class="gift-price">R$ 311,46</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/lenco_noiva_chorando.jpg" alt="Len&#231;o para a noiva n&#227;o borrar toda a maquiagem" loading="lazy" />
+                    </figure>
+                    <h3>Len&#231;o para a noiva n&#227;o borrar toda a maquiagem</h3>
+                    <p>Um detalhe pr&#225;tico e cheio de car&#237;cia!</p>
+                    <div class="gift-price">R$ 203,33</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/keep_calm_and_comprem_engov.png" alt="Open de engov para a festa" loading="lazy" />
+                    </figure>
+                    <h3>Open de engov para a festa</h3>
+                    <p>Para alegrar a noite com bom humor!</p>
+                    <div class="gift-price">R$ 436,77</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/despedida_de_solteira.jpg" alt="Patrocine a despedida da noiva" loading="lazy" />
+                    </figure>
+                    <h3>Patrocine a despedida da noiva</h3>
+                    <p>Uma última farra antes de casar!</p>
+                    <div class="gift-price">R$ 512,31</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/se_beber_nao_case.jpg" alt="Patrocine a despedida do noivo" loading="lazy" />
+                    </figure>
+                    <h3>Patrocine a despedida do noivo</h3>
+                    <p>A despedida do melhor amigo!</p>
+                    <div class="gift-price">R$ 474,54</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/quarto_de_visita.jpg" alt="Prioridade no quarto de visita na casa dos noivos" loading="lazy" />
+                    </figure>
+                    <h3>Prioridade no quarto de visita na casa dos noivos</h3>
+                    <p>Sempre bem-vindo em nossa casa!</p>
+                    <div class="gift-price">R$ 789,28</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/mulher_rolo_de_massa.jpg" alt="Rolo de macarr&#227;o caso o noivo n&#227;o se comporte" loading="lazy" />
+                    </figure>
+                    <h3>Rolo de macarr&#227;o caso o noivo n&#227;o se comporte</h3>
+                    <p>Um presente com muito carinho e humor!</p>
+                    <div class="gift-price">R$ 195,94</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/noiva_jogando_buque.jpg" alt="Taxa pra noiva jogar o buqu&#234; pra sua namorada" loading="lazy" />
+                    </figure>
+                    <h3>Taxa pra noiva jogar o buqu&#234; pra sua namorada</h3>
+                    <p>Um detalhe romntico para a sorte!</p>
+                    <div class="gift-price">R$ 195,66</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/barbearia.jpg" alt="Um ano de barba feita para o noivo" loading="lazy" />
+                    </figure>
+                    <h3>Um ano de barba feita para o noivo</h3>
+                    <p>Para estar sempre bem-arrumado!</p>
+                    <div class="gift-price">R$ 411,59</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item">
+                    <figure class="gift-image">
+                        <img src="https://images.unsplash.com/photo-1496412705862-e0088f16f791?auto=format&fit=crop&w=900&q=80" alt="Caf&#233; da manh&#227; na lua de mel" loading="lazy" />
+                    </figure>
+                    <h3>Caf&#233; da manh&#227; na lua de mel</h3>
+                    <p>Um come&#231;o de dia especial durante a viagem.</p>
+                    <div class="gift-price">R$ 180,00</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
             </div>
         </div>
     </section>
-
     <div id="gift-modal" class="gift-modal" aria-hidden="true">
         <div class="gift-modal-overlay" data-close-gift-modal></div>
         <div class="gift-modal-card" role="dialog" aria-modal="true" aria-labelledby="gift-modal-title">
@@ -608,10 +964,13 @@
                     <label for="gift-guest-phone">WhatsApp (opcional)</label>
                     <input id="gift-guest-phone" name="guest_phone" type="tel" placeholder="(00) 00000-0000" />
                 </div>
+                <div class="field">
+                    <label for="gift-message">Mensagem para os noivos (opcional)</label>
+                    <textarea id="gift-message" name="gift_message" rows="3" placeholder="Deixe uma mensagem de carinho"></textarea>
+                </div>
 
                 <p id="gift-form-status" class="form-status" aria-live="polite"></p>
                 <button type="submit" class="btn btn-primary">Continuar para pagamento no site</button>
-                <button type="button" id="gift-buy-elsewhere" class="btn btn-gift-alt">Comprar em loja de preferência</button>
             </form>
         </div>
     </div>
@@ -625,6 +984,7 @@
         </div>
     </footer>
 
+    <script src="convidados.js" charset="utf-8"></script>
     <script>
         const eventDate = new Date("2026-12-12T00:00:00-03:00").getTime();
 
@@ -652,14 +1012,309 @@
 
         const rsvpForm = document.getElementById("rsvp-form");
         const formStatus = document.getElementById("form-status");
+        const guestSearch = document.getElementById("guest-search");
+        const guestSearchResults = document.getElementById("guest-search-results");
+        const familyConfirmation = document.getElementById("family-confirmation");
+        const familyTitle = document.getElementById("family-title");
+        const familyCount = document.getElementById("family-count");
+        const familyMembers = document.getElementById("family-members");
+        const rsvpAdminPanel = document.getElementById("rsvp-admin-panel");
+        const downloadConfirmationsButton = document.getElementById("download-confirmations");
+        const confirmationsCount = document.getElementById("confirmations-count");
+        const guestFamilies = Array.isArray(window.WEDDING_GUESTS) ? window.WEDDING_GUESTS : [];
+        const confirmationsStorageKey = "gabriela-mateus-confirmacoes";
+        const rsvpTrackingConfig = {
+            appsScriptUrl: "https://script.google.com/macros/s/AKfycbwrbBP6PVIRDXafN98hNQ1WgOFy0emtN0A3ObYilx4VE2UgIx-DEzd47cAGaUq6XsoL/exec",
+            formUrl: rsvpForm.action,
+            fields: {
+                familyName: "entry.1819394826",
+                phone: "entry.1237621766",
+                details: "",
+                confirmedMembers: "entry.926206890",
+                absentMembers: "entry.687359328",
+                notes: "entry.1703806980",
+                confirmedAt: "entry.578162601"
+            }
+        };
 
-        rsvpForm.addEventListener("submit", () => {
-            formStatus.textContent = "Enviando...";
-            setTimeout(() => {
-                rsvpForm.reset();
-                formStatus.textContent = "Confirmação enviada. Obrigado!";
-            }, 1200);
+        let selectedFamily = null;
+
+        function normalizeSearchText(value) {
+            return value
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()
+                .trim();
+        }
+
+        function fixTextEncoding(value) {
+            try {
+                return decodeURIComponent(escape(value));
+            } catch {
+                return value;
+            }
+        }
+
+        function getFamilySearchText(family) {
+            return normalizeSearchText([
+                fixTextEncoding(family.familyName),
+                ...(family.searchNames || []).map((name) => fixTextEncoding(name)),
+                ...family.members.map((member) => fixTextEncoding(member.name))
+            ].join(" "));
+        }
+
+        function getFamilyMemberNames(family) {
+            return family.members.map((member) => fixTextEncoding(member.name));
+        }
+
+        function getStoredConfirmations() {
+            try {
+                const stored = JSON.parse(localStorage.getItem(confirmationsStorageKey) || "[]");
+                return Array.isArray(stored) ? stored : [];
+            } catch {
+                return [];
+            }
+        }
+
+        function setStoredConfirmations(confirmations) {
+            localStorage.setItem(confirmationsStorageKey, JSON.stringify(confirmations, null, 2));
+            updateConfirmationsCount();
+        }
+
+        function updateConfirmationsCount() {
+            if (!confirmationsCount) {
+                return;
+            }
+
+            const total = getStoredConfirmations().reduce((sum, confirmation) =>
+                sum + confirmation.confirmedMembers.length, 0);
+            confirmationsCount.textContent = `${total} pessoa(s) confirmada(s) neste navegador.`;
+        }
+
+        function renderGuestResults(query) {
+            guestSearchResults.innerHTML = "";
+
+            if (!query) {
+                formStatus.textContent = "";
+                return;
+            }
+
+            if (!guestFamilies.length) {
+                formStatus.textContent = "A lista de convidados ainda não foi cadastrada.";
+                return;
+            }
+
+            const normalizedQuery = normalizeSearchText(query);
+            const matches = guestFamilies
+                .filter((family) => getFamilySearchText(family).includes(normalizedQuery))
+                .slice(0, 8);
+
+            if (!matches.length) {
+                formStatus.textContent = "Nenhum nome encontrado na lista.";
+                return;
+            }
+
+            formStatus.textContent = "";
+
+            matches.forEach((family) => {
+                const button = document.createElement("button");
+                const memberNames = getFamilyMemberNames(family);
+                button.type = "button";
+                button.className = "guest-result-button";
+                button.innerHTML = `
+                    <span>
+                        <span class="guest-result-name">${fixTextEncoding(family.familyName)}</span>
+                        <span class="guest-result-members">${memberNames.join(", ")}</span>
+                    </span>
+                    <span class="guest-result-count">${memberNames.length} pessoa(s)</span>
+                `;
+                button.addEventListener("click", () => selectFamily(family));
+                guestSearchResults.appendChild(button);
+            });
+        }
+
+        function selectFamily(family) {
+            selectedFamily = family;
+            guestSearch.value = fixTextEncoding(family.familyName);
+            guestSearchResults.innerHTML = "";
+            formStatus.textContent = "";
+            familyTitle.textContent = fixTextEncoding(family.familyName);
+            familyCount.textContent = `${family.members.length} pessoa(s) na família`;
+            familyMembers.innerHTML = "";
+
+            family.members.forEach((member) => {
+                const label = document.createElement("label");
+                label.className = "family-member-option";
+                label.innerHTML = `
+                    <input type="checkbox" name="confirmed_member" value="${member.id}" checked />
+                    <span class="family-member-name">${fixTextEncoding(member.name)}</span>
+                `;
+                familyMembers.appendChild(label);
+            });
+
+            familyConfirmation.hidden = false;
+        }
+
+        function buildConfirmationRecord() {
+            const checkedIds = Array.from(
+                familyMembers.querySelectorAll('input[name="confirmed_member"]:checked')
+            ).map((input) => input.value);
+
+            const confirmedMembers = selectedFamily.members
+                .filter((member) => checkedIds.includes(member.id))
+                .map((member) => fixTextEncoding(member.name));
+            const absentMembers = selectedFamily.members
+                .filter((member) => !checkedIds.includes(member.id))
+                .map((member) => fixTextEncoding(member.name));
+
+            return {
+                familyId: selectedFamily.id,
+                familyName: fixTextEncoding(selectedFamily.familyName),
+                confirmedMembers,
+                absentMembers,
+                phone: document.getElementById("telefone").value.trim(),
+                notes: document.getElementById("observacoes").value.trim(),
+                confirmedAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+        }
+
+        async function sendRsvpTracking(record) {
+            if (rsvpTrackingConfig.appsScriptUrl) {
+                await fetch(rsvpTrackingConfig.appsScriptUrl, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "text/plain;charset=UTF-8" },
+                    body: JSON.stringify({
+                        familyId: record.familyId,
+                        familyName: record.familyName,
+                        confirmedMembers: record.confirmedMembers,
+                        absentMembers: record.absentMembers,
+                        totalConfirmed: record.confirmedMembers.length,
+                        phone: record.phone,
+                        notes: record.notes,
+                        confirmedAt: record.confirmedAt,
+                        updatedAt: record.updatedAt
+                    })
+                });
+                return;
+            }
+
+            const details = [
+                `Confirmados: ${record.confirmedMembers.join(", ") || "ninguém"}`,
+                `Não irão: ${record.absentMembers.join(", ") || "ninguém"}`,
+                `Telefone: ${record.phone || "não informado"}`,
+                `Observações: ${record.notes || "sem observações"}`,
+                `Data: ${record.confirmedAt}`
+            ].join(" | ");
+            const payload = new URLSearchParams();
+            const fields = rsvpTrackingConfig.fields;
+
+            if (fields.familyName) {
+                payload.append(fields.familyName, record.familyName);
+            }
+
+            if (fields.phone) {
+                payload.append(fields.phone, record.phone);
+            }
+
+            if (fields.details) {
+                payload.append(fields.details, details);
+            }
+
+            if (fields.confirmedMembers) {
+                payload.append(fields.confirmedMembers, record.confirmedMembers.join(", "));
+            }
+
+            if (fields.absentMembers) {
+                payload.append(fields.absentMembers, record.absentMembers.join(", "));
+            }
+
+            if (fields.notes) {
+                payload.append(fields.notes, record.notes);
+            }
+
+            if (fields.confirmedAt) {
+                payload.append(fields.confirmedAt, record.confirmedAt);
+            }
+
+            await fetch(rsvpTrackingConfig.formUrl, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+                body: payload.toString()
+            });
+        }
+
+        function saveConfirmation(record) {
+            const confirmations = getStoredConfirmations()
+                .filter((confirmation) => confirmation.familyId !== record.familyId);
+            confirmations.push(record);
+            setStoredConfirmations(confirmations);
+        }
+
+        function resetRsvpFlow() {
+            rsvpForm.reset();
+            selectedFamily = null;
+            familyConfirmation.hidden = true;
+            familyMembers.innerHTML = "";
+            guestSearchResults.innerHTML = "";
+        }
+
+        function downloadConfirmations() {
+            const confirmations = getStoredConfirmations();
+            const blob = new Blob([JSON.stringify({ confirmados: confirmations }, null, 2)], {
+                type: "application/json"
+            });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "confirmados.json";
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        guestSearch.addEventListener("input", () => {
+            selectedFamily = null;
+            familyConfirmation.hidden = true;
+            renderGuestResults(guestSearch.value);
         });
+
+        rsvpForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            if (!selectedFamily) {
+                formStatus.textContent = "Selecione seu nome na lista para continuar.";
+                return;
+            }
+
+            const record = buildConfirmationRecord();
+
+            if (!record.confirmedMembers.length && !record.absentMembers.length) {
+                formStatus.textContent = "Selecione ao menos uma pessoa da família.";
+                return;
+            }
+
+            formStatus.textContent = "Enviando...";
+
+            try {
+                await sendRsvpTracking(record);
+                saveConfirmation(record);
+                resetRsvpFlow();
+                formStatus.textContent = "Confirmação enviada. Obrigado!";
+            } catch {
+                saveConfirmation(record);
+                resetRsvpFlow();
+                formStatus.textContent = "Confirmação salva neste navegador. Obrigado!";
+            }
+        });
+
+        if (new URLSearchParams(window.location.search).get("admin") === "1") {
+            rsvpAdminPanel.hidden = false;
+            updateConfirmationsCount();
+        }
+
+        downloadConfirmationsButton.addEventListener("click", downloadConfirmations);
 
         const giftTrackingConfig = {
             formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeVrJsdraLtlfbMP60BTUkof_ah2AhlQmoe9E1q6mmZF_HZNQ/formResponse",
@@ -676,7 +1331,6 @@
         const giftModalSelected = document.getElementById("gift-modal-selected");
         const giftIdentForm = document.getElementById("gift-ident-form");
         const giftFormStatus = document.getElementById("gift-form-status");
-        const giftBuyElsewhereButton = document.getElementById("gift-buy-elsewhere");
         const closeGiftModalButtons = document.querySelectorAll("[data-close-gift-modal]");
         const giftButtons = document.querySelectorAll(".btn-mp");
 
@@ -706,11 +1360,6 @@
                 !giftTrackingConfig.formUrl.includes("SEU_LINK_DO_FORMS");
         }
 
-        function buildPreferredStoreSearchUrl(giftName) {
-            const query = encodeURIComponent(`${giftName} comprar`);
-            return `https://www.google.com/search?q=${query}`;
-        }
-
         async function sendGiftTracking(data) {
             if (!isGiftTrackingConfigured()) {
                 return;
@@ -721,7 +1370,10 @@
             payload.append(giftTrackingConfig.fields.guestPhone, data.guestPhone);
             payload.append(giftTrackingConfig.fields.giftName, data.giftName);
             payload.append(giftTrackingConfig.fields.giftPrice, data.giftPrice);
-            payload.append(giftTrackingConfig.fields.giftLink, data.giftLink);
+            payload.append(giftTrackingConfig.fields.giftLink, [
+                `Link: ${data.giftLink}`,
+                `Mensagem: ${data.giftMessage || "sem mensagem"}`
+            ].join(" | "));
 
             await fetch(giftTrackingConfig.formUrl, {
                 method: "POST",
@@ -755,6 +1407,7 @@
 
             const guestName = document.getElementById("gift-guest-name").value.trim();
             const guestPhone = document.getElementById("gift-guest-phone").value.trim();
+            const giftMessage = document.getElementById("gift-message").value.trim();
 
             if (!guestName) {
                 giftFormStatus.textContent = "Informe seu nome para continuar.";
@@ -769,22 +1422,23 @@
                     guestPhone,
                     giftName: pendingGift.name,
                     giftPrice: pendingGift.price,
-                    giftLink: mode === "site" ? pendingGift.link : buildPreferredStoreSearchUrl(pendingGift.name)
+                    giftLink: pendingGift.link,
+                    giftMessage
                 });
             } catch {
                 // Se falhar o envio de controle, ainda permitimos seguir para pagamento.
             }
 
-            if (mode === "site") {
-                if (!pendingGift.link || pendingGift.link.includes("SEU_LINK_DE_PAGAMENTO")) {
-                    giftFormStatus.textContent = "Link de pagamento ainda não configurado para este presente.";
-                    return;
-                }
-
-                window.open(pendingGift.link, "_blank", "noopener,noreferrer");
-            } else {
-                window.open(buildPreferredStoreSearchUrl(pendingGift.name), "_blank", "noopener,noreferrer");
+            if (
+                !pendingGift.link ||
+                pendingGift.link.includes("SEU_LINK_DE_PAGAMENTO") ||
+                pendingGift.link.includes("SEU_LINK_INFINITEPAY")
+            ) {
+                giftFormStatus.textContent = "Link de pagamento ainda não configurado para este presente.";
+                return;
             }
+
+            window.open(pendingGift.link, "_blank", "noopener,noreferrer");
 
             closeGiftModal();
         }
@@ -792,10 +1446,6 @@
         giftIdentForm.addEventListener("submit", async (event) => {
             event.preventDefault();
             await processGiftFlow("site");
-        });
-
-        giftBuyElsewhereButton.addEventListener("click", async () => {
-            await processGiftFlow("preferred_store");
         });
     </script>
 </body>
