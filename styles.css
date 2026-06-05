@@ -84,6 +84,544 @@ body::after {
         url("Images/flower1.jpg") right 8% top 80% / 116px 116px no-repeat;
 }
 
+.wedding-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    background:
+        radial-gradient(ellipse at center, rgba(255, 248, 241, 0.32) 0%, rgba(92, 39, 62, 0.38) 72%, rgba(33, 17, 25, 0.58) 100%),
+        linear-gradient(rgba(73, 34, 50, 0.18), rgba(73, 34, 50, 0.34)),
+        url("Images/foto-casal.jpg") center/cover no-repeat,
+        linear-gradient(180deg, #d8a2b6 0%, #9c5d76 100%);
+    overflow: hidden;
+    transition: opacity 0.65s ease, visibility 0.65s ease;
+    box-shadow: inset 0 9vh 0 rgba(35, 18, 28, 0.32), inset 0 -9vh 0 rgba(35, 18, 28, 0.32);
+    animation: introBackdropGlow 7s ease-in-out infinite alternate;
+}
+
+.wedding-intro::before,
+.wedding-intro::after {
+    content: "";
+    position: absolute;
+    width: 340px;
+    aspect-ratio: 1;
+    border-radius: 22px;
+    background: center/cover no-repeat;
+    opacity: 0.16;
+    pointer-events: none;
+    filter: sepia(0.28) saturate(0.82);
+}
+
+.wedding-intro::before {
+    top: 4vh;
+    left: 4vw;
+    background-image: url("Images/flower1.jpg");
+    transform: rotate(-8deg);
+    animation: introFlowerDrift 7s ease-in-out infinite;
+}
+
+.wedding-intro::after {
+    right: 4vw;
+    bottom: 4vh;
+    background-image: url("Images/flower4.jpg");
+    transform: rotate(9deg);
+    animation: introFlowerDrift 8s ease-in-out infinite reverse;
+}
+
+.wedding-intro.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-flower,
+.intro-sparkle {
+    position: absolute;
+    pointer-events: none;
+}
+
+.intro-flower {
+    width: 210px;
+    aspect-ratio: 1;
+    border-radius: 18px;
+    background: center/cover no-repeat;
+    opacity: 0.14;
+    filter: sepia(0.32) saturate(0.78);
+}
+
+.intro-flower-top {
+    top: 19vh;
+    right: 17vw;
+    background-image: url("Images/flower3.jpg");
+    animation: introSmallFlower 6s ease-in-out infinite;
+}
+
+.intro-flower-bottom {
+    left: 17vw;
+    bottom: 16vh;
+    background-image: url("Images/flower2.jpg");
+    animation: introSmallFlower 6.8s ease-in-out infinite reverse;
+}
+
+.intro-sparkle {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 245, 230, 0.76);
+    box-shadow: 0 0 12px rgba(255, 239, 214, 0.34);
+    opacity: 0.64;
+    animation: introSparkle 3.4s ease-in-out infinite;
+}
+
+.intro-sparkle-one {
+    top: 20vh;
+    left: 22vw;
+}
+
+.intro-sparkle-two {
+    right: 23vw;
+    bottom: 24vh;
+    animation-delay: 0.7s;
+}
+
+.intro-sparkle-three {
+    top: 68vh;
+    left: 33vw;
+    animation-delay: 1.25s;
+}
+
+.invitation-stage {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+    width: min(920px, 97vw, 88vh);
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    perspective: 1500px;
+    animation: invitationArrive 1.1s ease both;
+}
+
+.invitation-stage:focus-visible {
+    outline: 2px solid rgba(255, 247, 250, 0.95);
+    outline-offset: 18px;
+    border-radius: 18px;
+}
+
+.invitation-envelope {
+    position: relative;
+    width: min(860px, 96vw, 88vh);
+    aspect-ratio: 1.46;
+    display: block;
+    filter: drop-shadow(0 34px 46px rgba(38, 18, 28, 0.46));
+    animation: envelopeBreathe 3.8s ease-in-out infinite;
+}
+
+.invitation-envelope::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    z-index: 0;
+    border: 1px solid rgba(255, 239, 214, 0.58);
+    border-radius: 20px;
+    background: rgba(255, 236, 214, 0.04);
+    box-shadow: inset 0 0 0 1px rgba(135, 82, 77, 0.18), 0 0 38px rgba(255, 228, 202, 0.1);
+}
+
+.invitation-envelope::after {
+    content: "";
+    position: absolute;
+    inset: 8%;
+    z-index: 7;
+    border: 1px solid rgba(255, 240, 220, 0.38);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.invitation-card {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 19%;
+    z-index: 2;
+    height: 74%;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 10px;
+    padding: 30px 34px;
+    border: 1px solid rgba(153, 93, 85, 0.34);
+    border-radius: 8px;
+    background:
+        radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0) 20%),
+        linear-gradient(rgba(255, 246, 235, 0.95), rgba(247, 224, 211, 0.96)),
+        url("Images/flower2.jpg") right -18px bottom -22px / 164px 164px no-repeat,
+        url("Images/flower3.jpg") left -28px top -30px / 156px 156px no-repeat;
+    box-shadow: 0 18px 30px rgba(63, 31, 44, 0.2);
+    opacity: 0;
+    transform: translateY(22%) scale(0.96);
+    transform-origin: center bottom;
+    overflow: hidden;
+}
+
+.invitation-card::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(153, 93, 85, 0.24);
+    border-radius: 6px;
+}
+
+.invitation-card::after {
+    content: "";
+    width: 74px;
+    height: 1px;
+    margin-top: 4px;
+    background: linear-gradient(90deg, transparent, rgba(128, 74, 71, 0.56), transparent);
+}
+
+.invitation-logo {
+    position: relative;
+    z-index: 1;
+    width: 126px;
+    height: auto;
+    margin-bottom: -10px;
+}
+
+.invitation-overline {
+    position: relative;
+    z-index: 1;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: #9f4865;
+}
+
+.invitation-names {
+    position: relative;
+    z-index: 1;
+    font-family: var(--display-font);
+    font-size: 58px;
+    font-weight: 600;
+    line-height: 1;
+    color: #7c3158;
+    text-shadow: 0 1px 0 rgba(255, 250, 242, 0.9);
+    white-space: normal;
+}
+
+.invitation-names span {
+    color: #b56a5e;
+}
+
+.invitation-date {
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: #9d6571;
+    font-weight: 600;
+}
+
+.envelope-back,
+.envelope-front,
+.envelope-flap {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+}
+
+.envelope-back {
+    z-index: 1;
+    background:
+        repeating-linear-gradient(35deg, rgba(111, 68, 63, 0.035) 0 1px, transparent 1px 13px),
+        linear-gradient(135deg, rgba(255, 248, 236, 0.34), transparent 40%),
+        #d9a1aa;
+    border: 1px solid rgba(111, 68, 63, 0.28);
+}
+
+.envelope-front {
+    z-index: 4;
+    transform-origin: bottom center;
+    background:
+        linear-gradient(146deg, transparent 49.5%, rgba(250, 226, 218, 0.86) 50%) left bottom / 50% 100% no-repeat,
+        linear-gradient(214deg, transparent 49.5%, rgba(250, 226, 218, 0.86) 50%) right bottom / 50% 100% no-repeat,
+        linear-gradient(34deg, transparent 49.5%, #c98798 50%) left bottom / 50% 100% no-repeat,
+        linear-gradient(-34deg, transparent 49.5%, #c98798 50%) right bottom / 50% 100% no-repeat,
+        repeating-linear-gradient(35deg, rgba(111, 68, 63, 0.035) 0 1px, transparent 1px 14px),
+        linear-gradient(180deg, rgba(255, 248, 235, 0.18), rgba(126, 52, 76, 0.08));
+    border: 1px solid rgba(111, 68, 63, 0.28);
+}
+
+.envelope-flap {
+    z-index: 5;
+    transform-origin: top center;
+    background:
+        linear-gradient(154deg, transparent 49.5%, #dfabb0 50%) left top / 50% 100% no-repeat,
+        linear-gradient(206deg, transparent 49.5%, #dfabb0 50%) right top / 50% 100% no-repeat,
+        repeating-linear-gradient(35deg, rgba(111, 68, 63, 0.035) 0 1px, transparent 1px 14px);
+    transform: rotateX(0deg);
+    backface-visibility: hidden;
+}
+
+.envelope-seal {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    z-index: 6;
+    width: 92px;
+    height: 92px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 247, 250, 0.72);
+    background:
+        radial-gradient(circle at 34% 28%, rgba(255, 224, 218, 0.26), rgba(255, 224, 218, 0) 28%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent 38%),
+        #8f2e54;
+    color: #fff;
+    font-family: var(--display-font);
+    font-size: 22px;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(55, 22, 34, 0.32), 0 0 0 9px rgba(116, 44, 67, 0.16);
+    transform: translate(-50%, -50%);
+    animation: sealPulse 1.9s ease-in-out infinite;
+    transition: none;
+}
+
+.invitation-hint {
+    padding: 10px 18px;
+    border: 1px solid rgba(236, 64, 122, 0.42);
+    border-radius: 999px;
+    background: rgba(255, 247, 250, 0.9);
+    color: #d93886;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-shadow: none;
+    backdrop-filter: blur(4px);
+    animation: hintPulse 2s ease-in-out infinite;
+}
+
+.wedding-intro.is-opening .envelope-flap {
+    animation: flapOpen 1.25s cubic-bezier(0.18, 0.76, 0.22, 1) forwards;
+}
+
+.wedding-intro.is-opening .envelope-seal {
+    animation: sealRelease 0.85s ease forwards;
+}
+
+.wedding-intro.is-opening .invitation-card {
+    animation: cardReveal 2.25s cubic-bezier(0.18, 0.8, 0.22, 1) 0.72s forwards;
+}
+
+.wedding-intro.is-opening .envelope-front {
+    animation: frontLower 1.4s ease 0.55s forwards;
+}
+
+.wedding-intro.is-opening .invitation-envelope {
+    animation: none;
+}
+
+.wedding-intro.is-opening .invitation-stage {
+    animation: invitationSettle 3.25s ease forwards;
+}
+
+.wedding-intro.is-opening .intro-sparkle {
+    animation-duration: 1.25s;
+}
+
+.wedding-intro.is-opening .invitation-hint {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+@keyframes introBackdropGlow {
+    from {
+        background-position: center, center, center, center;
+    }
+
+    to {
+        background-position: center, center, 52% 50%, center;
+    }
+}
+
+@keyframes introFlowerDrift {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+
+    50% {
+        transform: translateY(12px) rotate(-5deg);
+    }
+}
+
+@keyframes introSmallFlower {
+    0%,
+    100% {
+        transform: translateY(0) rotate(8deg);
+    }
+
+    50% {
+        transform: translateY(10px) rotate(5deg);
+    }
+}
+
+@keyframes introSparkle {
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scale(0.72);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes invitationArrive {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes envelopeBreathe {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes flapOpen {
+    0% {
+        z-index: 5;
+        transform: rotateX(0deg);
+    }
+
+    55% {
+        z-index: 5;
+        transform: rotateX(118deg);
+    }
+
+    56%,
+    100% {
+        z-index: 0;
+        transform: rotateX(178deg);
+    }
+}
+
+@keyframes sealRelease {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+
+    45% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1) rotate(-8deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -58%) scale(0.28) rotate(18deg);
+    }
+}
+
+@keyframes cardReveal {
+    0% {
+        z-index: 2;
+        opacity: 0;
+        transform: translateY(22%) scale(0.96);
+    }
+
+    42% {
+        z-index: 2;
+        opacity: 0;
+        transform: translateY(-24%) scale(1);
+    }
+
+    76% {
+        z-index: 8;
+        opacity: 1;
+        transform: translateY(-34%) scale(1.02);
+    }
+
+    100% {
+        z-index: 8;
+        opacity: 1;
+        transform: translateY(-32%) scale(1.01);
+    }
+}
+
+@keyframes frontLower {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+    }
+
+    100% {
+        opacity: 0.72;
+        transform: translateY(8%) scaleY(0.94);
+    }
+}
+
+@keyframes invitationSettle {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    72% {
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        transform: translateY(0) scale(0.985);
+    }
+}
+
+@keyframes sealPulse {
+    0%,
+    100% {
+        box-shadow: 0 10px 24px rgba(55, 22, 34, 0.32), 0 0 0 8px rgba(116, 44, 67, 0.16);
+    }
+
+    50% {
+        box-shadow: 0 13px 28px rgba(55, 22, 34, 0.38), 0 0 0 16px rgba(116, 44, 67, 0.05);
+    }
+}
+
+@keyframes hintPulse {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
 .topbar {
     position: fixed;
     top: 0;
@@ -425,7 +963,7 @@ body::after {
 }
 
 #presentes.section {
-    padding-bottom: 20px;
+    padding-bottom: 0;
 }
 
 #convite .section-title,
@@ -943,6 +1481,7 @@ body::after {
 }
 
 .gift-image {
+    position: relative;
     width: 100%;
     aspect-ratio: 1;
     margin: 0;
@@ -986,6 +1525,39 @@ body::after {
 
 .btn-mp:hover {
     background: #ec407a;
+}
+
+.gift-item.is-unavailable {
+    opacity: 0.68;
+}
+
+.gift-item.is-unavailable .gift-image img {
+    filter: grayscale(0.65);
+}
+
+.gift-unavailable-badge {
+    position: absolute;
+    inset: 12px 12px auto auto;
+    z-index: 1;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(51, 36, 43, 0.86);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.gift-item.is-unavailable .btn-mp {
+    background: #b8a7ad;
+    color: #fff;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.gift-item.is-unavailable .btn-mp:hover {
+    background: #b8a7ad;
 }
 
 .footer {
@@ -1119,6 +1691,103 @@ body::after {
     body::before,
     body::after {
         display: none;
+    }
+
+    .wedding-intro {
+        padding: 16px;
+    }
+
+    .wedding-intro::before,
+    .wedding-intro::after {
+        width: 132px;
+        opacity: 0.18;
+    }
+
+    .intro-flower {
+        width: 118px;
+        opacity: 0.16;
+    }
+
+    .intro-flower-top {
+        top: 12vh;
+        right: 8vw;
+    }
+
+    .intro-flower-bottom {
+        left: 8vw;
+        bottom: 12vh;
+    }
+
+    .intro-sparkle-one {
+        top: 16vh;
+        left: 16vw;
+    }
+
+    .intro-sparkle-two {
+        right: 14vw;
+        bottom: 18vh;
+    }
+
+    .intro-sparkle-three {
+        top: 72vh;
+        left: 22vw;
+    }
+
+    .invitation-stage {
+        width: min(520px, 96vw, 80vh);
+    }
+
+    .invitation-envelope {
+        width: min(470px, 94vw, 72vh);
+    }
+
+    .invitation-envelope::before {
+        inset: -10px;
+    }
+
+    .invitation-card {
+        gap: 7px;
+        left: 7%;
+        right: 7%;
+        bottom: 19%;
+        height: 74%;
+        padding: 20px 18px;
+    }
+
+    .invitation-card::before {
+        inset: 9px;
+    }
+
+    .invitation-logo {
+        width: 88px;
+        margin-bottom: -8px;
+    }
+
+    .invitation-overline {
+        font-size: 9px;
+        letter-spacing: 0.16em;
+    }
+
+    .invitation-names {
+        font-size: 34px;
+        max-width: 260px;
+    }
+
+    .invitation-date {
+        font-size: 11px;
+        letter-spacing: 0.04em;
+    }
+
+    .envelope-seal {
+        width: 68px;
+        height: 68px;
+        font-size: 17px;
+    }
+
+    .invitation-hint {
+        padding: 9px 14px;
+        font-size: 11px;
+        letter-spacing: 0.1em;
     }
 
     .content {

@@ -9,9 +9,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260217-8" />
+    <link rel="stylesheet" href="styles.css?v=20260217-23" />
 </head>
 <body>
+    <div id="wedding-intro" class="wedding-intro" role="dialog" aria-modal="true" aria-label="Convite de casamento Gabriela e Mateus">
+        <span class="intro-flower intro-flower-top" aria-hidden="true"></span>
+        <span class="intro-flower intro-flower-bottom" aria-hidden="true"></span>
+        <span class="intro-sparkle intro-sparkle-one" aria-hidden="true"></span>
+        <span class="intro-sparkle intro-sparkle-two" aria-hidden="true"></span>
+        <span class="intro-sparkle intro-sparkle-three" aria-hidden="true"></span>
+        <button type="button" class="invitation-stage" aria-label="Abrir convite de casamento">
+            <span class="invitation-envelope" aria-hidden="true">
+                <span class="invitation-card">
+                    <img src="Images/logo.png" alt="" class="invitation-logo" />
+                    <span class="invitation-overline">Vamos casar!</span>
+                    <span class="invitation-names">Gabriela <span>&amp;</span> Mateus</span>
+                    <span class="invitation-date">12 de Dezembro de 2026</span>
+                </span>
+                <span class="envelope-back"></span>
+                <span class="envelope-flap"></span>
+                <span class="envelope-front"></span>
+                <span class="envelope-seal">G&nbsp;&amp;&nbsp;M</span>
+            </span>
+            <span class="invitation-hint">Clique para abrir</span>
+        </button>
+    </div>
+
     <header class="topbar">
         <div class="topbar-inner">
             <div class="brand">
@@ -87,7 +110,7 @@
                 <p>Paróquia São Pedro Apóstolo<br />R. das Crianças, 235 - Sumaré - SP<br />12 de dezembro de 2026, às 16h00</p>
                 <a class="btn-instagram" href="https://www.instagram.com/saopedroapostolosumare?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Paróquia São Pedro Apóstolo">
                     <span class="instagram-icon" aria-hidden="true"></span>
-                    Instagram
+                    @saopedroapostolosumare
                 </a>
             </article>
             <article class="event-item">
@@ -95,7 +118,7 @@
                 <p>Espaço Recanto Januário<br />Parque São Bento - Sumaré - SP<br />Após a cerimônia</p>
                 <a class="btn-instagram" href="https://www.instagram.com/recantojanuarioeventos?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Espaço Recanto Januário">
                     <span class="instagram-icon" aria-hidden="true"></span>
-                    Instagram
+                    @recantojanuarioeventos
                 </a>
             </article>
         </div>
@@ -127,7 +150,7 @@
                 <p>Paróquia São Pedro Apóstolo<br />12 de dezembro de 2026, às 16h00<br />R. das Crianças, 235 - Sumaré - SP</p>
                 <a class="btn-instagram" href="https://www.instagram.com/saopedroapostolosumare?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Paróquia São Pedro Apóstolo">
                     <span class="instagram-icon" aria-hidden="true"></span>
-                    Instagram
+                    @saopedroapostolosumare
                 </a>
             </article>
             <div class="card map-card">
@@ -145,7 +168,7 @@
                 <p>Espaço Recanto Januário<br />Após a cerimônia<br />Parque São Bento, Sumaré - SP</p>
                 <a class="btn-instagram" href="https://www.instagram.com/recantojanuarioeventos?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Espaço Recanto Januário">
                     <span class="instagram-icon" aria-hidden="true"></span>
-                    Instagram
+                    @recantojanuarioeventos
                 </a>
             </article>
             <div class="card map-card">
@@ -227,7 +250,34 @@
                     <div class="gift-price">R$ 3.375,47</div>
                     <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-                <article class="card gift-item">
+                <article class="card gift-item" data-gift-id="ajuda-mobiliar-casa-1">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/casa_mobiliada.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
+                    </figure>
+                    <h3>Ajuda para mobiliar a casa</h3>
+                    <p>Nos ajude a transformar nossa nova casa em um lar aconchegante.</p>
+                    <div class="gift-price">R$ 1.292,87</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item" data-gift-id="ajuda-mobiliar-casa-2">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/casa_mobiliada.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
+                    </figure>
+                    <h3>Ajuda para mobiliar a casa</h3>
+                    <p>Nos ajude a transformar nossa nova casa em um lar aconchegante.</p>
+                    <div class="gift-price">R$ 1.292,87</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item" data-gift-id="ajuda-mobiliar-casa-3">
+                    <figure class="gift-image">
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/casa_mobiliada.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
+                    </figure>
+                    <h3>Ajuda para mobiliar a casa</h3>
+                    <p>Nos ajude a transformar nossa nova casa em um lar aconchegante.</p>
+                    <div class="gift-price">R$ 1.292,87</div>
+                    <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
+                </article>
+                <article class="card gift-item" data-gift-id="ajuda-mobiliar-casa-4">
                     <figure class="gift-image">
                         <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/casa_mobiliada.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
                     </figure>
@@ -427,7 +477,7 @@
                         <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/JOX2U_1779652195.jpg" alt="MINI GRILL" loading="lazy" />
                     </figure>
                     <h3>MINI GRILL</h3>
-                    <p>Para churrasco e grelha em casa com praticidade.</p>
+                    <p>Para lanches em casa com praticidade.</p>
                     <div class="gift-price">R$ 177,96</div>
                     <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
@@ -700,7 +750,7 @@
                         <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/L0BMi_1779842800.jpg" alt="Kit 2 Travesseiros Penas De Ganso" loading="lazy" />
                     </figure>
                     <h3>Kit 2 Travesseiros Penas De Ganso</h3>
-                    <p>Moblagem natural para descanso perfeito.</p>
+                    <p>Modelagem natural para descanso perfeito.</p>
                     <div class="gift-price">R$ 224,78</div>
                     <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
@@ -719,7 +769,7 @@
                     </figure>
                     <h3>Tapete de banheiro</h3>
                     <p>Antiderrapante e confortável para os pés.</p>
-                    <div class="gift-price">R$ 79,90</div>
+                    <div class="gift-price">R$ 129,90</div>
                     <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
@@ -859,7 +909,7 @@
                         <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/ai_que_saudade_de_voce.jpg" alt="Kit &quot;Aguenta essa saudade&quot; (da fam&#237;lia, amigos...)" loading="lazy" />
                     </figure>
                     <h3>Kit &quot;Aguenta essa saudade&quot; (da fam&#237;lia, amigos...)</h3>
-                    <p>Lembrancinha para matador a saudade!</p>
+                    <p>Lembrancinha para matar a saudade!</p>
                     <div class="gift-price">R$ 311,46</div>
                     <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
@@ -922,7 +972,7 @@
                         <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/noiva_jogando_buque.jpg" alt="Taxa pra noiva jogar o buqu&#234; pra sua namorada" loading="lazy" />
                     </figure>
                     <h3>Taxa pra noiva jogar o buqu&#234; pra sua namorada</h3>
-                    <p>Um detalhe romntico para a sorte!</p>
+                    <p>Um detalhe romantico para a sorte!</p>
                     <div class="gift-price">R$ 195,66</div>
                     <a class="btn btn-mp" href="SEU_LINK_INFINITEPAY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
@@ -986,6 +1036,36 @@
 
     <script src="convidados.js" charset="utf-8"></script>
     <script>
+        const weddingIntro = document.getElementById("wedding-intro");
+        const invitationStage = weddingIntro?.querySelector(".invitation-stage");
+        let weddingIntroOpened = false;
+
+        if (weddingIntro) {
+            document.body.style.overflow = "hidden";
+        }
+
+        function openWeddingIntro() {
+            if (!weddingIntro || weddingIntroOpened) {
+                return;
+            }
+
+            weddingIntroOpened = true;
+            weddingIntro.classList.add("is-opening");
+
+            window.setTimeout(() => {
+                weddingIntro.classList.add("is-hidden");
+                weddingIntro.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+                document.getElementById("inicio")?.focus({ preventScroll: true });
+            }, 3900);
+
+            window.setTimeout(() => {
+                weddingIntro.remove();
+            }, 4600);
+        }
+
+        invitationStage?.addEventListener("click", openWeddingIntro);
+
         const eventDate = new Date("2026-12-12T00:00:00-03:00").getTime();
 
         function updateCountdown() {
@@ -1024,7 +1104,7 @@
         const guestFamilies = Array.isArray(window.WEDDING_GUESTS) ? window.WEDDING_GUESTS : [];
         const confirmationsStorageKey = "gabriela-mateus-confirmacoes";
         const rsvpTrackingConfig = {
-            appsScriptUrl: "https://script.google.com/macros/s/AKfycbwrbBP6PVIRDXafN98hNQ1WgOFy0emtN0A3ObYilx4VE2UgIx-DEzd47cAGaUq6XsoL/exec",
+            appsScriptUrl: "https://script.google.com/macros/s/AKfycbyx1JMgbP9-l0BtrzAo45HVqp-DenFq-6BQdM44F0cVC6-IATrRANNw-LRlg1XqfhyM/exec",
             formUrl: rsvpForm.action,
             fields: {
                 familyName: "entry.1819394826",
@@ -1317,6 +1397,7 @@
         downloadConfirmationsButton.addEventListener("click", downloadConfirmations);
 
         const giftTrackingConfig = {
+            appsScriptUrl: rsvpTrackingConfig.appsScriptUrl,
             formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeVrJsdraLtlfbMP60BTUkof_ah2AhlQmoe9E1q6mmZF_HZNQ/formResponse",
             fields: {
                 guestName: "entry.2099917135",
@@ -1332,9 +1413,40 @@
         const giftIdentForm = document.getElementById("gift-ident-form");
         const giftFormStatus = document.getElementById("gift-form-status");
         const closeGiftModalButtons = document.querySelectorAll("[data-close-gift-modal]");
-        const giftButtons = document.querySelectorAll(".btn-mp");
+        const giftCards = Array.from(document.querySelectorAll(".gift-item"));
+        const giftButtons = giftCards
+            .map((card) => card.querySelector(".btn-mp"))
+            .filter(Boolean);
+        const unavailableGiftIds = new Set();
 
         let pendingGift = null;
+
+        function slugifyGiftId(value) {
+            return normalizeSearchText(value)
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-+|-+$/g, "");
+        }
+
+        function assignGiftIds() {
+            const idCounts = new Map();
+
+            giftCards.forEach((card, index) => {
+                const name = card.querySelector("h3")?.textContent?.trim() || `Presente ${index + 1}`;
+                const price = card.querySelector(".gift-price")?.textContent?.trim() || "";
+                const baseId = card.dataset.giftId || slugifyGiftId(`${name} ${price}`) || `presente-${index + 1}`;
+                const currentCount = idCounts.get(baseId) || 0;
+                const nextCount = currentCount + 1;
+
+                idCounts.set(baseId, nextCount);
+                card.dataset.giftId = nextCount === 1 ? baseId : `${baseId}-${nextCount}`;
+            });
+        }
+
+        function isGiftAvailabilityConfigured() {
+            return giftTrackingConfig.appsScriptUrl &&
+                giftTrackingConfig.appsScriptUrl.startsWith("https://") &&
+                !giftTrackingConfig.appsScriptUrl.includes("SEU_LINK");
+        }
 
         function openGiftModal(giftData) {
             pendingGift = giftData;
@@ -1360,6 +1472,12 @@
                 !giftTrackingConfig.formUrl.includes("SEU_LINK_DO_FORMS");
         }
 
+        function isGiftPaymentLinkConfigured(link) {
+            return link &&
+                !link.includes("SEU_LINK_DE_PAGAMENTO") &&
+                !link.includes("SEU_LINK_INFINITEPAY");
+        }
+
         async function sendGiftTracking(data) {
             if (!isGiftTrackingConfigured()) {
                 return;
@@ -1371,6 +1489,7 @@
             payload.append(giftTrackingConfig.fields.giftName, data.giftName);
             payload.append(giftTrackingConfig.fields.giftPrice, data.giftPrice);
             payload.append(giftTrackingConfig.fields.giftLink, [
+                `ID: ${data.giftId || "sem id"}`,
                 `Link: ${data.giftLink}`,
                 `Mensagem: ${data.giftMessage || "sem mensagem"}`
             ].join(" | "));
@@ -1383,16 +1502,116 @@
             });
         }
 
+        function requestGiftEndpoint(params) {
+            if (!isGiftAvailabilityConfigured()) {
+                return Promise.resolve(null);
+            }
+
+            return new Promise((resolve, reject) => {
+                const callbackName = `giftCallback_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+                const url = new URL(giftTrackingConfig.appsScriptUrl);
+                const script = document.createElement("script");
+                const timeout = window.setTimeout(() => {
+                    cleanup();
+                    reject(new Error("Tempo esgotado ao consultar presentes."));
+                }, 15000);
+
+                function cleanup() {
+                    window.clearTimeout(timeout);
+                    delete window[callbackName];
+                    script.remove();
+                }
+
+                Object.entries(params).forEach(([key, value]) => {
+                    if (value !== undefined && value !== null) {
+                        url.searchParams.set(key, value);
+                    }
+                });
+                url.searchParams.set("callback", callbackName);
+
+                window[callbackName] = (data) => {
+                    cleanup();
+                    resolve(data);
+                };
+
+                script.onerror = () => {
+                    cleanup();
+                    reject(new Error("Não foi possível consultar presentes."));
+                };
+                script.src = url.toString();
+                document.body.appendChild(script);
+            });
+        }
+
+        function updateGiftCardAvailability(card, unavailable) {
+            const button = card.querySelector(".btn-mp");
+            const giftId = card.dataset.giftId;
+
+            if (!button || !giftId) {
+                return;
+            }
+
+            if (!button.dataset.availableLabel) {
+                button.dataset.availableLabel = button.textContent;
+            }
+
+            card.classList.toggle("is-unavailable", unavailable);
+            card.dataset.giftUnavailable = unavailable ? "true" : "false";
+            button.setAttribute("aria-disabled", unavailable ? "true" : "false");
+            button.tabIndex = unavailable ? -1 : 0;
+            button.textContent = unavailable ? "Indisponível" : button.dataset.availableLabel;
+
+            let badge = card.querySelector(".gift-unavailable-badge");
+            if (unavailable && !badge) {
+                badge = document.createElement("span");
+                badge.className = "gift-unavailable-badge";
+                badge.textContent = "Indisponível";
+                card.querySelector(".gift-image")?.appendChild(badge);
+            } else if (!unavailable && badge) {
+                badge.remove();
+            }
+        }
+
+        function applyPurchasedGifts(gifts) {
+            const purchasedIds = new Set((gifts || [])
+                .map((gift) => typeof gift === "string" ? gift : gift.giftId)
+                .filter(Boolean));
+
+            purchasedIds.forEach((giftId) => unavailableGiftIds.add(giftId));
+            giftCards.forEach((card) => {
+                updateGiftCardAvailability(card, unavailableGiftIds.has(card.dataset.giftId));
+            });
+        }
+
+        async function loadGiftAvailability() {
+            try {
+                const response = await requestGiftEndpoint({ action: "gifts" });
+                if (response?.ok) {
+                    applyPurchasedGifts(response.gifts);
+                }
+            } catch {
+                // Se o Apps Script ainda nao foi publicado, os presentes continuam visiveis.
+            }
+        }
+
+        assignGiftIds();
+        loadGiftAvailability();
+
         giftButtons.forEach((button) => {
             button.addEventListener("click", (event) => {
                 event.preventDefault();
 
                 const card = button.closest(".gift-item");
+                if (card?.dataset.giftUnavailable === "true") {
+                    return;
+                }
+
                 const name = card?.querySelector("h3")?.textContent?.trim() || "Presente";
                 const price = card?.querySelector(".gift-price")?.textContent?.trim() || "";
                 const link = button.getAttribute("href") || "";
+                const giftId = card?.dataset.giftId || "";
 
-                openGiftModal({ name, price, link });
+                openGiftModal({ id: giftId, name, price, link, card });
             });
         });
 
@@ -1416,28 +1635,53 @@
 
             giftFormStatus.textContent = "Registrando...";
 
+            if (!isGiftPaymentLinkConfigured(pendingGift.link)) {
+                giftFormStatus.textContent = "Link de pagamento ainda não configurado para este presente.";
+                return;
+            }
+
+            if (unavailableGiftIds.has(pendingGift.id)) {
+                updateGiftCardAvailability(pendingGift.card, true);
+                giftFormStatus.textContent = "Este presente acabou de ficar indisponível.";
+                return;
+            }
+
             try {
+                const claimResponse = await requestGiftEndpoint({
+                    action: "claimGift",
+                    giftId: pendingGift.id,
+                    giftName: pendingGift.name,
+                    giftPrice: pendingGift.price,
+                    giftLink: pendingGift.link,
+                    guestName,
+                    guestPhone,
+                    giftMessage,
+                    purchasedAt: new Date().toISOString()
+                });
+
+                if (claimResponse && claimResponse.claimed === false) {
+                    unavailableGiftIds.add(pendingGift.id);
+                    updateGiftCardAvailability(pendingGift.card, true);
+                    giftFormStatus.textContent = "Este presente acabou de ficar indisponível.";
+                    return;
+                }
+
                 await sendGiftTracking({
                     guestName,
                     guestPhone,
+                    giftId: pendingGift.id,
                     giftName: pendingGift.name,
                     giftPrice: pendingGift.price,
                     giftLink: pendingGift.link,
                     giftMessage
                 });
             } catch {
-                // Se falhar o envio de controle, ainda permitimos seguir para pagamento.
-            }
-
-            if (
-                !pendingGift.link ||
-                pendingGift.link.includes("SEU_LINK_DE_PAGAMENTO") ||
-                pendingGift.link.includes("SEU_LINK_INFINITEPAY")
-            ) {
-                giftFormStatus.textContent = "Link de pagamento ainda não configurado para este presente.";
+                giftFormStatus.textContent = "Não consegui verificar a disponibilidade agora. Tente novamente em instantes.";
                 return;
             }
 
+            unavailableGiftIds.add(pendingGift.id);
+            updateGiftCardAvailability(pendingGift.card, true);
             window.open(pendingGift.link, "_blank", "noopener,noreferrer");
 
             closeGiftModal();
