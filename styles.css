@@ -198,8 +198,10 @@ body::after {
     z-index: 1;
     display: grid;
     justify-items: center;
+    align-items: center;
     gap: 18px;
     width: min(920px, 97vw, 88vh);
+    margin: 0 auto;
     border: 0;
     padding: 0;
     background: transparent;
@@ -1695,6 +1697,7 @@ body::after {
 
     .wedding-intro {
         padding: 16px;
+        place-items: center;
     }
 
     .wedding-intro::before,
@@ -1735,10 +1738,16 @@ body::after {
 
     .invitation-stage {
         width: min(520px, 96vw, 80vh);
+        justify-self: center;
+        align-self: center;
+        justify-items: center;
+        margin: 0 auto;
     }
 
     .invitation-envelope {
         width: min(470px, 94vw, 72vh);
+        max-width: calc(100vw - 32px);
+        margin: 0 auto;
     }
 
     .invitation-envelope::before {
