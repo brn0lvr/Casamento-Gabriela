@@ -1767,7 +1767,8 @@ body::after {
         right: 7%;
         bottom: 19%;
         height: 74%;
-        padding: 20px 18px;
+        padding: 18px 16px;
+        overflow: visible;
     }
 
     .invitation-card::before {
@@ -1775,23 +1776,25 @@ body::after {
     }
 
     .invitation-logo {
-        width: 88px;
+        width: 74px;
         margin-bottom: -8px;
     }
 
     .invitation-overline {
-        font-size: 9px;
-        letter-spacing: 0.16em;
+        font-size: 8px;
+        letter-spacing: 0.12em;
     }
 
     .invitation-names {
-        font-size: 34px;
-        max-width: 260px;
+        max-width: 220px;
+        font-size: 29px;
+        line-height: 1.05;
+        overflow-wrap: break-word;
     }
 
     .invitation-date {
-        font-size: 11px;
-        letter-spacing: 0.04em;
+        font-size: 10px;
+        letter-spacing: 0.02em;
     }
 
     .envelope-seal {
