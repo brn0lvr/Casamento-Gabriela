@@ -245,9 +245,7 @@ window.WEDDING_GUESTS = [
         "searchNames":  [
                             "Marlene Miranda",
                             "Henry José",
-                            "Luana Miranda",
-                            "Geovane Miranda",
-                            "Tamires Cristina"
+                            "Luana Miranda"
                         ],
         "members":  [
                         {
@@ -267,20 +265,6 @@ window.WEDDING_GUESTS = [
                         {
                             "id":  "6-luana-miranda-3",
                             "name":  "Luana Miranda",
-                            "expectativa":  true,
-                            "buffet":  true,
-                            "bebida":  false
-                        },
-                        {
-                            "id":  "6-geovane-miranda-4",
-                            "name":  "Geovane Miranda",
-                            "expectativa":  true,
-                            "buffet":  true,
-                            "bebida":  false
-                        },
-                        {
-                            "id":  "6-tamires-cristina-5",
-                            "name":  "Tamires Cristina",
                             "expectativa":  true,
                             "buffet":  true,
                             "bebida":  false
@@ -1641,6 +1625,30 @@ window.WEDDING_GUESTS = [
                         {
                             "id":  "54-daniela-4",
                             "name":  "Daniela",
+                            "expectativa":  true,
+                            "buffet":  true,
+                            "bebida":  false
+                        }
+                    ]
+    },
+    {
+        "id":  "familia-55",
+        "familyName":  "Família 55 - Geovane Miranda",
+        "searchNames":  [
+                            "Geovane Miranda",
+                            "Tamires Cristina"
+                        ],
+        "members":  [
+                        {
+                            "id":  "55-geovane-miranda-1",
+                            "name":  "Geovane Miranda",
+                            "expectativa":  true,
+                            "buffet":  true,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "55-tamires-cristina-2",
+                            "name":  "Tamires Cristina",
                             "expectativa":  true,
                             "buffet":  true,
                             "bebida":  false

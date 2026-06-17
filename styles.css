@@ -1260,6 +1260,17 @@ body::after {
     font-size: 14px;
 }
 
+.family-instruction {
+    margin: 0;
+    padding: 12px 14px;
+    border: 1px solid rgba(217, 56, 134, 0.18);
+    border-radius: 8px;
+    background: rgba(217, 56, 134, 0.08);
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+}
+
 .family-members {
     display: grid;
     gap: 10px;
