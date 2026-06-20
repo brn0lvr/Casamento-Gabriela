@@ -8,6 +8,7 @@ function doPost(e) {
     return createJsonOutput_(result);
   }
 
+  const confirmation = normalizeConfirmationPayload_(payload);
   const sheet = getConfirmationsSheet_();
   const headers = getConfirmationHeaders_();
   ensureHeaders_(sheet, headers);
@@ -15,9 +16,9 @@ function doPost(e) {
   const rows = sheet.getDataRange().getValues();
   const familyIdIndex = headers.indexOf("familyId");
   const existingRow = rows.findIndex((row, index) =>
-    index > 0 && row[familyIdIndex] === payload.familyId
+    index > 0 && row[familyIdIndex] === confirmation.familyId
   );
-  const values = headers.map((header) => formatValue_(payload[header]));
+  const values = headers.map((header) => formatValue_(confirmation[header]));
 
   if (existingRow > 0) {
     sheet.getRange(existingRow + 1, 1, 1, values.length).setValues([values]);
@@ -69,6 +70,40 @@ function getConfirmationHeaders_() {
     "confirmedAt",
     "updatedAt"
   ];
+}
+
+function normalizeConfirmationPayload_(payload) {
+  const confirmation = Object.assign({}, payload);
+
+  confirmation.alcoholCount = firstFilledValue_(
+    payload.alcoholCount,
+    payload.alcohol,
+    payload.alcool,
+    payload.bebida,
+    payload.bebidaAlcoolica,
+    payload.beverageCount
+  );
+  confirmation.dietaryRestriction = firstFilledValue_(
+    payload.dietaryRestriction,
+    payload.restricaoAlimentar,
+    payload.restricao,
+    payload.restriction,
+    payload.foodRestriction
+  );
+
+  return confirmation;
+}
+
+function firstFilledValue_() {
+  for (let index = 0; index < arguments.length; index += 1) {
+    const value = arguments[index];
+
+    if (value !== undefined && value !== null && String(value).trim() !== "") {
+      return value;
+    }
+  }
+
+  return "";
 }
 
 function getGiftHeaders_() {

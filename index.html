@@ -1262,7 +1262,9 @@
                         totalConfirmed: record.confirmedMembers.length,
                         phone: record.phone,
                         alcoholCount: record.alcoholCount,
+                        alcool: record.alcoholCount,
                         dietaryRestriction: record.dietaryRestriction,
+                        restricaoAlimentar: record.dietaryRestriction,
                         notes: record.notes,
                         confirmedAt: record.confirmedAt,
                         updatedAt: record.updatedAt
@@ -1479,8 +1481,7 @@
         }
 
         function isGiftTrackingConfigured() {
-            return giftTrackingConfig.formUrl.startsWith("https://") &&
-                !giftTrackingConfig.formUrl.includes("SEU_LINK_DO_FORMS");
+            return Boolean(giftTrackingConfig.appsScriptUrl);
         }
 
         function isGiftPaymentLinkConfigured(link) {
@@ -1494,22 +1495,21 @@
                 return;
             }
 
-            const payload = new URLSearchParams();
-            payload.append(giftTrackingConfig.fields.guestName, data.guestName);
-            payload.append(giftTrackingConfig.fields.guestPhone, data.guestPhone);
-            payload.append(giftTrackingConfig.fields.giftName, data.giftName);
-            payload.append(giftTrackingConfig.fields.giftPrice, data.giftPrice);
-            payload.append(giftTrackingConfig.fields.giftLink, [
-                `ID: ${data.giftId || "sem id"}`,
-                `Link: ${data.giftLink}`,
-                `Mensagem: ${data.giftMessage || "sem mensagem"}`
-            ].join(" | "));
-
-            await fetch(giftTrackingConfig.formUrl, {
+            await fetch(giftTrackingConfig.appsScriptUrl, {
                 method: "POST",
                 mode: "no-cors",
-                headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-                body: payload.toString()
+                headers: { "Content-Type": "text/plain;charset=UTF-8" },
+                body: JSON.stringify({
+                    kind: "gift",
+                    giftId: data.giftId,
+                    giftName: data.giftName,
+                    giftPrice: data.giftPrice,
+                    guestName: data.guestName,
+                    guestPhone: data.guestPhone,
+                    giftMessage: data.giftMessage,
+                    giftLink: data.giftLink,
+                    purchasedAt: new Date().toISOString()
+                })
             });
         }
 
