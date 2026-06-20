@@ -1495,21 +1495,22 @@
                 return;
             }
 
-            await fetch(giftTrackingConfig.appsScriptUrl, {
-                method: "POST",
+            const payload = new URLSearchParams({
+                action: "claimGift",
+                giftId: data.giftId || "",
+                giftName: data.giftName || "",
+                giftPrice: data.giftPrice || "",
+                guestName: data.guestName || "",
+                guestPhone: data.guestPhone || "",
+                giftMessage: data.giftMessage || "",
+                giftLink: data.giftLink || "",
+                purchasedAt: new Date().toISOString()
+            });
+
+            await fetch(`${giftTrackingConfig.appsScriptUrl}?${payload.toString()}`, {
+                method: "GET",
                 mode: "no-cors",
-                headers: { "Content-Type": "text/plain;charset=UTF-8" },
-                body: JSON.stringify({
-                    kind: "gift",
-                    giftId: data.giftId,
-                    giftName: data.giftName,
-                    giftPrice: data.giftPrice,
-                    guestName: data.guestName,
-                    guestPhone: data.guestPhone,
-                    giftMessage: data.giftMessage,
-                    giftLink: data.giftLink,
-                    purchasedAt: new Date().toISOString()
-                })
+                keepalive: true
             });
         }
 

@@ -10,8 +10,7 @@ function doPost(e) {
 
   const confirmation = normalizeConfirmationPayload_(payload);
   const sheet = getConfirmationsSheet_();
-  const headers = getConfirmationHeaders_();
-  ensureHeaders_(sheet, headers);
+  const headers = ensureHeaders_(sheet, getConfirmationHeaders_());
 
   const rows = sheet.getDataRange().getValues();
   const familyIdIndex = headers.indexOf("familyId");
@@ -32,10 +31,14 @@ function doPost(e) {
 function doGet(e) {
   const params = (e && e.parameter) || {};
 
+  if (params.action === "setup") {
+    return createJsonOutput_(setupSheets_(), params.callback);
+  }
+
   if (params.action === "gifts") {
     return createJsonOutput_({
       ok: true,
-      gifts: []
+      gifts: getPurchasedGifts_()
     }, params.callback);
   }
 
@@ -120,19 +123,49 @@ function getGiftHeaders_() {
 }
 
 function ensureHeaders_(sheet, headers) {
-  const firstRow = sheet.getRange(1, 1, 1, headers.length).getValues()[0];
-  const hasHeaders = headers.every((header, index) => firstRow[index] === header);
+  const lastColumn = Math.max(sheet.getLastColumn(), 1);
+  const currentHeaders = sheet.getRange(1, 1, 1, lastColumn).getValues()[0]
+    .map((header) => String(header || "").trim());
+  const hasAnyHeader = currentHeaders.some((header) => header);
 
-  if (!hasHeaders) {
+  if (!hasAnyHeader) {
     sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
     sheet.setFrozenRows(1);
+    return headers.slice();
   }
+
+  const mergedHeaders = currentHeaders.slice();
+
+  headers.forEach((header) => {
+    if (!mergedHeaders.includes(header)) {
+      mergedHeaders.push(header);
+    }
+  });
+
+  if (mergedHeaders.length !== currentHeaders.length) {
+    sheet.getRange(1, 1, 1, mergedHeaders.length).setValues([mergedHeaders]);
+    sheet.setFrozenRows(1);
+  }
+
+  return mergedHeaders;
+}
+
+function setupSheets_() {
+  const confirmationsHeaders = ensureHeaders_(getConfirmationsSheet_(), getConfirmationHeaders_());
+  const giftsHeaders = ensureHeaders_(getGiftsSheet_(), getGiftHeaders_());
+
+  return {
+    ok: true,
+    confirmationsSheet: CONFIRMATIONS_SHEET_NAME,
+    confirmationsHeaders,
+    giftsSheet: GIFTS_SHEET_NAME,
+    giftsHeaders
+  };
 }
 
 function getPurchasedGifts_() {
   const sheet = getGiftsSheet_();
-  const headers = getGiftHeaders_();
-  ensureHeaders_(sheet, headers);
+  const headers = ensureHeaders_(sheet, getGiftHeaders_());
 
   const values = sheet.getDataRange().getValues();
   if (values.length <= 1) {
@@ -158,8 +191,7 @@ function claimGift_(payload) {
 
   try {
     const sheet = getGiftsSheet_();
-    const headers = getGiftHeaders_();
-    ensureHeaders_(sheet, headers);
+    const headers = ensureHeaders_(sheet, getGiftHeaders_());
 
     const record = {
       giftId,
