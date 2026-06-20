@@ -1490,28 +1490,62 @@
                 !link.includes("SEU_LINK_INFINITEPAY");
         }
 
+        function submitHiddenGiftForm(data) {
+            return new Promise((resolve) => {
+                const frameName = `gift-tracking-frame-${Date.now()}`;
+                const iframe = document.createElement("iframe");
+                const form = document.createElement("form");
+                const cleanup = () => {
+                    iframe.removeEventListener("load", finish);
+                    form.remove();
+                    iframe.remove();
+                };
+                const finish = () => {
+                    cleanup();
+                    resolve();
+                };
+                const fields = {
+                    action: "claimGift",
+                    kind: "gift",
+                    giftId: data.giftId || "",
+                    giftName: data.giftName || "",
+                    giftPrice: data.giftPrice || "",
+                    guestName: data.guestName || "",
+                    guestPhone: data.guestPhone || "",
+                    giftMessage: data.giftMessage || "",
+                    giftLink: data.giftLink || "",
+                    purchasedAt: new Date().toISOString()
+                };
+
+                iframe.name = frameName;
+                iframe.style.display = "none";
+                iframe.addEventListener("load", finish, { once: true });
+
+                form.method = "POST";
+                form.action = giftTrackingConfig.appsScriptUrl;
+                form.target = frameName;
+                form.style.display = "none";
+
+                Object.entries(fields).forEach(([name, value]) => {
+                    const input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = name;
+                    input.value = value;
+                    form.appendChild(input);
+                });
+
+                document.body.append(iframe, form);
+                form.submit();
+                window.setTimeout(finish, 2200);
+            });
+        }
+
         async function sendGiftTracking(data) {
             if (!isGiftTrackingConfigured()) {
                 return;
             }
 
-            const payload = new URLSearchParams({
-                action: "claimGift",
-                giftId: data.giftId || "",
-                giftName: data.giftName || "",
-                giftPrice: data.giftPrice || "",
-                guestName: data.guestName || "",
-                guestPhone: data.guestPhone || "",
-                giftMessage: data.giftMessage || "",
-                giftLink: data.giftLink || "",
-                purchasedAt: new Date().toISOString()
-            });
-
-            await fetch(`${giftTrackingConfig.appsScriptUrl}?${payload.toString()}`, {
-                method: "GET",
-                mode: "no-cors",
-                keepalive: true
-            });
+            await submitHiddenGiftForm(data);
         }
 
         function updateGiftCardAvailability(card, unavailable) {
@@ -1648,7 +1682,7 @@
             }
 
             try {
-                await sendGiftTracking({
+                sendGiftTracking({
                     guestName,
                     guestPhone,
                     giftId: pendingGift.id,

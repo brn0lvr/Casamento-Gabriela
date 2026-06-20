@@ -2,8 +2,8 @@ const CONFIRMATIONS_SHEET_NAME = "Confirmacoes";
 const GIFTS_SHEET_NAME = "Presentes";
 
 function doPost(e) {
-  const payload = JSON.parse(e.postData.contents || "{}");
-  if (payload.kind === "gift") {
+  const payload = parseRequestPayload_(e);
+  if (payload.kind === "gift" || payload.action === "claimGift") {
     const result = claimGift_(payload);
     return createJsonOutput_(result);
   }
@@ -47,6 +47,20 @@ function doGet(e) {
   }
 
   return createJsonOutput_({ ok: true }, params.callback);
+}
+
+function parseRequestPayload_(e) {
+  const contents = (e && e.postData && e.postData.contents) || "";
+
+  if (contents) {
+    try {
+      return JSON.parse(contents);
+    } catch (error) {
+      // Formularios HTML chegam como parametros em e.parameter.
+    }
+  }
+
+  return (e && e.parameter) || {};
 }
 
 function getConfirmationsSheet_() {
