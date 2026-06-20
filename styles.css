@@ -1188,6 +1188,30 @@ body::after {
     gap: 8px;
 }
 
+.rsvp-highlight {
+    width: min(720px, 100%);
+    margin: -8px auto 22px;
+    padding: 16px 18px;
+    border: 1px solid rgba(217, 56, 134, 0.28);
+    border-radius: 8px;
+    background: rgba(255, 247, 250, 0.94);
+    box-shadow: 0 12px 28px rgba(217, 56, 134, 0.12);
+    color: var(--ink);
+    text-align: center;
+}
+
+.rsvp-highlight p {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.55;
+}
+
+.rsvp-highlight p + p {
+    margin-top: 4px;
+    color: #d93886;
+}
+
 .guest-result-button {
     width: 100%;
     display: flex;
@@ -1316,6 +1340,12 @@ body::after {
     background: #fff0f5;
 }
 
+.gift-instructions-button {
+    display: block;
+    width: fit-content;
+    text-align: center;
+}
+
 .btn {
     display: inline-block;
     margin-top: 18px;
@@ -1340,6 +1370,20 @@ body::after {
 
 .btn-primary:hover {
     background: #ec407a;
+}
+
+.btn-primary:disabled {
+    background: #c9b5bd;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#presentes .gift-instructions-button {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 28px;
+    text-align: center;
 }
 
 .gift-grid {
@@ -1698,6 +1742,47 @@ body::after {
 .gift-ident-form {
     display: grid;
     gap: 12px;
+}
+
+.gift-instructions-modal .gift-modal-card {
+    width: min(620px, calc(100vw - 28px));
+}
+
+.gift-instructions-text {
+    position: relative;
+    display: grid;
+    gap: 10px;
+    margin: 16px 0 18px;
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+.gift-instructions-text p {
+    margin: 0;
+}
+
+.gift-read-confirmation {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid rgba(217, 56, 134, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.68);
+    color: var(--ink);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.gift-read-confirmation input {
+    width: 18px;
+    height: 18px;
+    accent-color: #ec407a;
+}
+
+.gift-continue-button {
+    width: 100%;
 }
 
 @media (max-width: 900px) {

@@ -34,7 +34,7 @@ function doGet(e) {
   if (params.action === "gifts") {
     return createJsonOutput_({
       ok: true,
-      gifts: getPurchasedGifts_()
+      gifts: []
     }, params.callback);
   }
 
@@ -63,6 +63,8 @@ function getConfirmationHeaders_() {
     "absentMembers",
     "totalConfirmed",
     "phone",
+    "alcoholCount",
+    "dietaryRestriction",
     "notes",
     "confirmedAt",
     "updatedAt"
@@ -123,16 +125,6 @@ function claimGift_(payload) {
     const sheet = getGiftsSheet_();
     const headers = getGiftHeaders_();
     ensureHeaders_(sheet, headers);
-
-    const rows = sheet.getDataRange().getValues();
-    const giftIdIndex = headers.indexOf("giftId");
-    const existingRow = rows.findIndex((row, index) =>
-      index > 0 && row[giftIdIndex] === giftId
-    );
-
-    if (existingRow > 0) {
-      return { ok: true, claimed: false, message: "Presente indisponível" };
-    }
 
     const record = {
       giftId,

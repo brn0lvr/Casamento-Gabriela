@@ -186,7 +186,10 @@
 
     <section id="convite" class="section">
         <h2 class="section-title">Confirmação de Presença</h2>
-        <p class="section-subtitle">Pesquise seu nome e confirme quem da família irá ao casamento.</p>
+        <div class="rsvp-highlight">
+            <p>Pesquise seu nome e confirme quem da família irá ao casamento.</p>
+            <p>Qualquer dúvida entre em contato com os noivos.</p>
+        </div>
         <div class="card invite-wrap">
             <form
                 id="rsvp-form"
@@ -217,6 +220,16 @@
                     </div>
 
                     <div class="field">
+                        <label for="alcool">Quantas pessoas da família consomem bebida alcoólica?</label>
+                        <input id="alcool" type="number" min="0" step="1" inputmode="numeric" placeholder="Informe o número" />
+                    </div>
+
+                    <div class="field">
+                        <label for="restricao-alimentar">Existe alguma restrição alimentar na família?</label>
+                        <textarea id="restricao-alimentar" rows="3" placeholder="Se sim, gentileza informar qual"></textarea>
+                    </div>
+
+                    <div class="field">
                         <label for="observacoes">Observações</label>
                         <textarea id="observacoes" rows="3"></textarea>
                     </div>
@@ -238,7 +251,7 @@
 
     <section id="presentes" class="section">
         <h2 class="section-title">Lista de Presentes</h2>
-        <p class="section-subtitle">Lista dos nossos presentes.</p>
+        <button type="button" id="open-gift-instructions" class="btn btn-secondary gift-instructions-button">Instruções dos presentes</button>
         <div id="presentes-premium" class="gift-category gift-category-premium">
             <h3 class="gift-category-title">Presentes Premium</h3>
             <p class="gift-category-subtitle">Presentes premium.</p>
@@ -297,15 +310,14 @@
                     <div class="gift-price">R$ 2.049,29</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/voOpwkrFVq" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-                <article class="card gift-item is-unavailable" data-gift-unavailable="true">
+                <article class="card gift-item">
                     <figure class="gift-image">
                         <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/G1kK0_1779840160.jpg" alt="Colch&#227;o Box Queen" loading="lazy" />
-                        <span class="gift-unavailable-badge">Indisponível</span>
                     </figure>
                     <h3>Colch&#227;o Box Queen</h3>
                     <p>Para noites de descanso perfeito em nosso novo quarto.</p>
                     <div class="gift-price">R$ 2.432,09</div>
-                    <span class="btn btn-mp" role="button" aria-disabled="true" tabindex="-1" data-unavailable-label="Indisponível temporariamente">Indisponível temporariamente</span>
+                    <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/XQlur57Zvk" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
@@ -946,6 +958,23 @@
             </div>
         </div>
     </section>
+    <div id="gift-instructions-modal" class="gift-modal gift-instructions-modal" aria-hidden="true">
+        <div class="gift-modal-overlay"></div>
+        <div class="gift-modal-card" role="dialog" aria-modal="true" aria-labelledby="gift-instructions-title">
+            <h3 id="gift-instructions-title">Antes de escolher o presente</h3>
+            <div class="gift-instructions-text">
+                <p>Preparamos nossa lista de presentes com muito carinho e ficaremos felizes com a sua escolha.</p>
+                <p>Pedimos, por gentileza, que o preenchimento das informações seja feito apenas em caso de confirmação da compra.</p>
+                <p>Caso prefiram, também será um prazer receber o carinho de vocês por meio de um presente entregue diretamente aos noivos. Para isso, é só entrar em contato conosco.</p>
+                <p>Para maior comodidade no dia da celebração, pedimos, com carinho, que não levem presentes físicos para o casamento.</p>
+            </div>
+            <label class="gift-read-confirmation">
+                <input id="gift-instructions-read" type="checkbox" />
+                <span>Li e entendi as instruções.</span>
+            </label>
+            <button type="button" id="continue-gift-list" class="btn btn-primary gift-continue-button" disabled>Continuar</button>
+        </div>
+    </div>
     <div id="gift-modal" class="gift-modal" aria-hidden="true">
         <div class="gift-modal-overlay" data-close-gift-modal></div>
         <div class="gift-modal-card" role="dialog" aria-modal="true" aria-labelledby="gift-modal-title">
@@ -985,6 +1014,15 @@
 
     <script src="convidados.js" charset="utf-8"></script>
     <script>
+        if ("scrollRestoration" in history) {
+            history.scrollRestoration = "manual";
+        }
+
+        window.scrollTo(0, 0);
+        window.addEventListener("load", () => {
+            window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        });
+
         const weddingIntro = document.getElementById("wedding-intro");
         const invitationStage = weddingIntro?.querySelector(".invitation-stage");
         let weddingIntroOpened = false;
@@ -1006,11 +1044,11 @@
                 weddingIntro.setAttribute("aria-hidden", "true");
                 document.body.style.overflow = "";
                 document.getElementById("inicio")?.focus({ preventScroll: true });
-            }, 3900);
+            }, 4900);
 
             window.setTimeout(() => {
                 weddingIntro.remove();
-            }, 4600);
+            }, 5200);
         }
 
         invitationStage?.addEventListener("click", openWeddingIntro);
@@ -1202,6 +1240,8 @@
                 confirmedMembers,
                 absentMembers,
                 phone: document.getElementById("telefone").value.trim(),
+                alcoholCount: document.getElementById("alcool").value.trim(),
+                dietaryRestriction: document.getElementById("restricao-alimentar").value.trim(),
                 notes: document.getElementById("observacoes").value.trim(),
                 confirmedAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString()
@@ -1221,6 +1261,8 @@
                         absentMembers: record.absentMembers,
                         totalConfirmed: record.confirmedMembers.length,
                         phone: record.phone,
+                        alcoholCount: record.alcoholCount,
+                        dietaryRestriction: record.dietaryRestriction,
                         notes: record.notes,
                         confirmedAt: record.confirmedAt,
                         updatedAt: record.updatedAt
@@ -1233,6 +1275,8 @@
                 `Confirmados: ${record.confirmedMembers.join(", ") || "ninguém"}`,
                 `Não irão: ${record.absentMembers.join(", ") || "ninguém"}`,
                 `Telefone: ${record.phone || "não informado"}`,
+                `Consomem bebida alcoólica: ${record.alcoholCount || "não informado"}`,
+                `Restrição alimentar: ${record.dietaryRestriction || "não informado"}`,
                 `Observações: ${record.notes || "sem observações"}`,
                 `Data: ${record.confirmedAt}`
             ].join(" | ");
@@ -1358,6 +1402,10 @@
         };
 
         const giftModal = document.getElementById("gift-modal");
+        const giftInstructionsModal = document.getElementById("gift-instructions-modal");
+        const giftInstructionsRead = document.getElementById("gift-instructions-read");
+        const openGiftInstructionsButton = document.getElementById("open-gift-instructions");
+        const continueGiftListButton = document.getElementById("continue-gift-list");
         const giftModalSelected = document.getElementById("gift-modal-selected");
         const giftIdentForm = document.getElementById("gift-ident-form");
         const giftFormStatus = document.getElementById("gift-form-status");
@@ -1366,9 +1414,8 @@
         const giftButtons = giftCards
             .map((card) => card.querySelector(".btn-mp"))
             .filter(Boolean);
-        const unavailableGiftIds = new Set();
-
         let pendingGift = null;
+        let giftInstructionsShown = false;
 
         function slugifyGiftId(value) {
             return normalizeSearchText(value)
@@ -1391,12 +1438,6 @@
             });
         }
 
-        function isGiftAvailabilityConfigured() {
-            return giftTrackingConfig.appsScriptUrl &&
-                giftTrackingConfig.appsScriptUrl.startsWith("https://") &&
-                !giftTrackingConfig.appsScriptUrl.includes("SEU_LINK");
-        }
-
         function openGiftModal(giftData) {
             pendingGift = giftData;
             giftModalSelected.textContent = `${giftData.name} • ${giftData.price}`;
@@ -1405,6 +1446,27 @@
             giftModal.setAttribute("aria-hidden", "false");
             document.body.style.overflow = "hidden";
             document.getElementById("gift-guest-name").focus();
+        }
+
+        function openGiftInstructionsModal() {
+            if (!giftInstructionsModal) {
+                return;
+            }
+
+            giftInstructionsModal.classList.add("open");
+            giftInstructionsModal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            giftInstructionsRead?.focus();
+        }
+
+        function closeGiftInstructionsModal() {
+            if (!giftInstructionsModal) {
+                return;
+            }
+
+            giftInstructionsModal.classList.remove("open");
+            giftInstructionsModal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
         }
 
         function closeGiftModal() {
@@ -1451,47 +1513,6 @@
             });
         }
 
-        function requestGiftEndpoint(params) {
-            if (!isGiftAvailabilityConfigured()) {
-                return Promise.resolve(null);
-            }
-
-            return new Promise((resolve, reject) => {
-                const callbackName = `giftCallback_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-                const url = new URL(giftTrackingConfig.appsScriptUrl);
-                const script = document.createElement("script");
-                const timeout = window.setTimeout(() => {
-                    cleanup();
-                    reject(new Error("Tempo esgotado ao consultar presentes."));
-                }, 15000);
-
-                function cleanup() {
-                    window.clearTimeout(timeout);
-                    delete window[callbackName];
-                    script.remove();
-                }
-
-                Object.entries(params).forEach(([key, value]) => {
-                    if (value !== undefined && value !== null) {
-                        url.searchParams.set(key, value);
-                    }
-                });
-                url.searchParams.set("callback", callbackName);
-
-                window[callbackName] = (data) => {
-                    cleanup();
-                    resolve(data);
-                };
-
-                script.onerror = () => {
-                    cleanup();
-                    reject(new Error("Não foi possível consultar presentes."));
-                };
-                script.src = url.toString();
-                document.body.appendChild(script);
-            });
-        }
-
         function updateGiftCardAvailability(card, unavailable) {
             const button = card.querySelector(".btn-mp");
             const giftId = card.dataset.giftId;
@@ -1500,11 +1521,11 @@
                 return;
             }
 
-            const shouldBeUnavailable = unavailable || card.dataset.giftUnavailable === "true";
-
             if (!button.dataset.availableLabel) {
                 button.dataset.availableLabel = button.textContent;
             }
+
+            const shouldBeUnavailable = Boolean(unavailable);
 
             card.classList.toggle("is-unavailable", shouldBeUnavailable);
             card.dataset.giftUnavailable = shouldBeUnavailable ? "true" : "false";
@@ -1523,40 +1544,74 @@
             }
         }
 
-        function applyPurchasedGifts(gifts) {
-            const purchasedIds = new Set((gifts || [])
-                .map((gift) => typeof gift === "string" ? gift : gift.giftId)
-                .filter(Boolean));
-
-            purchasedIds.forEach((giftId) => unavailableGiftIds.add(giftId));
-            giftCards.forEach((card) => {
-                updateGiftCardAvailability(card, unavailableGiftIds.has(card.dataset.giftId));
-            });
-        }
-
-        async function loadGiftAvailability() {
-            try {
-                const response = await requestGiftEndpoint({ action: "gifts" });
-                if (response?.ok) {
-                    applyPurchasedGifts(response.gifts);
-                }
-            } catch {
-                // Se o Apps Script ainda nao foi publicado, os presentes continuam visiveis.
-            }
-        }
-
         assignGiftIds();
-        loadGiftAvailability();
+        giftCards.forEach((card) => updateGiftCardAvailability(card, false));
+
+        giftInstructionsRead?.addEventListener("change", () => {
+            continueGiftListButton.disabled = !giftInstructionsRead.checked;
+        });
+
+        continueGiftListButton?.addEventListener("click", closeGiftInstructionsModal);
+
+        openGiftInstructionsButton?.addEventListener("click", () => {
+            openGiftInstructionsModal();
+        });
+
+        function showGiftInstructionsOnce() {
+            if (giftInstructionsShown) {
+                return;
+            }
+
+            giftInstructionsShown = true;
+            openGiftInstructionsModal();
+        }
+
+        function isGiftInstructionsButtonVisible() {
+            if (!openGiftInstructionsButton) {
+                return false;
+            }
+
+            const rect = openGiftInstructionsButton.getBoundingClientRect();
+            return rect.top < window.innerHeight * 0.82 && rect.bottom > 0;
+        }
+
+        function watchGiftSectionInstructions() {
+            if (!openGiftInstructionsButton || giftInstructionsShown) {
+                return;
+            }
+
+            if (isGiftInstructionsButtonVisible()) {
+                showGiftInstructionsOnce();
+                return;
+            }
+
+            if ("IntersectionObserver" in window) {
+                const giftSectionObserver = new IntersectionObserver((entries) => {
+                    const reachedGiftInstructions = entries.some((entry) => entry.isIntersecting);
+
+                    if (reachedGiftInstructions) {
+                        showGiftInstructionsOnce();
+                        giftSectionObserver.disconnect();
+                    }
+                }, { threshold: 0.6 });
+
+                giftSectionObserver.observe(openGiftInstructionsButton);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (isGiftInstructionsButtonVisible()) {
+                    showGiftInstructionsOnce();
+                }
+            }, { passive: true });
+        }
+
+        window.setTimeout(watchGiftSectionInstructions, 5200);
 
         giftButtons.forEach((button) => {
             button.addEventListener("click", (event) => {
                 event.preventDefault();
 
                 const card = button.closest(".gift-item");
-                if (card?.dataset.giftUnavailable === "true") {
-                    return;
-                }
-
                 const name = card?.querySelector("h3")?.textContent?.trim() || "Presente";
                 const price = card?.querySelector(".gift-price")?.textContent?.trim() || "";
                 const link = button.getAttribute("href") || "";
@@ -1591,32 +1646,7 @@
                 return;
             }
 
-            if (unavailableGiftIds.has(pendingGift.id)) {
-                updateGiftCardAvailability(pendingGift.card, true);
-                giftFormStatus.textContent = "Este presente acabou de ficar indisponível.";
-                return;
-            }
-
             try {
-                const claimResponse = await requestGiftEndpoint({
-                    action: "claimGift",
-                    giftId: pendingGift.id,
-                    giftName: pendingGift.name,
-                    giftPrice: pendingGift.price,
-                    giftLink: pendingGift.link,
-                    guestName,
-                    guestPhone,
-                    giftMessage,
-                    purchasedAt: new Date().toISOString()
-                });
-
-                if (claimResponse && claimResponse.claimed === false) {
-                    unavailableGiftIds.add(pendingGift.id);
-                    updateGiftCardAvailability(pendingGift.card, true);
-                    giftFormStatus.textContent = "Este presente acabou de ficar indisponível.";
-                    return;
-                }
-
                 await sendGiftTracking({
                     guestName,
                     guestPhone,
@@ -1627,12 +1657,9 @@
                     giftMessage
                 });
             } catch {
-                giftFormStatus.textContent = "Não consegui verificar a disponibilidade agora. Tente novamente em instantes.";
-                return;
+                // O pagamento continua disponivel mesmo se o registro falhar.
             }
 
-            unavailableGiftIds.add(pendingGift.id);
-            updateGiftCardAvailability(pendingGift.card, true);
             window.open(pendingGift.link, "_blank", "noopener,noreferrer");
 
             closeGiftModal();
