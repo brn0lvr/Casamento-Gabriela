@@ -46,6 +46,11 @@ function doGet(e) {
     return createJsonOutput_(claimGift_(params), params.callback);
   }
 
+  if (params.action === "claimGiftRedirect") {
+    const result = claimGift_(params);
+    return createRedirectOutput_(params.redirectUrl || params.giftLink, result);
+  }
+
   return createJsonOutput_({ ok: true }, params.callback);
 }
 
@@ -238,6 +243,37 @@ function createJsonOutput_(data, callback) {
   return ContentService
     .createTextOutput(json)
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+function createRedirectOutput_(url, result) {
+  const safeUrl = String(url || "");
+  const html = `
+<!doctype html>
+<html>
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="0; url=${escapeHtml_(safeUrl)}">
+  </head>
+  <body>
+    <script>
+      window.top.location.href = ${JSON.stringify(safeUrl)};
+    </script>
+    <p>Redirecionando para o pagamento...</p>
+  </body>
+</html>`;
+
+  return HtmlService
+    .createHtmlOutput(html)
+    .setTitle(result && result.ok ? "Presente registrado" : "Redirecionando");
+}
+
+function escapeHtml_(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 function formatValue_(value) {

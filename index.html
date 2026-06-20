@@ -1490,62 +1490,25 @@
                 !link.includes("SEU_LINK_INFINITEPAY");
         }
 
-        function submitHiddenGiftForm(data) {
-            return new Promise((resolve) => {
-                const frameName = `gift-tracking-frame-${Date.now()}`;
-                const iframe = document.createElement("iframe");
-                const form = document.createElement("form");
-                const cleanup = () => {
-                    iframe.removeEventListener("load", finish);
-                    form.remove();
-                    iframe.remove();
-                };
-                const finish = () => {
-                    cleanup();
-                    resolve();
-                };
-                const fields = {
-                    action: "claimGift",
-                    kind: "gift",
-                    giftId: data.giftId || "",
-                    giftName: data.giftName || "",
-                    giftPrice: data.giftPrice || "",
-                    guestName: data.guestName || "",
-                    guestPhone: data.guestPhone || "",
-                    giftMessage: data.giftMessage || "",
-                    giftLink: data.giftLink || "",
-                    purchasedAt: new Date().toISOString()
-                };
-
-                iframe.name = frameName;
-                iframe.style.display = "none";
-                iframe.addEventListener("load", finish, { once: true });
-
-                form.method = "POST";
-                form.action = giftTrackingConfig.appsScriptUrl;
-                form.target = frameName;
-                form.style.display = "none";
-
-                Object.entries(fields).forEach(([name, value]) => {
-                    const input = document.createElement("input");
-                    input.type = "hidden";
-                    input.name = name;
-                    input.value = value;
-                    form.appendChild(input);
-                });
-
-                document.body.append(iframe, form);
-                form.submit();
-                window.setTimeout(finish, 2200);
-            });
-        }
-
-        async function sendGiftTracking(data) {
+        function buildGiftTrackingRedirectUrl(data) {
             if (!isGiftTrackingConfigured()) {
-                return;
+                return data.giftLink;
             }
 
-            await submitHiddenGiftForm(data);
+            const payload = new URLSearchParams({
+                action: "claimGiftRedirect",
+                giftId: data.giftId || "",
+                giftName: data.giftName || "",
+                giftPrice: data.giftPrice || "",
+                guestName: data.guestName || "",
+                guestPhone: data.guestPhone || "",
+                giftMessage: data.giftMessage || "",
+                giftLink: data.giftLink || "",
+                redirectUrl: data.giftLink || "",
+                purchasedAt: new Date().toISOString()
+            });
+
+            return `${giftTrackingConfig.appsScriptUrl}?${payload.toString()}`;
         }
 
         function updateGiftCardAvailability(card, unavailable) {
@@ -1681,21 +1644,17 @@
                 return;
             }
 
-            try {
-                sendGiftTracking({
-                    guestName,
-                    guestPhone,
-                    giftId: pendingGift.id,
-                    giftName: pendingGift.name,
-                    giftPrice: pendingGift.price,
-                    giftLink: pendingGift.link,
-                    giftMessage
-                });
-            } catch {
-                // O pagamento continua disponivel mesmo se o registro falhar.
-            }
+            const paymentUrl = buildGiftTrackingRedirectUrl({
+                guestName,
+                guestPhone,
+                giftId: pendingGift.id,
+                giftName: pendingGift.name,
+                giftPrice: pendingGift.price,
+                giftLink: pendingGift.link,
+                giftMessage
+            });
 
-            window.open(pendingGift.link, "_blank", "noopener,noreferrer");
+            window.open(paymentUrl, "_blank", "noopener,noreferrer");
 
             closeGiftModal();
         }
