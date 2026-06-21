@@ -1480,35 +1480,68 @@
             pendingGift = null;
         }
 
-        function isGiftTrackingConfigured() {
-            return Boolean(giftTrackingConfig.appsScriptUrl);
-        }
-
         function isGiftPaymentLinkConfigured(link) {
             return link &&
                 !link.includes("SEU_LINK_DE_PAGAMENTO") &&
                 !link.includes("SEU_LINK_INFINITEPAY");
         }
 
-        function buildGiftTrackingRedirectUrl(data) {
-            if (!isGiftTrackingConfigured()) {
-                return data.giftLink;
+        function sendGiftTracking(data) {
+            const purchasedAt = new Date().toISOString();
+
+            if (giftTrackingConfig.appsScriptUrl) {
+                fetch(giftTrackingConfig.appsScriptUrl, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "text/plain;charset=UTF-8" },
+                    body: JSON.stringify({
+                        kind: "gift",
+                        action: "claimGift",
+                        giftId: data.giftId || "",
+                        giftName: data.giftName || "",
+                        giftPrice: data.giftPrice || "",
+                        guestName: data.guestName || "",
+                        guestPhone: data.guestPhone || "",
+                        giftMessage: data.giftMessage || "",
+                        giftLink: data.giftLink || "",
+                        purchasedAt
+                    })
+                }).catch(() => {});
             }
 
-            const payload = new URLSearchParams({
-                action: "claimGiftRedirect",
-                giftId: data.giftId || "",
-                giftName: data.giftName || "",
-                giftPrice: data.giftPrice || "",
-                guestName: data.guestName || "",
-                guestPhone: data.guestPhone || "",
-                giftMessage: data.giftMessage || "",
-                giftLink: data.giftLink || "",
-                redirectUrl: data.giftLink || "",
-                purchasedAt: new Date().toISOString()
-            });
+            if (!giftTrackingConfig.formUrl) {
+                return;
+            }
 
-            return `${giftTrackingConfig.appsScriptUrl}?${payload.toString()}`;
+            const fields = giftTrackingConfig.fields;
+            const payload = new URLSearchParams();
+
+            if (fields.guestName) {
+                payload.append(fields.guestName, data.guestName || "");
+            }
+
+            if (fields.guestPhone) {
+                payload.append(fields.guestPhone, data.guestPhone || "");
+            }
+
+            if (fields.giftName) {
+                payload.append(fields.giftName, data.giftName || "");
+            }
+
+            if (fields.giftPrice) {
+                payload.append(fields.giftPrice, data.giftPrice || "");
+            }
+
+            if (fields.giftLink) {
+                payload.append(fields.giftLink, data.giftLink || "");
+            }
+
+            fetch(giftTrackingConfig.formUrl, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+                body: payload.toString()
+            }).catch(() => {});
         }
 
         function updateGiftCardAvailability(card, unavailable) {
@@ -1644,7 +1677,7 @@
                 return;
             }
 
-            const paymentUrl = buildGiftTrackingRedirectUrl({
+            const giftTrackingData = {
                 guestName,
                 guestPhone,
                 giftId: pendingGift.id,
@@ -1652,9 +1685,10 @@
                 giftPrice: pendingGift.price,
                 giftLink: pendingGift.link,
                 giftMessage
-            });
+            };
 
-            window.open(paymentUrl, "_blank", "noopener,noreferrer");
+            sendGiftTracking(giftTrackingData);
+            window.open(pendingGift.link, "_blank", "noopener,noreferrer");
 
             closeGiftModal();
         }
