@@ -1091,7 +1091,7 @@
         const guestFamilies = Array.isArray(window.WEDDING_GUESTS) ? window.WEDDING_GUESTS : [];
         const confirmationsStorageKey = "gabriela-mateus-confirmacoes";
         const rsvpTrackingConfig = {
-            appsScriptUrl: "https://script.google.com/macros/s/AKfycbzqASb_Fk-3u__PvfNuOGmDFgCn6MfyAHh1apcSLCw/exec",
+            appsScriptUrl: "https://script.google.com/macros/s/AKfycbyx1JMgbP9-l0BtrzAo45HVqp-DenFq-6BQdM44F0cVC6-IATrRANNw-LRlg1XqfhyM/exec",
             formUrl: rsvpForm.action,
             fields: {
                 familyName: "entry.1819394826",
@@ -1248,31 +1248,33 @@
             };
         }
 
-        async function sendRsvpTracking(record) {
-            if (rsvpTrackingConfig.appsScriptUrl) {
-                await fetch(rsvpTrackingConfig.appsScriptUrl, {
-                    method: "POST",
-                    mode: "no-cors",
-                    headers: { "Content-Type": "text/plain;charset=UTF-8" },
-                    body: JSON.stringify({
-                        familyId: record.familyId,
-                        familyName: record.familyName,
-                        confirmedMembers: record.confirmedMembers,
-                        absentMembers: record.absentMembers,
-                        totalConfirmed: record.confirmedMembers.length,
-                        phone: record.phone,
-                        alcoholCount: record.alcoholCount,
-                        alcool: record.alcoholCount,
-                        dietaryRestriction: record.dietaryRestriction,
-                        restricaoAlimentar: record.dietaryRestriction,
-                        notes: record.notes,
-                        confirmedAt: record.confirmedAt,
-                        updatedAt: record.updatedAt
-                    })
-                });
-                return;
-            }
+        function postFormData(url, payload) {
+            return fetch(url, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+                body: payload.toString()
+            });
+        }
 
+        function buildUrlWithParams(url, data) {
+            const targetUrl = new URL(url);
+
+            Object.entries(data).forEach(([key, value]) => {
+                if (value !== undefined && value !== null && value !== "") {
+                    targetUrl.searchParams.set(key, value);
+                }
+            });
+
+            return targetUrl.toString();
+        }
+
+        function buildRsvpFormPayload(record) {
+            const notes = [
+                record.notes,
+                record.alcoholCount ? `Consomem bebida alcoólica: ${record.alcoholCount}` : "",
+                record.dietaryRestriction ? `Restrição alimentar: ${record.dietaryRestriction}` : ""
+            ].filter(Boolean).join(" | ");
             const details = [
                 `Confirmados: ${record.confirmedMembers.join(", ") || "ninguém"}`,
                 `Não irão: ${record.absentMembers.join(", ") || "ninguém"}`,
@@ -1306,19 +1308,52 @@
             }
 
             if (fields.notes) {
-                payload.append(fields.notes, record.notes);
+                payload.append(fields.notes, notes);
             }
 
             if (fields.confirmedAt) {
                 payload.append(fields.confirmedAt, record.confirmedAt);
             }
 
-            await fetch(rsvpTrackingConfig.formUrl, {
-                method: "POST",
-                mode: "no-cors",
-                headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-                body: payload.toString()
-            });
+            return payload;
+        }
+
+        async function sendRsvpTracking(record) {
+            const requests = [];
+
+            if (rsvpTrackingConfig.appsScriptUrl) {
+                requests.push(fetch(rsvpTrackingConfig.appsScriptUrl, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "text/plain;charset=UTF-8" },
+                    body: JSON.stringify({
+                        familyId: record.familyId,
+                        familyName: record.familyName,
+                        confirmedMembers: record.confirmedMembers,
+                        absentMembers: record.absentMembers,
+                        totalConfirmed: record.confirmedMembers.length,
+                        phone: record.phone,
+                        alcoholCount: record.alcoholCount,
+                        alcool: record.alcoholCount,
+                        dietaryRestriction: record.dietaryRestriction,
+                        restricaoAlimentar: record.dietaryRestriction,
+                        notes: record.notes,
+                        confirmedAt: record.confirmedAt,
+                        updatedAt: record.updatedAt
+                    })
+                }));
+            }
+
+            if (rsvpTrackingConfig.formUrl) {
+                requests.push(postFormData(rsvpTrackingConfig.formUrl, buildRsvpFormPayload(record)));
+            }
+
+            const results = await Promise.allSettled(requests);
+            const hasSuccessfulRequest = results.some((result) => result.status === "fulfilled");
+
+            if (!hasSuccessfulRequest) {
+                throw new Error("Nao foi possivel enviar a confirmacao.");
+            }
         }
 
         function saveConfirmation(record) {
@@ -1389,7 +1424,7 @@
             updateConfirmationsCount();
         }
 
-        downloadConfirmationsButton.addEventListener("click", downloadConfirmations);
+        downloadConfirmationsButton?.addEventListener("click", downloadConfirmations);
 
         const giftTrackingConfig = {
             appsScriptUrl: rsvpTrackingConfig.appsScriptUrl,
@@ -1486,6 +1521,55 @@
                 !link.includes("SEU_LINK_INFINITEPAY");
         }
 
+        function buildGiftFormPayload(data) {
+            const fields = giftTrackingConfig.fields;
+            const payload = new URLSearchParams();
+
+            if (fields.guestName) {
+                payload.append(fields.guestName, data.guestName || "");
+            }
+
+            if (fields.guestPhone) {
+                payload.append(fields.guestPhone, data.guestPhone || "");
+            }
+
+            if (fields.giftName) {
+                payload.append(fields.giftName, [
+                    data.giftName || "",
+                    data.giftMessage ? `Mensagem: ${data.giftMessage}` : ""
+                ].filter(Boolean).join(" | "));
+            }
+
+            if (fields.giftPrice) {
+                payload.append(fields.giftPrice, data.giftPrice || "");
+            }
+
+            if (fields.giftLink) {
+                payload.append(fields.giftLink, data.giftLink || "");
+            }
+
+            return payload;
+        }
+
+        function getGiftTrackingRedirectUrl(data) {
+            if (!giftTrackingConfig.appsScriptUrl) {
+                return "";
+            }
+
+            return buildUrlWithParams(giftTrackingConfig.appsScriptUrl, {
+                action: "claimGiftRedirect",
+                giftId: data.giftId || "",
+                giftName: data.giftName || "",
+                giftPrice: data.giftPrice || "",
+                guestName: data.guestName || "",
+                guestPhone: data.guestPhone || "",
+                giftMessage: data.giftMessage || "",
+                giftLink: data.giftLink || "",
+                redirectUrl: data.giftLink || "",
+                purchasedAt: new Date().toISOString()
+            });
+        }
+
         function sendGiftTracking(data) {
             const purchasedAt = new Date().toISOString();
 
@@ -1513,35 +1597,7 @@
                 return;
             }
 
-            const fields = giftTrackingConfig.fields;
-            const payload = new URLSearchParams();
-
-            if (fields.guestName) {
-                payload.append(fields.guestName, data.guestName || "");
-            }
-
-            if (fields.guestPhone) {
-                payload.append(fields.guestPhone, data.guestPhone || "");
-            }
-
-            if (fields.giftName) {
-                payload.append(fields.giftName, data.giftName || "");
-            }
-
-            if (fields.giftPrice) {
-                payload.append(fields.giftPrice, data.giftPrice || "");
-            }
-
-            if (fields.giftLink) {
-                payload.append(fields.giftLink, data.giftLink || "");
-            }
-
-            fetch(giftTrackingConfig.formUrl, {
-                method: "POST",
-                mode: "no-cors",
-                headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-                body: payload.toString()
-            }).catch(() => {});
+            postFormData(giftTrackingConfig.formUrl, buildGiftFormPayload(data)).catch(() => {});
         }
 
         function updateGiftCardAvailability(card, unavailable) {
@@ -1688,7 +1744,7 @@
             };
 
             sendGiftTracking(giftTrackingData);
-            window.open(pendingGift.link, "_blank", "noopener,noreferrer");
+            window.open(getGiftTrackingRedirectUrl(giftTrackingData) || pendingGift.link, "_blank", "noopener,noreferrer");
 
             closeGiftModal();
         }
