@@ -1290,18 +1290,6 @@
             });
         }
 
-        function buildUrlWithParams(url, data) {
-            const targetUrl = new URL(url);
-
-            Object.entries(data).forEach(([key, value]) => {
-                if (value !== undefined && value !== null && value !== "") {
-                    targetUrl.searchParams.set(key, value);
-                }
-            });
-
-            return targetUrl.toString();
-        }
-
         function buildRsvpFormPayload(record) {
             const notes = [
                 record.notes,
@@ -1579,29 +1567,10 @@
             return payload;
         }
 
-        function getGiftTrackingRedirectUrl(data) {
-            if (!giftTrackingConfig.appsScriptUrl) {
-                return "";
-            }
-
-            return buildUrlWithParams(giftTrackingConfig.appsScriptUrl, {
-                action: "claimGiftRedirect",
-                giftId: data.giftId || "",
-                giftName: data.giftName || "",
-                giftPrice: data.giftPrice || "",
-                guestName: data.guestName || "",
-                guestPhone: data.guestPhone || "",
-                giftMessage: data.giftMessage || "",
-                giftLink: data.giftLink || "",
-                redirectUrl: data.giftLink || "",
-                purchasedAt: new Date().toISOString()
-            });
-        }
-
-        function sendGiftTracking(data, options = {}) {
+        function sendGiftTracking(data) {
             const purchasedAt = new Date().toISOString();
 
-            if (giftTrackingConfig.appsScriptUrl && !options.skipAppsScript) {
+            if (giftTrackingConfig.appsScriptUrl) {
                 postHiddenForm(giftTrackingConfig.appsScriptUrl, {
                         kind: "gift",
                         action: "claimGift",
@@ -1766,10 +1735,8 @@
                 giftMessage
             };
 
-            const trackingRedirectUrl = getGiftTrackingRedirectUrl(giftTrackingData);
-
-            sendGiftTracking(giftTrackingData, { skipAppsScript: Boolean(trackingRedirectUrl) });
-            window.open(trackingRedirectUrl || pendingGift.link, "_blank", "noopener,noreferrer");
+            sendGiftTracking(giftTrackingData);
+            window.open(pendingGift.link, "_blank", "noopener,noreferrer");
 
             closeGiftModal();
         }
