@@ -647,7 +647,8 @@ window.WEDDING_GUESTS = [
                             "Sergio",
                             "Rafael",
                             "Stefanni Rafaela",
-                            "Diego Ornelas"
+                            "Diego Ornelas",
+                            "Vitor"
                         ],
         "members":  [
                         {
@@ -684,6 +685,13 @@ window.WEDDING_GUESTS = [
                             "expectativa":  true,
                             "buffet":  true,
                             "bebida":  true
+                        },
+                        {
+                            "id":  "19-vitor-6",
+                            "name":  "Vitor",
+                            "expectativa":  true,
+                            "buffet":  true,
+                            "bebida":  false
                         }
                     ]
     },
