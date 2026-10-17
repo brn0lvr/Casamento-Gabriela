@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8" />
@@ -24,7 +24,7 @@
                     <img src="Images/logo.png" alt="" class="invitation-logo" />
                     <span class="invitation-overline">Vamos casar!</span>
                     <span class="invitation-names">Gabriela <span>&amp;</span> Mateus</span>
-                    <span class="invitation-date">12 de Dezembro de 2026</span>
+                    <span class="invitation-date">12 de dezembro de 2026</span>
                 </span>
                 <span class="envelope-back"></span>
                 <span class="envelope-flap"></span>
@@ -42,7 +42,7 @@
             </div>
             <nav class="menu">
                 <a href="#inicio">Início</a>
-                <a href="#evento">Local e Horário</a>
+                <a href="#evento">Local e horário</a>
                 <a href="#convite">Confirmação</a>
                 <div class="menu-item-dropdown">
                     <a href="#presentes">Presentes</a>
@@ -69,6 +69,9 @@
     </header>
 
     <main id="inicio" class="hero">
+        <video class="hero-video" autoplay muted loop playsinline poster="Images/foto-casal.jpg" aria-hidden="true">
+            <source src="Images/video-casal.mp4" type="video/mp4" />
+        </video>
         <section class="content">
             <div class="icon">♥</div>
             <p class="overline">Vamos casar!</p>
@@ -78,7 +81,7 @@
             <div class="ampersand">&</div>
             <h1 class="names">Mateus</h1>
 
-            <p class="date">12 de Dezembro de 2026</p>
+            <p class="date">12 de dezembro de 2026</p>
 
             <div class="countdown">
                 <div class="countdown-card">
@@ -102,12 +105,12 @@
     </main>
 
     <section id="evento" class="section">
-        <h2 class="section-title">Local e Horário</h2>
-        <p class="section-subtitle">Todas as informações para você se programar e celebrar esse dia especial com a gente.</p>
+        <h2 class="section-title">Local e horário</h2>
+        <p class="section-subtitle">Todas as informações para você se programar e celebrar esse dia especial conosco.</p>
         <div class="card event-grid">
             <article class="event-item">
                 <h3>Cerimônia</h3>
-                <p>Paróquia São Pedro Apóstolo<br />R. das Crianças, 235 - Sumaré - SP<br />12 de dezembro de 2026, às 16h00</p>
+                <p>Paróquia São Pedro Apóstolo<br />R. das Crianças, 235 - Sumaré - SP<br />12 de dezembro de 2026, às 16h</p>
                 <a class="btn-instagram" href="https://www.instagram.com/saopedroapostolosumare?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Paróquia São Pedro Apóstolo">
                     <span class="instagram-icon" aria-hidden="true"></span>
                     @saopedroapostolosumare
@@ -147,7 +150,7 @@
         <div class="mobile-event-list">
             <article class="card event-item">
                 <h3>Cerimônia</h3>
-                <p>Paróquia São Pedro Apóstolo<br />12 de dezembro de 2026, às 16h00<br />R. das Crianças, 235 - Sumaré - SP</p>
+                <p>Paróquia São Pedro Apóstolo<br />12 de dezembro de 2026, às 16h<br />R. das Crianças, 235 - Sumaré - SP</p>
                 <a class="btn-instagram" href="https://www.instagram.com/saopedroapostolosumare?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Paróquia São Pedro Apóstolo">
                     <span class="instagram-icon" aria-hidden="true"></span>
                     @saopedroapostolosumare
@@ -185,10 +188,10 @@
     </section>
 
     <section id="convite" class="section">
-        <h2 class="section-title">Confirmação de Presença</h2>
+        <h2 class="section-title">Confirmação de presença</h2>
         <div class="rsvp-highlight">
             <p>Pesquise seu nome e confirme quem da família irá ao casamento.</p>
-            <p>Qualquer dúvida entre em contato com os noivos.</p>
+            <p>Em caso de dúvida, entre em contato com os noivos.</p>
         </div>
         <div class="card invite-wrap">
             <form
@@ -210,7 +213,7 @@
                         <p id="family-count"></p>
                     </div>
 
-                    <p class="family-instruction">Marque abaixo somente os membros da família que irão comparecer ao casamento.</p>
+                    <p class="family-instruction">Marque apenas os familiares que comparecerão ao casamento.</p>
 
                     <div id="family-members" class="family-members"></div>
 
@@ -226,7 +229,7 @@
 
                     <div class="field">
                         <label for="restricao-alimentar">Existe alguma restrição alimentar na família?</label>
-                        <textarea id="restricao-alimentar" rows="3" placeholder="Se sim, gentileza informar qual"></textarea>
+                        <textarea id="restricao-alimentar" rows="3" placeholder="Se sim, informe qual."></textarea>
                     </div>
 
                     <div class="field">
@@ -254,56 +257,56 @@
         <button type="button" id="open-gift-instructions" class="btn btn-secondary gift-instructions-button">Instruções dos presentes</button>
         <div id="presentes-premium" class="gift-category gift-category-premium">
             <h3 class="gift-category-title">Presentes Premium</h3>
-            <p class="gift-category-subtitle">Presentes premium.</p>
+            <p class="gift-category-subtitle">Presentes especiais para contribuir com o nosso futuro.</p>
             <div class="gift-grid">
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/casal_relaxando.jpg" alt="Ajuda para a aposentadoria dos noivos" loading="lazy" />
+                        <img src="Images/presentes/presente-001.jpg" alt="Ajuda para a aposentadoria dos noivos" loading="lazy" />
                     </figure>
                     <h3>Ajuda para a aposentadoria dos noivos</h3>
-                    <p>Contribua para nosso futuro financeiro e segurança.</p>
+                    <p>Contribua para o nosso futuro financeiro e para a nossa segurança.</p>
                     <div class="gift-price">R$ 3.375,47</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/IlS4BNTkwG" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item" data-gift-id="ajuda-mobiliar-casa-1">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/casa_mobiliada.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
+                        <img src="Images/presentes/presente-002.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
                     </figure>
                     <h3>Ajuda para mobiliar a casa</h3>
-                    <p>Nos ajude a transformar nossa nova casa em um lar aconchegante.</p>
+                    <p>Ajude-nos a transformar nossa nova casa em um lar aconchegante.</p>
                     <div class="gift-price">R$ 1.292,87</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/ZmPLu2zlNs" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item" data-gift-id="ajuda-mobiliar-casa-2">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/casa_mobiliada.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
+                        <img src="Images/presentes/presente-002.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
                     </figure>
                     <h3>Ajuda para mobiliar a casa</h3>
-                    <p>Nos ajude a transformar nossa nova casa em um lar aconchegante.</p>
+                    <p>Ajude-nos a transformar nossa nova casa em um lar aconchegante.</p>
                     <div class="gift-price">R$ 1.365,99</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/NSSoEvXnR5" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item" data-gift-id="ajuda-mobiliar-casa-3">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/casa_mobiliada.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
+                        <img src="Images/presentes/presente-002.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
                     </figure>
                     <h3>Ajuda para mobiliar a casa</h3>
-                    <p>Nos ajude a transformar nossa nova casa em um lar aconchegante.</p>
+                    <p>Ajude-nos a transformar nossa nova casa em um lar aconchegante.</p>
                     <div class="gift-price">R$ 1.469,99</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/1YH8t82SJB" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item" data-gift-id="ajuda-mobiliar-casa-4">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/casa_mobiliada.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
+                        <img src="Images/presentes/presente-002.jpg" alt="Ajuda para mobiliar a casa" loading="lazy" />
                     </figure>
                     <h3>Ajuda para mobiliar a casa</h3>
-                    <p>Nos ajude a transformar nossa nova casa em um lar aconchegante.</p>
+                    <p>Ajude-nos a transformar nossa nova casa em um lar aconchegante.</p>
                     <div class="gift-price">R$ 1.559,99</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/Ssk3jmfCBn" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/pif5x_1779652776.jpg" alt="Arm&#225;rio de Cozinha" loading="lazy" />
+                        <img src="Images/presentes/presente-003.jpg" alt="Arm&#225;rio de Cozinha" loading="lazy" />
                     </figure>
                     <h3>Arm&#225;rio de Cozinha</h3>
                     <p>Essencial para organizar nossa cozinha com estilo e funcionalidade.</p>
@@ -312,7 +315,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/G1kK0_1779840160.jpg" alt="Colch&#227;o Box Queen" loading="lazy" />
+                        <img src="Images/presentes/presente-004.jpg" alt="Colch&#227;o Box Queen" loading="lazy" />
                     </figure>
                     <h3>Colch&#227;o Box Queen</h3>
                     <p>Para noites de descanso perfeito em nosso novo quarto.</p>
@@ -321,7 +324,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/amigos_velhinhos.jpg" alt="Cota &quot;amigos para sempre&quot;" loading="lazy" />
+                        <img src="Images/presentes/presente-005.jpg" alt="Cota &quot;amigos para sempre&quot;" loading="lazy" />
                     </figure>
                     <h3>Cota &quot;amigos para sempre&quot;</h3>
                     <p>Comemoração especial com nossos queridos amigos.</p>
@@ -330,25 +333,25 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/pC4dd_1779653010.jpg" alt="Fog&#227;o 5 Bocas inox" loading="lazy" />
+                        <img src="Images/presentes/presente-006.jpg" alt="Fog&#227;o inox de 5 bocas" loading="lazy" />
                     </figure>
-                    <h3>Fog&#227;o 5 Bocas inox</h3>
+                    <h3>Fog&#227;o inox de 5 bocas</h3>
                     <p>Para prepararmos deliciosas refeições na nossa nova cozinha.</p>
                     <div class="gift-price">R$ 2.113,80</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/upLhr88I4y" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/ECc0U_1779650628.jpg" alt="Geladeira Frost Free 480l" loading="lazy" />
+                        <img src="Images/presentes/presente-007.jpg" alt="Geladeira Frost Free de 480 L" loading="lazy" />
                     </figure>
-                    <h3>Geladeira Frost Free 480l</h3>
+                    <h3>Geladeira Frost Free de 480 L</h3>
                     <p>Indispensável para manter nossos alimentos frescos e conservados.</p>
                     <div class="gift-price">R$ 3.390,05</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/bNGshqMNIb" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/zuQ3F_1779650481.jpg" alt="M&#225;quina de lavar 13 kg" loading="lazy" />
+                        <img src="Images/presentes/presente-008.jpg" alt="M&#225;quina de lavar 13 kg" loading="lazy" />
                     </figure>
                     <h3>M&#225;quina de lavar 13 kg</h3>
                     <p>Simplificando as tarefas do dia a dia na nossa casa.</p>
@@ -357,25 +360,25 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/G86D1_1779653302.jpg" alt="Mesa de Jantar Tampo de Vidro" loading="lazy" />
+                        <img src="Images/presentes/presente-009.jpg" alt="Mesa de jantar com tampo de vidro" loading="lazy" />
                     </figure>
-                    <h3>Mesa de Jantar Tampo de Vidro</h3>
+                    <h3>Mesa de jantar com tampo de vidro</h3>
                     <p>Palco para refeições em família e momentos de convivência.</p>
                     <div class="gift-price">R$ 2.593,46</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/8mFERbaDTo" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/9nEKu_1779653569.jpg" alt="Painel de TV MDF" loading="lazy" />
+                        <img src="Images/presentes/presente-010.jpg" alt="Painel de MDF para TV" loading="lazy" />
                     </figure>
-                    <h3>Painel de TV MDF</h3>
+                    <h3>Painel de MDF para TV</h3>
                     <p>Trazendo elegância e organização para nossa sala de estar.</p>
                     <div class="gift-price">R$ 959,91</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/VIvizt47QN" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/segurando_vela.jpg" alt="Poder ir junto com os noivos para a lua de mel" loading="lazy" />
+                        <img src="Images/presentes/presente-011.jpg" alt="Poder ir junto com os noivos para a lua de mel" loading="lazy" />
                     </figure>
                     <h3>Poder ir junto com os noivos para a lua de mel</h3>
                     <p>Uma experiência inesquecível ao lado dos noivos.</p>
@@ -384,7 +387,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/n5Sci_1779649971.jpg" alt="Smart TV 55&quot;" loading="lazy" />
+                        <img src="Images/presentes/presente-012.jpg" alt="Smart TV 55&quot;" loading="lazy" />
                     </figure>
                     <h3>Smart TV 55&quot;</h3>
                     <p>Entretenimento de qualidade para nossas noites em casa.</p>
@@ -393,7 +396,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/m9QDm_1779650328.jpg" alt="Sof&#225; Retr&#225;til" loading="lazy" />
+                        <img src="Images/presentes/presente-013.jpg" alt="Sof&#225; Retr&#225;til" loading="lazy" />
                     </figure>
                     <h3>Sof&#225; Retr&#225;til</h3>
                     <p>Conforto e versatilidade para nossa sala de convivência.</p>
@@ -402,7 +405,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=900&q=80" alt="Lava-lou&#231;as" loading="lazy" />
+                        <img src="Images/presentes/presente-014.jpg" alt="Lava-lou&#231;as" loading="lazy" />
                     </figure>
                     <h3>Lava-lou&#231;as</h3>
                     <p>Mais praticidade para a rotina da nossa cozinha.</p>
@@ -411,9 +414,9 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.pexels.com/photos/30002781/pexels-photo-30002781.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Guarda-roupa casal" loading="lazy" />
+                        <img src="Images/presentes/presente-015.jpg" alt="Guarda-roupa de casal" loading="lazy" />
                     </figure>
-                    <h3>Guarda-roupa casal</h3>
+                    <h3>Guarda-roupa de casal</h3>
                     <p>Organiza&#231;&#227;o e espa&#231;o para o nosso quarto.</p>
                     <div class="gift-price">R$ 1.899,90</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/kDFqSrLJi8" target="_blank" rel="noopener noreferrer">Presentear</a>
@@ -426,7 +429,7 @@
             <div class="gift-grid">
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/P3hdP_1779651789.jpg" alt="Air Fryer" loading="lazy" />
+                        <img src="Images/presentes/presente-016.jpg" alt="Air Fryer" loading="lazy" />
                     </figure>
                     <h3>Air Fryer</h3>
                     <p>Cozinha prática e saudável para o dia a dia.</p>
@@ -435,7 +438,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/iqBt0_1779652548.jpg" alt="Aparelho de Jantar Tramontina em Porcelana" loading="lazy" />
+                        <img src="Images/presentes/presente-017.jpg" alt="Aparelho de Jantar Tramontina em Porcelana" loading="lazy" />
                     </figure>
                     <h3>Aparelho de Jantar Tramontina em Porcelana</h3>
                     <p>Para refeições elegantes em família.</p>
@@ -444,115 +447,115 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/PrbA9_1779651373.jpg" alt="Batedeira" loading="lazy" />
+                        <img src="Images/presentes/presente-018.jpg" alt="Batedeira" loading="lazy" />
                     </figure>
                     <h3>Batedeira</h3>
-                    <p>Essencial para doces e confeitários caseiros.</p>
+                    <p>Essencial para preparar doces e fazer confeitaria em casa.</p>
                     <div class="gift-price">R$ 449,04</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/Zjt41rejIj" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/tD8Kh_1779842243.jpg" alt="Jogo Assadeiras Formas Funda, Redonda E De Pizza" loading="lazy" />
+                        <img src="Images/presentes/presente-019.jpg" alt="Jogo de assadeiras fundas, redondas e para pizza" loading="lazy" />
                     </figure>
-                    <h3>Jogo Assadeiras Formas Funda, Redonda E De Pizza</h3>
+                    <h3>Jogo de assadeiras fundas, redondas e para pizza</h3>
                     <p>Para assar com estilo e versatilidade.</p>
                     <div class="gift-price">R$ 209,61</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/FHvgWt3e47" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/RQw5c_1779651158.jpg" alt="Jogo de Panelas Brinox Revestimento Cer&#226;mico" loading="lazy" />
+                        <img src="Images/presentes/presente-020.jpg" alt="Jogo de panelas Brinox com revestimento cer&#226;mico" loading="lazy" />
                     </figure>
-                    <h3>Jogo de Panelas Brinox Revestimento Cer&#226;mico</h3>
+                    <h3>Jogo de panelas Brinox com revestimento cer&#226;mico</h3>
                     <p>Durabilidade e revestimento seguro para nossas refeições.</p>
                     <div class="gift-price">R$ 631,22</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/J9hxvS0QFy" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/9dUPW_1779842490.jpg" alt="Liquidificador Copo de Vidro 2,2l" loading="lazy" />
+                        <img src="Images/presentes/presente-021.jpg" alt="Liquidificador com copo de vidro de 2,2 L" loading="lazy" />
                     </figure>
-                    <h3>Liquidificador Copo de Vidro 2,2l</h3>
+                    <h3>Liquidificador com copo de vidro de 2,2 L</h3>
                     <p>Para vitaminas, sucos e receitas deliciosas.</p>
                     <div class="gift-price">R$ 302,72</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/kac6w9laRb" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/1TLfi_1779652008.jpg" alt="Micro-ondas 33L" loading="lazy" />
+                        <img src="Images/presentes/presente-022.jpg" alt="Micro-ondas de 33 L" loading="lazy" />
                     </figure>
-                    <h3>Micro-ondas 33L</h3>
-                    <p>Eficiente para esquentar e preparar alimentos rápido.</p>
+                    <h3>Micro-ondas de 33 L</h3>
+                    <p>Eficiente para aquecer e preparar alimentos rapidamente.</p>
                     <div class="gift-price">R$ 655,05</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/U2azQCt6cz" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/JOX2U_1779652195.jpg" alt="MINI GRILL" loading="lazy" />
+                        <img src="Images/presentes/presente-023.jpg" alt="MINI GRILL" loading="lazy" />
                     </figure>
-                    <h3>MINI GRILL</h3>
+                    <h3>Mini grill</h3>
                     <p>Para lanches em casa com praticidade.</p>
                     <div class="gift-price">R$ 177,96</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/w06yB7cLRR" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/4alDX_1779842620.jpg" alt="Mixer Misturador Multiuso 3 em 1" loading="lazy" />
+                        <img src="Images/presentes/presente-024.jpg" alt="Mixer Misturador Multiuso 3 em 1" loading="lazy" />
                     </figure>
                     <h3>Mixer Misturador Multiuso 3 em 1</h3>
-                    <p>Versátil para cozinha moderna e prática.</p>
+                    <p>Versátil para uma cozinha moderna e prática.</p>
                     <div class="gift-price">R$ 219,49</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/0jRZGA5amx" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/RiW1M_1779651677.jpg" alt="Panela de Press&#227;o 4,2 L" loading="lazy" />
+                        <img src="Images/presentes/presente-025.jpg" alt="Panela de press&#227;o de 4,2 L" loading="lazy" />
                     </figure>
-                    <h3>Panela de Press&#227;o 4,2 L</h3>
-                    <p>Rapida e fácil no dia a dia.</p>
+                    <h3>Panela de press&#227;o de 4,2 L</h3>
+                    <p>Prática e fácil de usar no dia a dia.</p>
                     <div class="gift-price">R$ 225,81</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/HjMcEysVZR" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/c0apd_1779843588.jpg" alt="Purificador de &#193;gua Gelada E Natural" loading="lazy" />
+                        <img src="Images/presentes/presente-026.jpg" alt="Purificador de &#193;gua gelada e natural" loading="lazy" />
                     </figure>
-                    <h3>Purificador de &#193;gua Gelada E Natural</h3>
-                    <p>Agua pura e refrescante para toda a família.</p>
+                    <h3>Purificador de &#193;gua gelada e natural</h3>
+                    <p>&#193;gua pura e refrescante para toda a família.</p>
                     <div class="gift-price">R$ 758,87</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/8n20HQDmqM" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/Oi2rI_1779841981.jpg" alt="Travessa e Assadeira Refrat&#225;ria 3un Porcelana" loading="lazy" />
+                        <img src="Images/presentes/presente-027.jpg" alt="Jogo com 3 travessas e assadeiras refrat&#225;rias de porcelana" loading="lazy" />
                     </figure>
-                    <h3>Travessa e Assadeira Refrat&#225;ria 3un Porcelana</h3>
-                    <p>Perfeita para servir e decorar a mesa.</p>
+                    <h3>Jogo com 3 travessas e assadeiras refrat&#225;rias de porcelana</h3>
+                    <p>Perfeito para servir e decorar a mesa.</p>
                     <div class="gift-price">R$ 213,34</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/47nd38uU6z" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.pexels.com/photos/19651261/pexels-photo-19651261.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Jogo de facas chef" loading="lazy" />
+                        <img src="Images/presentes/presente-028.jpg" alt="Jogo de facas para chef" loading="lazy" />
                     </figure>
-                    <h3>Jogo de facas chef</h3>
+                    <h3>Jogo de facas para chef</h3>
                     <p>Facas de qualidade para o preparo de alimentos.</p>
                     <div class="gift-price">R$ 349,90</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/XZMAbVrQbl" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://dirogkf3gm8b7.cloudfront.net/production/products/240274/images/enhanced-media/7_0_f21af9c2-589e-4291-b505-4666a4fad722" alt="Tabua de vidro temperado" loading="lazy" />
+                        <img src="https://dirogkf3gm8b7.cloudfront.net/production/products/240274/images/enhanced-media/7_0_f21af9c2-589e-4291-b505-4666a4fad722" alt="T&#225;bua de vidro temperado" loading="lazy" />
                     </figure>
-                    <h3>Tabua de vidro temperado</h3>
+                    <h3>T&#225;bua de vidro temperado</h3>
                     <p>Prática e higiênica para preparação de alimentos.</p>
                     <div class="gift-price">R$ 129,90</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/cq3UysE9XW" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.pexels.com/photos/5825346/pexels-photo-5825346.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Cafeteira el&#233;trica" loading="lazy" />
+                        <img src="Images/presentes/presente-030.jpg" alt="Cafeteira el&#233;trica" loading="lazy" />
                     </figure>
                     <h3>Cafeteira el&#233;trica</h3>
                     <p>Para come&#231;armos os dias com caf&#233; fresquinho.</p>
@@ -567,7 +570,7 @@
             <div class="gift-grid">
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/PQ79E_1779843026.jpg" alt="Aspirador P&#243; Sem Fio" loading="lazy" />
+                        <img src="Images/presentes/presente-031.jpg" alt="Aspirador P&#243; Sem Fio" loading="lazy" />
                     </figure>
                     <h3>Aspirador P&#243; Sem Fio</h3>
                     <p>Limpeza fácil e eficiente em toda a casa.</p>
@@ -576,7 +579,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.unsplash.com/photo-1767559811416-86d963b4704f?auto=format&fit=crop&w=900&q=80" alt="Kit de almofadas decorativas" loading="lazy" />
+                        <img src="Images/presentes/presente-032.jpg" alt="Kit de almofadas decorativas" loading="lazy" />
                     </figure>
                     <h3>Kit de almofadas decorativas</h3>
                     <p>Para deixar o sofá mais confortável e acolhedor.</p>
@@ -585,7 +588,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.unsplash.com/photo-1759722667762-6ca081ea1844?auto=format&fit=crop&w=900&q=80" alt="Manta para sofá" loading="lazy" />
+                        <img src="Images/presentes/presente-033.jpg" alt="Manta para sofá" loading="lazy" />
                     </figure>
                     <h3>Manta para sofá</h3>
                     <p>Um toque de conforto para os momentos de descanso.</p>
@@ -594,7 +597,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.unsplash.com/photo-1753932847231-7949af383b98?auto=format&fit=crop&w=900&q=80" alt="Luminária de mesa" loading="lazy" />
+                        <img src="Images/presentes/presente-034.jpg" alt="Luminária de mesa" loading="lazy" />
                     </figure>
                     <h3>Luminária de mesa</h3>
                     <p>Iluminação delicada para deixar a sala mais charmosa.</p>
@@ -603,7 +606,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.pexels.com/photos/5834026/pexels-photo-5834026.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Cortina Blackout" loading="lazy" />
+                        <img src="Images/presentes/presente-035.jpg" alt="Cortina Blackout" loading="lazy" />
                     </figure>
                     <h3>Cortina Blackout</h3>
                     <p>Privacidade e elegância para nossos momentos especiais.</p>
@@ -612,7 +615,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.pexels.com/photos/11255286/pexels-photo-11255286.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Tapete felpudo" loading="lazy" />
+                        <img src="Images/presentes/presente-036.jpg" alt="Tapete felpudo" loading="lazy" />
                     </figure>
                     <h3>Tapete felpudo</h3>
                     <p>Conforto e aconchego para o ambiente da sala.</p>
@@ -621,7 +624,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.pexels.com/photos/4022430/pexels-photo-4022430.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Espelho decorativo grande" loading="lazy" />
+                        <img src="Images/presentes/presente-037.jpg" alt="Espelho decorativo grande" loading="lazy" />
                     </figure>
                     <h3>Espelho decorativo grande</h3>
                     <p>Amplifica a luz e deixa a sala mais espaçosa.</p>
@@ -630,7 +633,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.pexels.com/photos/36834040/pexels-photo-36834040.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Rack para TV" loading="lazy" />
+                        <img src="Images/presentes/presente-038.jpg" alt="Rack para TV" loading="lazy" />
                     </figure>
                     <h3>Rack para TV</h3>
                     <p>Organização elegante e funcional para a sala.</p>
@@ -639,7 +642,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80" alt="Lumin&#225;ria de piso moderna" loading="lazy" />
+                        <img src="Images/presentes/presente-039.jpg" alt="Lumin&#225;ria de piso moderna" loading="lazy" />
                     </figure>
                     <h3>Lumin&#225;ria de piso moderna</h3>
                     <p>Ambiente perfeito com design contemporâneo.</p>
@@ -648,7 +651,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.pexels.com/photos/1571467/pexels-photo-1571467.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Mesa de centro" loading="lazy" />
+                        <img src="Images/presentes/presente-040.jpg" alt="Mesa de centro" loading="lazy" />
                     </figure>
                     <h3>Mesa de centro</h3>
                     <p>Um apoio bonito para completar a sala.</p>
@@ -657,7 +660,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.pexels.com/photos/34755119/pexels-photo-34755119.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Poltrona decorativa" loading="lazy" />
+                        <img src="Images/presentes/presente-041.jpg" alt="Poltrona decorativa" loading="lazy" />
                     </figure>
                     <h3>Poltrona decorativa</h3>
                     <p>Mais conforto para receber visitas e relaxar.</p>
@@ -672,7 +675,7 @@
             <div class="gift-grid">
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/I9qOJ_1779840259.jpg" alt="Base Box Queen" loading="lazy" />
+                        <img src="Images/presentes/presente-042.jpg" alt="Base Box Queen" loading="lazy" />
                     </figure>
                     <h3>Base Box Queen</h3>
                     <p>Estrutura resistente e confortável para nosso colchão.</p>
@@ -681,25 +684,25 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/1V7KU_1779841162.jpg" alt="Cobertor Queen Manta Aveludada" loading="lazy" />
+                        <img src="Images/presentes/presente-043.jpg" alt="Cobertor queen com manta aveludada" loading="lazy" />
                     </figure>
-                    <h3>Cobertor Queen Manta Aveludada</h3>
-                    <p>Manta macia para as noites frias aconchego.</p>
+                    <h3>Cobertor queen com manta aveludada</h3>
+                    <p>Manta macia e aconchegante para as noites frias.</p>
                     <div class="gift-price">R$ 187,34</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/eiHcgSETbP" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/Tc9KA_1779840977.jpg" alt="Edredom Queen Dupla Face" loading="lazy" />
+                        <img src="Images/presentes/presente-044.jpg" alt="Edredom queen dupla face" loading="lazy" />
                     </figure>
-                    <h3>Edredom Queen Dupla Face</h3>
-                    <p>Versatéil e confortável para todas as estações.</p>
+                    <h3>Edredom queen dupla face</h3>
+                    <p>Vers&#225;til e confort&#225;vel para todas as estações.</p>
                     <div class="gift-price">R$ 387,56</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/rODUDlVPBe" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/ARcf7_1779843275.jpg" alt="Ferro a vapor" loading="lazy" />
+                        <img src="Images/presentes/presente-045.jpg" alt="Ferro a vapor" loading="lazy" />
                     </figure>
                     <h3>Ferro a vapor</h3>
                     <p>Roupas impecáveis com facilidade e rapidez.</p>
@@ -708,52 +711,52 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/uvU9s_1779840587.jpg" alt="Jogo de Cama 100% Algod&#227;o Queen" loading="lazy" />
+                        <img src="Images/presentes/presente-046.jpg" alt="Jogo de cama 100% algod&#227;o queen" loading="lazy" />
                     </figure>
-                    <h3>Jogo de Cama 100% Algod&#227;o Queen</h3>
+                    <h3>Jogo de cama 100% algod&#227;o queen</h3>
                     <p>Maciez e conforto em cada noite de descanso.</p>
                     <div class="gift-price">R$ 219,49</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/dzyo44RmeR" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/ex1qN_1779840430.jpg" alt="Jogo de Cama Queen 200 fios" loading="lazy" />
+                        <img src="Images/presentes/presente-047.jpg" alt="Jogo de cama queen com 200 fios" loading="lazy" />
                     </figure>
-                    <h3>Jogo de Cama Queen 200 fios</h3>
+                    <h3>Jogo de cama queen com 200 fios</h3>
                     <p>Maior densidade para durabilidade e conforto premium.</p>
                     <div class="gift-price">R$ 319,47</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/3oZqNs0h1B" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/dados/sitenoivos/wed1479799/presentes/L0BMi_1779842800.jpg" alt="Kit 2 Travesseiros Penas De Ganso" loading="lazy" />
+                        <img src="Images/presentes/presente-048.jpg" alt="Kit com 2 travesseiros de penas de ganso" loading="lazy" />
                     </figure>
-                    <h3>Kit 2 Travesseiros Penas De Ganso</h3>
+                    <h3>Kit com 2 travesseiros de penas de ganso</h3>
                     <p>Modelagem natural para descanso perfeito.</p>
                     <div class="gift-price">R$ 224,78</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/S12s4ltw2r" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.pexels.com/photos/6430745/pexels-photo-6430745.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Toalhas de banho premium" loading="lazy" />
+                        <img src="Images/presentes/presente-049.jpg" alt="Toalhas de banho premium" loading="lazy" />
                     </figure>
                     <h3>Toalhas de banho premium</h3>
-                    <p>Macio e absorvente para o conforto diário.</p>
+                    <p>Macias e absorventes para o conforto diário.</p>
                     <div class="gift-price">R$ 189,90</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/iUiRXLUQl3" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=900&q=80" alt="Organizador de banheiro" loading="lazy" />
+                        <img src="Images/presentes/presente-050.jpg" alt="Organizador de banheiro" loading="lazy" />
                     </figure>
                     <h3>Organizador de banheiro</h3>
                     <p>Mantém tudo organizado e ao alcance das mãos.</p>
-                    <div class="gift-price">R$ 149,9</div>
+                    <div class="gift-price">R$ 149,90</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/fGfaqR88Bc" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.pexels.com/photos/707581/pexels-photo-707581.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Mesa de cabeceira" loading="lazy" />
+                        <img src="Images/presentes/presente-051.jpg" alt="Mesa de cabeceira" loading="lazy" />
                     </figure>
                     <h3>Mesa de cabeceira</h3>
                     <p>Praticidade e charme ao lado da cama.</p>
@@ -768,25 +771,25 @@
             <div class="gift-grid">
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/dolar.png" alt="Ajuda para os noivos comprarem d&#243;lares pra viagem" loading="lazy" />
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/dolar.png" alt="Ajuda para os noivos comprarem d&#243;lares para a viagem" loading="lazy" />
                     </figure>
-                    <h3>Ajuda para os noivos comprarem d&#243;lares pra viagem</h3>
+                    <h3>Ajuda para os noivos comprarem d&#243;lares para a viagem</h3>
                     <p>Contribua para nossa lua de mel inesquecível!</p>
                     <div class="gift-price">R$ 600,44</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/HyGqG5uVtl" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/taxi.jpg" alt="Ajudinha para o taxi um pouquinho mais longe" loading="lazy" />
+                        <img src="Images/presentes/presente-053.jpg" alt="Ajudinha para o t&#225;xi ir um pouquinho mais longe" loading="lazy" />
                     </figure>
-                    <h3>Ajudinha para o taxi um pouquinho mais longe</h3>
-                    <p>Para nossos passeios romnticos durante o casamento.</p>
+                    <h3>Ajudinha para o t&#225;xi ir um pouquinho mais longe</h3>
+                    <p>Para nossos passeios rom&#226;nticos durante a lua de mel.</p>
                     <div class="gift-price">R$ 172,98</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/qWhy1aMbz7" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/bebe.jpg" alt="Aluguel de um beb&#234; para treinamento" loading="lazy" />
+                        <img src="Images/presentes/presente-054.jpg" alt="Aluguel de um beb&#234; para treinamento" loading="lazy" />
                     </figure>
                     <h3>Aluguel de um beb&#234; para treinamento</h3>
                     <p>Uma experiência divertida e útil!</p>
@@ -795,7 +798,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/frigobar_cheio.jpg" alt="Assaltando o frigobar" loading="lazy" />
+                        <img src="Images/presentes/presente-055.jpg" alt="Assaltando o frigobar" loading="lazy" />
                     </figure>
                     <h3>Assaltando o frigobar</h3>
                     <p>Para brindes e celebrações especiais!</p>
@@ -804,16 +807,16 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/brinde_dos_noivos.jpg" alt="Brinde da noite de n&#250;pcia" loading="lazy" />
+                        <img src="Images/presentes/presente-056.jpg" alt="Brinde da noite de n&#250;pcias" loading="lazy" />
                     </figure>
-                    <h3>Brinde da noite de n&#250;pcia</h3>
+                    <h3>Brinde da noite de n&#250;pcias</h3>
                     <p>Um momento especial para celebrar!</p>
                     <div class="gift-price">R$ 537,49</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/gtRoRPIyCD" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/capacete.jpg" alt="Capacete contra rolo de macarr&#227;o para o noivo" loading="lazy" />
+                        <img src="Images/presentes/presente-057.jpg" alt="Capacete contra rolo de macarr&#227;o para o noivo" loading="lazy" />
                     </figure>
                     <h3>Capacete contra rolo de macarr&#227;o para o noivo</h3>
                     <p>Proteção com humor e carinho!</p>
@@ -822,43 +825,43 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/controles_remotos.jpg" alt="Conjunto de controle remotos para n&#227;o ter briga" loading="lazy" />
+                        <img src="Images/presentes/presente-058.jpg" alt="Conjunto de controles remotos para n&#227;o ter briga" loading="lazy" />
                     </figure>
-                    <h3>Conjunto de controle remotos para n&#227;o ter briga</h3>
+                    <h3>Conjunto de controles remotos para n&#227;o ter briga</h3>
                     <p>Harmonia no conforto da sala!</p>
                     <div class="gift-price">R$ 210,75</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/mzXOG7cFru" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/coral_de_casamento.jpg" alt="Coral pra cantar &quot;Aleluia&quot; na entrada do noivo" loading="lazy" />
+                        <img src="Images/presentes/presente-059.jpg" alt="Coral para cantar &quot;Aleluia&quot; na entrada do noivo" loading="lazy" />
                     </figure>
-                    <h3>Coral pra cantar &quot;Aleluia&quot; na entrada do noivo</h3>
+                    <h3>Coral para cantar &quot;Aleluia&quot; na entrada do noivo</h3>
                     <p>Uma entrada marcante com música!</p>
                     <div class="gift-price">R$ 726,34</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/aaUkWpZfRY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/cueca_superman.jpg" alt="Cueca sexy para a noite de n&#250;pcia" loading="lazy" />
+                        <img src="Images/presentes/presente-060.jpg" alt="Cueca sexy para a noite de n&#250;pcias" loading="lazy" />
                     </figure>
-                    <h3>Cueca sexy para a noite de n&#250;pcia</h3>
+                    <h3>Cueca sexy para a noite de n&#250;pcias</h3>
                     <p>Um presente leve e divertido!</p>
                     <div class="gift-price">R$ 191,39</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/hQQeWJrGGY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/woman_sneezing.jpg" alt="Espirro em paris" loading="lazy" />
+                        <img src="Images/presentes/presente-061.jpg" alt="Espirro em Paris" loading="lazy" />
                     </figure>
-                    <h3>Espirro em paris</h3>
-                    <p>Um momento roântico e inesquecível!</p>
+                    <h3>Espirro em Paris</h3>
+                    <p>Um momento rom&#226;ntico e inesquecível!</p>
                     <div class="gift-price">R$ 248,52</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/cWH9R20MYr" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/lanche.jpg" alt="Garanta o jantar do noivo durante o 1&#186; m&#234;s de casado" loading="lazy" />
+                        <img src="Images/presentes/presente-062.jpg" alt="Garanta o jantar do noivo durante o 1&#186; m&#234;s de casado" loading="lazy" />
                     </figure>
                     <h3>Garanta o jantar do noivo durante o 1&#186; m&#234;s de casado</h3>
                     <p>Um gesto carinhoso para os primeiros dias!</p>
@@ -867,7 +870,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/ai_que_saudade_de_voce.jpg" alt="Kit &quot;Aguenta essa saudade&quot; (da fam&#237;lia, amigos...)" loading="lazy" />
+                        <img src="Images/presentes/presente-063.jpg" alt="Kit &quot;Aguenta essa saudade&quot; (da fam&#237;lia, amigos...)" loading="lazy" />
                     </figure>
                     <h3>Kit &quot;Aguenta essa saudade&quot; (da fam&#237;lia, amigos...)</h3>
                     <p>Lembrancinha para matar a saudade!</p>
@@ -876,7 +879,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/lenco_noiva_chorando.jpg" alt="Len&#231;o para a noiva n&#227;o borrar toda a maquiagem" loading="lazy" />
+                        <img src="Images/presentes/presente-064.jpg" alt="Len&#231;o para a noiva n&#227;o borrar toda a maquiagem" loading="lazy" />
                     </figure>
                     <h3>Len&#231;o para a noiva n&#227;o borrar toda a maquiagem</h3>
                     <p>Um detalhe pr&#225;tico e cheio de car&#237;cia!</p>
@@ -885,16 +888,16 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/keep_calm_and_comprem_engov.png" alt="Open de engov para a festa" loading="lazy" />
+                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/keep_calm_and_comprem_engov.png" alt="Open de Engov para a festa" loading="lazy" />
                     </figure>
-                    <h3>Open de engov para a festa</h3>
+                    <h3>Open de Engov para a festa</h3>
                     <p>Para alegrar a noite com bom humor!</p>
                     <div class="gift-price">R$ 436,77</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/2vVL7d7RNY" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/despedida_de_solteira.jpg" alt="Patrocine a despedida da noiva" loading="lazy" />
+                        <img src="Images/presentes/presente-066.jpg" alt="Patrocine a despedida da noiva" loading="lazy" />
                     </figure>
                     <h3>Patrocine a despedida da noiva</h3>
                     <p>Uma última farra antes de casar!</p>
@@ -903,7 +906,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/se_beber_nao_case.jpg" alt="Patrocine a despedida do noivo" loading="lazy" />
+                        <img src="Images/presentes/presente-067.jpg" alt="Patrocine a despedida do noivo" loading="lazy" />
                     </figure>
                     <h3>Patrocine a despedida do noivo</h3>
                     <p>A despedida do melhor amigo!</p>
@@ -912,16 +915,16 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/quarto_de_visita.jpg" alt="Prioridade no quarto de visita na casa dos noivos" loading="lazy" />
+                        <img src="Images/presentes/presente-068.jpg" alt="Prioridade no quarto de visita na casa dos noivos" loading="lazy" />
                     </figure>
-                    <h3>Prioridade no quarto de visita na casa dos noivos</h3>
+                    <h3>Prioridade no quarto de h&#243;spedes na casa dos noivos</h3>
                     <p>Sempre bem-vindo em nossa casa!</p>
                     <div class="gift-price">R$ 789,28</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/AsZYoBP2jd" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/mulher_rolo_de_massa.jpg" alt="Rolo de macarr&#227;o caso o noivo n&#227;o se comporte" loading="lazy" />
+                        <img src="Images/presentes/presente-069.jpg" alt="Rolo de macarr&#227;o caso o noivo n&#227;o se comporte" loading="lazy" />
                     </figure>
                     <h3>Rolo de macarr&#227;o caso o noivo n&#227;o se comporte</h3>
                     <p>Um presente com muito carinho e humor!</p>
@@ -930,16 +933,16 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/noiva_jogando_buque.jpg" alt="Taxa pra noiva jogar o buqu&#234; pra sua namorada" loading="lazy" />
+                        <img src="Images/presentes/presente-070.jpg" alt="Taxa para a noiva jogar o buqu&#234; para a sua namorada" loading="lazy" />
                     </figure>
-                    <h3>Taxa pra noiva jogar o buqu&#234; pra sua namorada</h3>
-                    <p>Um detalhe romantico para a sorte!</p>
+                    <h3>Taxa para a noiva jogar o buqu&#234; para a sua namorada</h3>
+                    <p>Um detalhe rom&#226;ntico para dar sorte!</p>
                     <div class="gift-price">R$ 195,66</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/LxWhwZVnpQ" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://cdn-assets-legacy.casar.com/thumb/208x208x1/img/presentes/barbearia.jpg" alt="Um ano de barba feita para o noivo" loading="lazy" />
+                        <img src="Images/presentes/presente-071.jpg" alt="Um ano de barba feita para o noivo" loading="lazy" />
                     </figure>
                     <h3>Um ano de barba feita para o noivo</h3>
                     <p>Para estar sempre bem-arrumado!</p>
@@ -948,7 +951,7 @@
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
-                        <img src="https://images.unsplash.com/photo-1496412705862-e0088f16f791?auto=format&fit=crop&w=900&q=80" alt="Caf&#233; da manh&#227; na lua de mel" loading="lazy" />
+                        <img src="Images/presentes/presente-072.jpg" alt="Caf&#233; da manh&#227; na lua de mel" loading="lazy" />
                     </figure>
                     <h3>Caf&#233; da manh&#227; na lua de mel</h3>
                     <p>Um come&#231;o de dia especial durante a viagem.</p>
@@ -1155,7 +1158,8 @@
 
             const total = getStoredConfirmations().reduce((sum, confirmation) =>
                 sum + confirmation.confirmedMembers.length, 0);
-            confirmationsCount.textContent = `${total} pessoa(s) confirmada(s) neste navegador.`;
+            const personLabel = total === 1 ? "pessoa confirmada" : "pessoas confirmadas";
+            confirmationsCount.textContent = `${total} ${personLabel} neste navegador.`;
         }
 
         function renderGuestResults(query) {
@@ -1188,12 +1192,13 @@
                 const memberNames = getFamilyMemberNames(family);
                 button.type = "button";
                 button.className = "guest-result-button";
+                const personLabel = memberNames.length === 1 ? "pessoa" : "pessoas";
                 button.innerHTML = `
                     <span>
                         <span class="guest-result-name">${fixTextEncoding(family.familyName)}</span>
                         <span class="guest-result-members">${memberNames.join(", ")}</span>
                     </span>
-                    <span class="guest-result-count">${memberNames.length} pessoa(s)</span>
+                    <span class="guest-result-count">${memberNames.length} ${personLabel}</span>
                 `;
                 button.addEventListener("click", () => selectFamily(family));
                 guestSearchResults.appendChild(button);
@@ -1206,7 +1211,8 @@
             guestSearchResults.innerHTML = "";
             formStatus.textContent = "";
             familyTitle.textContent = fixTextEncoding(family.familyName);
-            familyCount.textContent = `${family.members.length} pessoa(s) na família`;
+            const personLabel = family.members.length === 1 ? "pessoa" : "pessoas";
+            familyCount.textContent = `${family.members.length} ${personLabel} na família`;
             familyMembers.innerHTML = "";
 
             family.members.forEach((member) => {
@@ -1368,7 +1374,7 @@
             const hasSuccessfulRequest = results.some((result) => result.status === "fulfilled");
 
             if (!hasSuccessfulRequest) {
-                throw new Error("Nao foi possivel enviar a confirmacao.");
+                throw new Error("Não foi possível enviar a confirmação.");
             }
         }
 
@@ -1427,11 +1433,11 @@
                 await sendRsvpTracking(record);
                 saveConfirmation(record);
                 resetRsvpFlow();
-                formStatus.textContent = "Confirmação enviada. Obrigado!";
+                formStatus.textContent = "Confirmação enviada. Agradecemos!";
             } catch {
                 saveConfirmation(record);
                 resetRsvpFlow();
-                formStatus.textContent = "Confirmação salva neste navegador. Obrigado!";
+                formStatus.textContent = "Confirmação salva neste navegador. Agradecemos!";
             }
         });
 

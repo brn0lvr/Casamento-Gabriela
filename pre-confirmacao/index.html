@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pré-confirmação | Gabriela &amp; Mateus</title>
+    <link rel="icon" type="image/png" href="Images/logo-circulo.png" />
+    <link rel="apple-touch-icon" href="Images/logo-circulo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20260928-1" />
+</head>
+<body>
+    <div id="wedding-intro" class="wedding-intro" role="dialog" aria-modal="true" aria-label="Convite de casamento Gabriela e Mateus">
+        <span class="intro-flower intro-flower-top" aria-hidden="true"></span>
+        <span class="intro-flower intro-flower-bottom" aria-hidden="true"></span>
+        <span class="intro-sparkle intro-sparkle-one" aria-hidden="true"></span>
+        <span class="intro-sparkle intro-sparkle-two" aria-hidden="true"></span>
+        <span class="intro-sparkle intro-sparkle-three" aria-hidden="true"></span>
+        <button type="button" class="invitation-stage" aria-label="Abrir convite de casamento">
+            <span class="invitation-envelope" aria-hidden="true">
+                <span class="invitation-card">
+                    <img src="Images/logo.png" alt="" class="invitation-logo" />
+                    <span class="invitation-overline">Vamos casar!</span>
+                    <span class="invitation-names">Gabriela <span>&amp;</span> Mateus</span>
+                    <span class="invitation-date">12 de dezembro de 2026</span>
+                </span>
+                <span class="envelope-back"></span>
+                <span class="envelope-flap"></span>
+                <span class="envelope-front"></span>
+                <span class="envelope-seal">G&nbsp;&amp;&nbsp;M</span>
+            </span>
+            <span class="invitation-hint">Clique para abrir</span>
+        </button>
+    </div>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="#inicio" aria-label="Gabriela e Mateus, início">
+                <img src="Images/logo.png" alt="Gabriela e Mateus" class="brand-logo" />
+            </a>
+            <nav class="menu" aria-label="Navegação principal">
+                <a href="#inicio">Início</a>
+                <a href="#pre-confirmacao">Pré-confirmação</a>
+            </nav>
+            <details class="top-gift-nav">
+                <summary>Pré-confirmação</summary>
+                <div class="top-gift-nav-links">
+                    <a href="#pre-confirmacao">Acessar formulário</a>
+                </div>
+            </details>
+        </div>
+    </header>
+
+    <main id="inicio" class="hero" tabindex="-1">
+        <video class="hero-video" autoplay muted loop playsinline poster="../Images/foto-casal.jpg" aria-hidden="true">
+            <source src="../Images/video-casal.mp4" type="video/mp4" />
+        </video>
+        <section class="content">
+            <div class="icon" aria-hidden="true">♥</div>
+            <p class="overline">Vamos casar!</p>
+            <div class="line"></div>
+            <h1 class="names">Gabriela</h1>
+            <div class="ampersand">&amp;</div>
+            <h1 class="names">Mateus</h1>
+            <p class="date">12 de dezembro de 2026</p>
+            <div class="countdown" aria-label="Contagem regressiva para o casamento">
+                <div class="countdown-card"><div class="countdown-value" id="days">0</div><div class="countdown-label">Dias</div></div>
+                <div class="countdown-card"><div class="countdown-value" id="hours">0</div><div class="countdown-label">Horas</div></div>
+                <div class="countdown-card"><div class="countdown-value" id="minutes">0</div><div class="countdown-label">Minutos</div></div>
+                <div class="countdown-card"><div class="countdown-value" id="seconds">0</div><div class="countdown-label">Segundos</div></div>
+            </div>
+        </section>
+    </main>
+
+    <section id="pre-confirmacao" class="section">
+        <h2 class="section-title">Pré-confirmação de presença</h2>
+        <div class="rsvp-highlight">
+            <p>Pesquise seu nome e indique quem da família pretende comparecer ao casamento.</p>
+        </div>
+        <div class="card invite-wrap">
+            <form id="rsvp-form" class="rsvp-form">
+                <div class="field">
+                    <label for="guest-search">Pesquise qualquer nome da família</label>
+                    <input id="guest-search" type="search" autocomplete="off" placeholder="Digite seu nome ou de alguém da família" />
+                </div>
+
+                <div id="guest-search-results" class="guest-search-results" aria-live="polite"></div>
+
+                <div id="family-confirmation" class="family-confirmation" hidden>
+                    <div class="family-header">
+                        <h3 id="family-title"></h3>
+                        <p id="family-count"></p>
+                    </div>
+
+                    <p class="family-instruction">Marque apenas os familiares que comparecerão ao casamento.</p>
+                    <div id="family-members" class="family-members"></div>
+
+                    <div class="field">
+                        <label for="telefone">Telefone para contato</label>
+                        <input id="telefone" type="tel" placeholder="(11) 99999-9999" />
+                    </div>
+
+                    <div class="field">
+                        <label for="alcool">Quantas pessoas da família consomem bebida alcoólica?</label>
+                        <input id="alcool" type="number" min="0" step="1" inputmode="numeric" placeholder="Informe o número" />
+                    </div>
+
+                    <div class="field">
+                        <label for="restricao-alimentar">Existe alguma restrição alimentar na família?</label>
+                        <textarea id="restricao-alimentar" rows="3" placeholder="Se sim, informe qual."></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label for="observacoes">Observações</label>
+                        <textarea id="observacoes" rows="3" placeholder="Qualquer informação adicional"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar pré-confirmação</button>
+                </div>
+
+                <p id="form-status" class="form-status" aria-live="polite"></p>
+            </form>
+        </div>
+    </section>
+
+    <script src="convidados.js" charset="utf-8"></script>
+    <script src="pre-confirmacao.js?v=20260928-2"></script>
+</body>
+</html>

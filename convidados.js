@@ -50,9 +50,7 @@ window.WEDDING_GUESTS = [
                             "João Vitor",
                             "Namorada João",
                             "Danila Miranda",
-                            "Isis Maria",
-                            "Adriano Miranda",
-                            "Andreia"
+                            "Isis Maria"
                         ],
         "members":  [
                         {
@@ -109,20 +107,6 @@ window.WEDDING_GUESTS = [
                             "name":  "Isis Maria",
                             "expectativa":  true,
                             "buffet":  true,
-                            "bebida":  false
-                        },
-                        {
-                            "id":  "2-adriano-miranda-9",
-                            "name":  "Adriano Miranda",
-                            "expectativa":  false,
-                            "buffet":  false,
-                            "bebida":  false
-                        },
-                        {
-                            "id":  "2-andreia-10",
-                            "name":  "Andreia",
-                            "expectativa":  false,
-                            "buffet":  false,
                             "bebida":  false
                         }
                     ]
@@ -1683,6 +1667,110 @@ window.WEDDING_GUESTS = [
                             "name":  "Jaquelini",
                             "expectativa":  true,
                             "buffet":  true,
+                            "bebida":  false
+                        }
+                    ]
+    },
+    {
+        "id":  "familia-58",
+        "familyName":  "Família 58 - Adriano Miranda",
+        "searchNames":  [
+                            "Adriano Miranda",
+                            "Andreia",
+                            "Nathan"
+                        ],
+        "members":  [
+                        {
+                            "id":  "58-adriano-miranda-1",
+                            "name":  "Adriano Miranda",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "58-andreia-2",
+                            "name":  "Andreia",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "58-nathan-3",
+                            "name":  "Nathan",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        }
+                    ]
+    },
+    {
+        "id":  "familia-59",
+        "familyName":  "Família 59 - Anderson",
+        "searchNames":  [
+                            "Anderson",
+                            "Josy",
+                            "Leticia",
+                            "Bryan",
+                            "Guilherme"
+                        ],
+        "members":  [
+                        {
+                            "id":  "59-anderson-1",
+                            "name":  "Anderson",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "59-josy-2",
+                            "name":  "Josy",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "59-leticia-3",
+                            "name":  "Leticia",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "59-bryan-4",
+                            "name":  "Bryan",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "59-guilherme-5",
+                            "name":  "Guilherme",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        }
+                    ]
+    },
+    {
+        "id":  "familia-60",
+        "familyName":  "Família 60 - Simone Cristina",
+        "searchNames":  [
+                            "Simone Cristina",
+                            "Giovane"
+                        ],
+        "members":  [
+                        {
+                            "id":  "60-simone-cristina-1",
+                            "name":  "Simone Cristina",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "60-giovane-2",
+                            "name":  "Giovane",
+                            "expectativa":  false,
+                            "buffet":  false,
                             "bebida":  false
                         }
                     ]
