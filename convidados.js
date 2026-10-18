@@ -1774,5 +1774,87 @@ window.WEDDING_GUESTS = [
                             "bebida":  false
                         }
                     ]
+    },
+    {
+        "id":  "familia-61",
+        "familyName":  "Família 61 - Antonio Miranda (Toninho)",
+        "searchNames":  [
+                            "Antonio Miranda (Toninho)",
+                            "Antonio Miranda"
+                        ],
+        "members":  [
+                        {
+                            "id":  "61-antonio-miranda-1",
+                            "name":  "Antonio Miranda",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        }
+                    ]
+    },
+    {
+        "id":  "familia-62",
+        "familyName":  "Família 62 - Matheus Puche",
+        "searchNames":  [
+                            "Matheus Puche",
+                            "Namorada"
+                        ],
+        "members":  [
+                        {
+                            "id":  "62-matheus-puche-1",
+                            "name":  "Matheus Puche",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "62-namorada-2",
+                            "name":  "Namorada",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        }
+                    ]
+    },
+    {
+        "id":  "familia-63",
+        "familyName":  "Família 63 - Cida Miranda",
+        "searchNames":  [
+                            "Cida Miranda",
+                            "Cassia Miranda",
+                            "Binho"
+                        ],
+        "members":  [
+                        {
+                            "id":  "63-cassia-miranda-1",
+                            "name":  "Cassia Miranda",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "63-binho-2",
+                            "name":  "Binho",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        }
+                    ]
+    },
+    {
+        "id":  "familia-64",
+        "familyName":  "Família 64 - Eduardo Ulian",
+        "searchNames":  [
+                            "Eduardo Ulian"
+                        ],
+        "members":  [
+                        {
+                            "id":  "64-eduardo-ulian-1",
+                            "name":  "Eduardo Ulian",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        }
+                    ]
     }
 ];
