@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20261017-mobile-2" />
+    <link rel="stylesheet" href="styles.css?v=20261020-video-desktop" />
 </head>
 <body>
     <div id="wedding-intro" class="wedding-intro" role="dialog" aria-modal="true" aria-label="Convite de casamento Gabriela e Mateus">
@@ -69,7 +69,10 @@
     </header>
 
     <main id="inicio" class="hero">
-        <video class="hero-video" autoplay muted loop playsinline poster="Images/foto-casal.jpg" aria-hidden="true">
+        <video class="hero-video hero-video-backdrop" autoplay muted loop playsinline poster="Images/foto-casal.jpg" aria-hidden="true">
+            <source src="Images/video-casal.mp4" type="video/mp4" />
+        </video>
+        <video class="hero-video hero-video-foreground" autoplay muted loop playsinline poster="Images/foto-casal.jpg" aria-hidden="true">
             <source src="Images/video-casal.mp4" type="video/mp4" />
         </video>
         <section class="content">
@@ -304,14 +307,13 @@
                     <div class="gift-price">R$ 1.559,99</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/Ssk3jmfCBn" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-                <article class="card gift-item">
+                <article class="card gift-item is-unavailable">
                     <figure class="gift-image">
+                        <span class="gift-unavailable-badge">Este item já foi presenteado</span>
                         <img src="Images/presentes/presente-003.jpg" alt="Arm&#225;rio de Cozinha" loading="lazy" />
                     </figure>
                     <h3>Arm&#225;rio de Cozinha</h3>
                     <p>Essencial para organizar nossa cozinha com estilo e funcionalidade.</p>
-                    <div class="gift-price">R$ 2.049,29</div>
-                    <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/voOpwkrFVq" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
@@ -340,23 +342,21 @@
                     <div class="gift-price">R$ 2.113,80</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/upLhr88I4y" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-                <article class="card gift-item">
+                <article class="card gift-item is-unavailable">
                     <figure class="gift-image">
+                        <span class="gift-unavailable-badge">Este item já foi presenteado</span>
                         <img src="Images/presentes/presente-007.jpg" alt="Geladeira Frost Free de 480 L" loading="lazy" />
                     </figure>
                     <h3>Geladeira Frost Free de 480 L</h3>
                     <p>Indispensável para manter nossos alimentos frescos e conservados.</p>
-                    <div class="gift-price">R$ 3.390,05</div>
-                    <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/bNGshqMNIb" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-                <article class="card gift-item">
+                <article class="card gift-item is-unavailable">
                     <figure class="gift-image">
+                        <span class="gift-unavailable-badge">Este item já foi presenteado</span>
                         <img src="Images/presentes/presente-008.jpg" alt="M&#225;quina de lavar 13 kg" loading="lazy" />
                     </figure>
                     <h3>M&#225;quina de lavar 13 kg</h3>
                     <p>Simplificando as tarefas do dia a dia na nossa casa.</p>
-                    <div class="gift-price">R$ 2.010,79</div>
-                    <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/KMUPPtDns6" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
@@ -412,14 +412,13 @@
                     <div class="gift-price">R$ 2.199,90</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/IUiRzzodF7" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-                <article class="card gift-item">
+                <article class="card gift-item is-unavailable">
                     <figure class="gift-image">
+                        <span class="gift-unavailable-badge">Este item já foi presenteado</span>
                         <img src="Images/presentes/presente-015.jpg" alt="Guarda-roupa de casal" loading="lazy" />
                     </figure>
                     <h3>Guarda-roupa de casal</h3>
                     <p>Organiza&#231;&#227;o e espa&#231;o para o nosso quarto.</p>
-                    <div class="gift-price">R$ 1.899,90</div>
-                    <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/kDFqSrLJi8" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
             </div>
         </div>
@@ -427,23 +426,21 @@
             <h3 class="gift-category-title">Cozinha</h3>
             <p class="gift-category-subtitle">Itens para montarmos uma cozinha completa no dia a dia.</p>
             <div class="gift-grid">
-                <article class="card gift-item">
+                <article class="card gift-item is-unavailable">
                     <figure class="gift-image">
+                        <span class="gift-unavailable-badge">Este item já foi presenteado</span>
                         <img src="Images/presentes/presente-016.jpg" alt="Air Fryer" loading="lazy" />
                     </figure>
                     <h3>Air Fryer</h3>
                     <p>Cozinha prática e saudável para o dia a dia.</p>
-                    <div class="gift-price">R$ 605,73</div>
-                    <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/lFxJZXlkBV" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-                <article class="card gift-item">
+                <article class="card gift-item is-unavailable">
                     <figure class="gift-image">
+                        <span class="gift-unavailable-badge">Este item já foi presenteado</span>
                         <img src="Images/presentes/presente-017.jpg" alt="Aparelho de Jantar Tramontina em Porcelana" loading="lazy" />
                     </figure>
                     <h3>Aparelho de Jantar Tramontina em Porcelana</h3>
                     <p>Para refeições elegantes em família.</p>
-                    <div class="gift-price">R$ 550,87</div>
-                    <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/7DUPIFS1Vb" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
@@ -481,14 +478,13 @@
                     <div class="gift-price">R$ 302,72</div>
                     <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/kac6w9laRb" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
-                <article class="card gift-item">
+                <article class="card gift-item is-unavailable">
                     <figure class="gift-image">
+                        <span class="gift-unavailable-badge">Este item já foi presenteado</span>
                         <img src="Images/presentes/presente-022.jpg" alt="Micro-ondas de 33 L" loading="lazy" />
                     </figure>
                     <h3>Micro-ondas de 33 L</h3>
                     <p>Eficiente para aquecer e preparar alimentos rapidamente.</p>
-                    <div class="gift-price">R$ 655,05</div>
-                    <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/U2azQCt6cz" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
@@ -1754,4 +1750,3 @@
     </script>
 </body>
 </html>
-
