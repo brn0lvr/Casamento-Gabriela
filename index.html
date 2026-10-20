@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20261020-video-desktop" />
+    <link rel="stylesheet" href="styles.css?v=20261020-gift-details-mobile-shine" />
 </head>
 <body>
     <div id="wedding-intro" class="wedding-intro" role="dialog" aria-modal="true" aria-label="Convite de casamento Gabriela e Mateus">
@@ -1001,6 +1001,18 @@
             </form>
         </div>
     </div>
+    <div id="gift-details-modal" class="gift-modal gift-details-modal" aria-hidden="true">
+        <div class="gift-modal-overlay" data-close-gift-details></div>
+        <div class="gift-modal-card gift-details-card" role="dialog" aria-modal="true" aria-labelledby="gift-details-title">
+            <button type="button" class="gift-modal-close" data-close-gift-details aria-label="Fechar">×</button>
+            <img id="gift-details-image" class="gift-details-image" alt="" />
+            <h3 id="gift-details-title"></h3>
+            <p id="gift-details-description" class="gift-details-description"></p>
+            <p id="gift-details-price" class="gift-details-price"></p>
+            <p id="gift-details-unavailable" class="gift-details-unavailable" hidden>Este item já foi presenteado</p>
+            <button type="button" id="gift-details-buy" class="btn btn-mp gift-details-buy">Presentear</button>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="bottombar">
@@ -1457,18 +1469,23 @@
         };
 
         const giftModal = document.getElementById("gift-modal");
+        const giftDetailsModal = document.getElementById("gift-details-modal");
         const giftInstructionsModal = document.getElementById("gift-instructions-modal");
         const giftInstructionsRead = document.getElementById("gift-instructions-read");
         const openGiftInstructionsButton = document.getElementById("open-gift-instructions");
         const continueGiftListButton = document.getElementById("continue-gift-list");
         const giftModalSelected = document.getElementById("gift-modal-selected");
+        const giftDetailsImage = document.getElementById("gift-details-image");
+        const giftDetailsTitle = document.getElementById("gift-details-title");
+        const giftDetailsDescription = document.getElementById("gift-details-description");
+        const giftDetailsPrice = document.getElementById("gift-details-price");
+        const giftDetailsUnavailable = document.getElementById("gift-details-unavailable");
+        const giftDetailsBuyButton = document.getElementById("gift-details-buy");
         const giftIdentForm = document.getElementById("gift-ident-form");
         const giftFormStatus = document.getElementById("gift-form-status");
         const closeGiftModalButtons = document.querySelectorAll("[data-close-gift-modal]");
+        const closeGiftDetailsButtons = document.querySelectorAll("[data-close-gift-details]");
         const giftCards = Array.from(document.querySelectorAll(".gift-item"));
-        const giftButtons = giftCards
-            .map((card) => card.querySelector(".btn-mp"))
-            .filter(Boolean);
         let pendingGift = null;
         let giftInstructionsShown = false;
 
@@ -1501,6 +1518,32 @@
             giftModal.setAttribute("aria-hidden", "false");
             document.body.style.overflow = "hidden";
             document.getElementById("gift-guest-name").focus();
+        }
+
+        function openGiftDetailsModal(giftData) {
+            pendingGift = giftData;
+            giftDetailsImage.src = giftData.image;
+            giftDetailsImage.alt = giftData.name;
+            giftDetailsTitle.textContent = giftData.name;
+            giftDetailsDescription.textContent = giftData.description;
+            giftDetailsPrice.textContent = giftData.price;
+            giftDetailsPrice.hidden = !giftData.price;
+            giftDetailsUnavailable.hidden = !giftData.unavailable;
+            giftDetailsBuyButton.hidden = giftData.unavailable;
+            giftDetailsModal.classList.add("open");
+            giftDetailsModal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            (giftData.unavailable ? giftDetailsModal.querySelector(".gift-modal-close") : giftDetailsBuyButton).focus();
+        }
+
+        function closeGiftDetailsModal(clearPendingGift = true) {
+            giftDetailsModal.classList.remove("open");
+            giftDetailsModal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+
+            if (clearPendingGift) {
+                pendingGift = null;
+            }
         }
 
         function openGiftInstructionsModal() {
@@ -1688,22 +1731,66 @@
 
         window.setTimeout(watchGiftSectionInstructions, 5200);
 
-        giftButtons.forEach((button) => {
-            button.addEventListener("click", (event) => {
-                event.preventDefault();
+        giftCards.forEach((card) => {
+            const name = card.querySelector("h3")?.textContent?.trim() || "Presente";
+            const image = card.querySelector(".gift-image img");
+            const description = card.querySelector(":scope > p")?.textContent?.trim() || "";
+            const price = card.querySelector(".gift-price")?.textContent?.trim() || "";
+            const paymentButton = card.querySelector(".btn-mp");
+            const giftData = {
+                id: card.dataset.giftId || "",
+                name,
+                description,
+                price,
+                image: image?.getAttribute("src") || "",
+                link: paymentButton?.getAttribute("href") || "",
+                unavailable: card.classList.contains("is-unavailable"),
+                card
+            };
 
-                const card = button.closest(".gift-item");
-                const name = card?.querySelector("h3")?.textContent?.trim() || "Presente";
-                const price = card?.querySelector(".gift-price")?.textContent?.trim() || "";
-                const link = button.getAttribute("href") || "";
-                const giftId = card?.dataset.giftId || "";
-
-                openGiftModal({ id: giftId, name, price, link, card });
+            card.setAttribute("role", "button");
+            card.setAttribute("tabindex", "0");
+            card.setAttribute("aria-haspopup", "dialog");
+            card.setAttribute("aria-label", `Ver detalhes: ${name}`);
+            card.addEventListener("click", () => openGiftDetailsModal(giftData));
+            card.addEventListener("keydown", (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openGiftDetailsModal(giftData);
+                }
             });
         });
 
         closeGiftModalButtons.forEach((button) => {
             button.addEventListener("click", closeGiftModal);
+        });
+
+        closeGiftDetailsButtons.forEach((button) => {
+            button.addEventListener("click", () => closeGiftDetailsModal());
+        });
+
+        giftDetailsBuyButton.addEventListener("click", () => {
+            if (!pendingGift || pendingGift.unavailable) {
+                return;
+            }
+
+            const selectedGift = pendingGift;
+            closeGiftDetailsModal(false);
+            openGiftModal(selectedGift);
+        });
+
+        window.addEventListener("keydown", (event) => {
+            if (event.key !== "Escape") {
+                return;
+            }
+
+            if (giftDetailsModal.classList.contains("open")) {
+                closeGiftDetailsModal();
+            } else if (giftModal.classList.contains("open")) {
+                closeGiftModal();
+            } else if (giftInstructionsModal.classList.contains("open")) {
+                closeGiftInstructionsModal();
+            }
         });
 
         async function processGiftFlow(mode) {
