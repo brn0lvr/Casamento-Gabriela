@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20261020-gift-details-mobile-shine" />
+    <link rel="stylesheet" href="styles.css?v=20261020-gifts-video-playback" />
 </head>
 <body>
     <div id="wedding-intro" class="wedding-intro" role="dialog" aria-modal="true" aria-label="Convite de casamento Gabriela e Mateus">
@@ -69,10 +69,10 @@
     </header>
 
     <main id="inicio" class="hero">
-        <video class="hero-video hero-video-backdrop" autoplay muted loop playsinline poster="Images/foto-casal.jpg" aria-hidden="true">
+        <video class="hero-video hero-video-backdrop" muted loop playsinline preload="none" poster="Images/foto-casal.jpg" aria-hidden="true">
             <source src="Images/video-casal.mp4" type="video/mp4" />
         </video>
-        <video class="hero-video hero-video-foreground" autoplay muted loop playsinline poster="Images/foto-casal.jpg" aria-hidden="true">
+        <video class="hero-video hero-video-foreground" autoplay muted loop playsinline preload="auto" poster="Images/foto-casal.jpg" aria-hidden="true">
             <source src="Images/video-casal.mp4" type="video/mp4" />
         </video>
         <section class="content">
@@ -315,14 +315,13 @@
                     <h3>Arm&#225;rio de Cozinha</h3>
                     <p>Essencial para organizar nossa cozinha com estilo e funcionalidade.</p>
                 </article>
-                <article class="card gift-item">
+                <article class="card gift-item is-unavailable">
                     <figure class="gift-image">
+                        <span class="gift-unavailable-badge">Este item já foi presenteado</span>
                         <img src="Images/presentes/presente-004.jpg" alt="Colch&#227;o Box Queen" loading="lazy" />
                     </figure>
                     <h3>Colch&#227;o Box Queen</h3>
                     <p>Para noites de descanso perfeito em nosso novo quarto.</p>
-                    <div class="gift-price">R$ 2.432,09</div>
-                    <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/XQlur57Zvk" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
@@ -564,14 +563,13 @@
             <h3 class="gift-category-title">Sala</h3>
             <p class="gift-category-subtitle">Detalhes para deixarmos a sala confortável e acolhedora.</p>
             <div class="gift-grid">
-                <article class="card gift-item">
+                <article class="card gift-item is-unavailable">
                     <figure class="gift-image">
+                        <span class="gift-unavailable-badge">Este item já foi presenteado</span>
                         <img src="Images/presentes/presente-031.jpg" alt="Aspirador P&#243; Sem Fio" loading="lazy" />
                     </figure>
                     <h3>Aspirador P&#243; Sem Fio</h3>
                     <p>Limpeza fácil e eficiente em toda a casa.</p>
-                    <div class="gift-price">R$ 416,69</div>
-                    <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/amRC9Wgvbc" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
@@ -669,14 +667,13 @@
             <h3 class="gift-category-title">Quarto / Banheiro</h3>
             <p class="gift-category-subtitle">Itens para tornar nosso descanso e rotina ainda melhores.</p>
             <div class="gift-grid">
-                <article class="card gift-item">
+                <article class="card gift-item is-unavailable">
                     <figure class="gift-image">
+                        <span class="gift-unavailable-badge">Este item já foi presenteado</span>
                         <img src="Images/presentes/presente-042.jpg" alt="Base Box Queen" loading="lazy" />
                     </figure>
                     <h3>Base Box Queen</h3>
                     <p>Estrutura resistente e confortável para nosso colchão.</p>
-                    <div class="gift-price">R$ 689,39</div>
-                    <a class="btn btn-mp" href="https://invoice.infinitepay.io/gabriela-miranda-48p/xZniSotkU6" target="_blank" rel="noopener noreferrer">Presentear</a>
                 </article>
                 <article class="card gift-item">
                     <figure class="gift-image">
@@ -1036,17 +1033,54 @@
 
         const weddingIntro = document.getElementById("wedding-intro");
         const invitationStage = weddingIntro?.querySelector(".invitation-stage");
+        const heroVideoForeground = document.querySelector(".hero-video-foreground");
+        const heroVideoBackdrop = document.querySelector(".hero-video-backdrop");
+        const desktopHeroMedia = window.matchMedia("(min-width: 901px)");
         let weddingIntroOpened = false;
 
         if (weddingIntro) {
             document.body.style.overflow = "hidden";
         }
 
+        function playHeroVideo(video) {
+            if (!video || !video.paused) {
+                return;
+            }
+
+            video.play().catch((error) => {
+                if (error.name !== "NotAllowedError" && error.name !== "AbortError") {
+                    console.error("Não foi possível reproduzir o vídeo principal.", error);
+                }
+            });
+        }
+
+        function syncHeroVideoPlayback() {
+            if (document.hidden) {
+                heroVideoForeground?.pause();
+                heroVideoBackdrop?.pause();
+                return;
+            }
+
+            playHeroVideo(heroVideoForeground);
+
+            if (desktopHeroMedia.matches) {
+                playHeroVideo(heroVideoBackdrop);
+            } else {
+                heroVideoBackdrop?.pause();
+            }
+        }
+
+        syncHeroVideoPlayback();
+        document.addEventListener("visibilitychange", syncHeroVideoPlayback);
+        window.addEventListener("pageshow", syncHeroVideoPlayback);
+        desktopHeroMedia.addEventListener("change", syncHeroVideoPlayback);
+
         function openWeddingIntro() {
             if (!weddingIntro || weddingIntroOpened) {
                 return;
             }
 
+            syncHeroVideoPlayback();
             weddingIntroOpened = true;
             weddingIntro.classList.add("is-opening");
 
