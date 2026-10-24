@@ -1856,5 +1856,31 @@ window.WEDDING_GUESTS = [
                             "bebida":  false
                         }
                     ]
+    },
+    {
+        "id":  "familia-65",
+        "familyName":  "Família 65 - Antônio e Glícia",
+        "searchNames":  [
+                            "Antônio",
+                            "Glícia",
+                            "Antonio",
+                            "Glicia"
+                        ],
+        "members":  [
+                        {
+                            "id":  "65-antonio-1",
+                            "name":  "Antônio",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "65-glicia-2",
+                            "name":  "Glícia",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        }
+                    ]
     }
 ];
