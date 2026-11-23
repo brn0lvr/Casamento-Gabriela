@@ -1882,5 +1882,29 @@ window.WEDDING_GUESTS = [
                             "bebida":  false
                         }
                     ]
+    },
+    {
+        "id":  "familia-66",
+        "familyName":  "Família 66 - Danilo e Maria",
+        "searchNames":  [
+                            "Danilo",
+                            "Maria"
+                        ],
+        "members":  [
+                        {
+                            "id":  "66-danilo-1",
+                            "name":  "Danilo",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        },
+                        {
+                            "id":  "66-maria-2",
+                            "name":  "Maria",
+                            "expectativa":  false,
+                            "buffet":  false,
+                            "bebida":  false
+                        }
+                    ]
     }
 ];
